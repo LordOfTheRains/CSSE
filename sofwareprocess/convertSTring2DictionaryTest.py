@@ -1,32 +1,70 @@
 import unittest
-
+import convertString2Dictionary as converter
 
 class TestConvertString2Dictionary(unittest.TestCase):
 
-
-    def test_validateInput(self):
-        s1 = "aksjdlakjdlka"
-		self.assertTrue(s1, isValidInput())
-'''
-    def test_validateInput(self):
-        #s2 = "function%3D%20calculatePosition%2C%20sighting%3DBetelgeuse"
-		#s3 = "abc%3D123"
-		#self.assertTrue(s2, isValidInput())
-		#self.assertTrue(s3, isValidInput())
-		#bad inputs
-		s4 = "key%3Dvalue%2C%20key%3Dvalue"
-		s5 = "key%3D"
-		s6 = "value"
-
-		self.assertTrue(s4, isValidInput())
-		self.assertTrue(s5, isValidInput())
-		self.assertTrue(s6, isValidInput())
-'''
-
-
     def test_convertString2Dictionary(self):
-        pass
 
+        s1 = "abc%3D123"
+        d1 = {'abc':'123'}
+        s2 = "function%3D%20calculatePosition%2C%20sighting%3DBetelgeuse"
+        d2 = {'function':'calculatePosition', 'sighting':'Betelgeuse'}
+        s3 = 'function%20%3D%20get_stars'
+        d3 = {'function':'get_stars'}
+
+        self.assertEqual(d1,converter.convertString2Dictionary(s1))
+        self.assertEqual(d2,converter.convertString2Dictionary(s2))
+        self.assertEqual(d3,converter.convertString2Dictionary(s3))
+
+        #negative cases
+        invalid = ['key%3Dvalue%2C%20key%3Dvalue',
+                    'key%3Dkey%3Dkey%3D',
+                    'value',
+                    '1key%3Dvalue',
+                    'k%20e%20y%20%3D%20value',
+                    '',
+                    'key1%3Dvalue%3B%20key2%3Dvalue']
+
+        error = converter.error_dict()
+        for s in invalid:
+            self.assertEqual(error,converter.convertString2Dictionary(s),
+             s+':'+ str(converter.convertString2Dictionary(s)))
+
+    def test_is_valid_pair(self):
+        self.assertTrue('FOO'.isupper())
+        self.assertFalse('Foo'.isupper())
+
+    def test_is_valid_key(self):
+        valid = ['a1223',' asd23q']
+        invalid = ['hello world',
+                    'asd!@# sadsa',
+                    '000a90ad',
+                    '.asdc9',
+                    '88j asd']
+
+        for key in valid:
+            self.assertTrue(converter.is_valid_key(key),key)
+
+        for key in invalid:
+            self.assertFalse(converter.is_valid_key(key),key)
+
+    def test_is_valid_value(self):
+        valid = ['123ahsuds',
+                'asd112',
+                ' a2s12s',
+                'keyasd ',
+                ' as1da ']
+        invalid = ['hello world',
+                    'asdsads+!@#a',
+                    '00%0a90ad',
+                    '.asdc9',
+                    '88j asd']
+
+        for value in valid:
+            self.assertTrue(converter.is_valid_value(value),value)
+
+        for value in invalid:
+            self.assertFalse(converter.is_valid_value(value),value)
 
 if __name__ == '__main__':
     unittest.main()
