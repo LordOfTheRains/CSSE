@@ -6,6 +6,15 @@
 
 import urllib
 
+URL_TYPE = "utf8"
+
 def convertString2Dictionary(inputString = ""):
     errorDict = {'error':'true'}
     return errorDict
+    
+    
+def isValidInput(inputString = ""):
+	url=urllib.unquote(inputString).decode(URL_TYPE)
+	print url
+	
+
