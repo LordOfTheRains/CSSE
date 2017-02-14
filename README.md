@@ -1,12 +1,7 @@
-
-
 [![Language](https://img.shields.io/badge/Python-2.x-blue.svg?style=flat-square)]()
 [![CurrentAssignment](https://img.shields.io/badge/Assignment-2-orange.svg?style=flat-square)]()
 [![TestCoverage](https://img.shields.io/badge/test-100%25-brightgreen.svg?style=flat-square)]()
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
-
-
-
 
 # Software Process Spring 2017 ![alt Text](http://vignette2.wikia.nocookie.net/plantsvszombies/images/d/d0/Zombiepraise.gif/revision/latest?cb=20150625181927 "cookies")
 
