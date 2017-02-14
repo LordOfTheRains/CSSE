@@ -21,3 +21,10 @@
 |     3      | ---      |   - |||
 |     4      | ---      |    -|||
 
+***
+### References
+
++ [Unittest](https://docs.python.org/2/library/unittest.html)
++ [PEP 8](https://www.python.org/dev/peps/pep-0008/)
++ [badge](http://shields.io/#your-badge)
++ [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
