@@ -69,8 +69,8 @@ class Sample(object):
         simpson_new = 0.0
         w = (highBound - lowBound) / s
         simpson_new = (w/s) * f(lowBound, n) + \
-                     4 * f(lowBound+w, n) + 2 * f(lowBound+2*w) + \
-                     4 * f(lowBound+3*w) + 2 * f(lowBound+4*w) + \
+                     4 * f(lowBound+w, n) + 2 * f(lowBound+2*w, n) + \
+                     4 * f(lowBound+3*w, n) + 2 * f(lowBound+4*w, n) + \
                      4 * f(highBound - w, n) + f(highBound+w, n)
         return simpson_new
         
