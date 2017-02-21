@@ -72,7 +72,7 @@ class Sample(object):
         while abs(simpson_new - simpson_old) / simpson_new > epsilon:
             simpson_old = simpson_new
             s *= 2
-            w = (highBound - lowBound) / s
+            w = (high_bound - low_bound) / s
             middle_terms = 0
             for i in range(1, s+1):
                 #i is odd
