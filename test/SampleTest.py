@@ -254,22 +254,26 @@ class SampleTest(unittest.TestCase):
 #    outputs
 #        float .GE. 0
 # Happy path
-#   nominal case for 1 tail:  integrate(0.0, 1.4398,6, f) -> 0.9
-#   nominal case for 2 tail:  integrate(0.0, 1.4398,6,f) -> 0.8
+#   nominal case for f=u, t = 1:  integrate(0.0, 1,6, f = u) -> 0.5
+#   nominal case for f= uu, t = 1 :  integrate(0.0, 1,6,f = u^2) -> 0.333
+#   nominal case for f= u^6, t = 1 :  integrate(0.0, 1,6,f = u^6) -> 1/7
+#   nominal case for f= u^100, t = 1 :  integrate(0.0, 1,6,f = u^100) -> 1/101
 # Sad path
 #            none ... all inputs are pre-validated
 
 
 
-    def test500_010_ShouldIntegrateNominalCaseTail1(self):
+    def test500_010_ShouldIntegrateNominalU1(self):
         my_sample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(my_sample.integrate(0.0, self.nominalT, my_sample.n, my_sample.f), 0.9)
+        def f(u):
+            return u
+        self.assertAlmostEquals(my_sample.integrate(0.0, self.nominalT, my_sample.n, f), 0.5)
 
-    def test500_020_ShouldIntegrateLowBoundCaseTail1(self):
+    def test500_010_ShouldIntegrateNominalU2(self):
         #my_sample = SM.Sample(self.nominalN)
        # self.assertAlmostEquals(my_sample.f(0.0, 5), 1, 4)
 
-    def test500_030_ShouldIntegrateHighBoundCaseTail1(self):
+    def test500_010_ShouldIntegrateNominalU6(self):
         #my_sample = SM.Sample(self.nominalN)
         #self.assertAlmostEquals(my_sample.f(0.0, 5), 1, 4)
         
