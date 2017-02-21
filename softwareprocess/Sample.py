@@ -66,7 +66,7 @@ class Sample(object):
     
     def integrate(self, lowBound, highBound, n, f):
         s = 4
-        epsilon = 0.001
+        epsilon = 0.0001
         simpson_old = 0.0
         simpson_new = epsilon
         while abs(simpson_new - simpson_old) / simpson_new > epsilon:
