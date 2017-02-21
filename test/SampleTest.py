@@ -266,7 +266,7 @@ class SampleTest(unittest.TestCase):
 
     def test500_010_ShouldIntegrateNominalU1(self):
         my_sample = SM.Sample(self.nominalN)
-        def f(u):
+        def f(u, n):
             return u
         self.assertAlmostEquals(my_sample.integrate(0.0, self.nominalT, my_sample.n, f), 0.5)
 
