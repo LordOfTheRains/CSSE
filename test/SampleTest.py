@@ -289,3 +289,4 @@ class SampleTest(unittest.TestCase):
         def f(u, n):
             return u**100
         self.assertAlmostEquals(my_sample.integrate(0.0, 1, 6, f), 1.0/101.0, 3)
+    
