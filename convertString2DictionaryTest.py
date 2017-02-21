@@ -1,5 +1,5 @@
 import unittest
-from ..softwareprocess import convertString2Dictionary as converter
+from softwareprocess import convertString2Dictionary as converter
 
 class TestConvertString2Dictionary(unittest.TestCase):
 
