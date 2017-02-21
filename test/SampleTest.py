@@ -145,7 +145,6 @@ class SampleTest(unittest.TestCase):
         mySample = SM.Sample(7)
         self.assertAlmostEquals(mySample.p(1.8946), .950, 3)
 '''
-# Sad path
     def test600_910ShouldRaiseExceptionOnMissingT(self):
         expectedString = "Sample.p:"
         mySample = SM.Sample(self.nominalN)
