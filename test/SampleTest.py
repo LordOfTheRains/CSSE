@@ -10,6 +10,8 @@ class SampleTest(unittest.TestCase):
     def setUp(self):
         self.nominalN  = 6
         self.nominalT = 1.4398
+        
+        self.ROUND_TO =3
 
         # table goes up to 30 but 30 is invalid in the constr. weird..
         self.high_n = 20
@@ -268,5 +270,5 @@ class SampleTest(unittest.TestCase):
         my_sample = SM.Sample(self.nominalN)
         def f(u, n):
             return u
-        self.assertAlmostEquals(my_sample.integrate(0.0, 1, 6, f), 0.5)
+        self.assertAlmostEquals(my_sample.integrate(0.0, 1, 6, f), 0.5, self.ROUND_T3)
 
