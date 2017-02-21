@@ -269,11 +269,3 @@ class SampleTest(unittest.TestCase):
             return u
         self.assertAlmostEquals(my_sample.integrate(0.0, self.nominalT, my_sample.n, f), 0.5)
 
-    def test500_010_ShouldIntegrateNominalU2(self):
-        #my_sample = SM.Sample(self.nominalN)
-       # self.assertAlmostEquals(my_sample.f(0.0, 5), 1, 4)
-
-    def test500_010_ShouldIntegrateNominalU6(self):
-        #my_sample = SM.Sample(self.nominalN)
-        #self.assertAlmostEquals(my_sample.f(0.0, 5), 1, 4)
-        
