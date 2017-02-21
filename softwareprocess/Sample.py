@@ -68,53 +68,19 @@ class Sample(object):
         s = 4
         epsilon = 0.001
         simpson_old = 0.0
-        simpson_new = 0.0
-        w = (highBound - lowBound) / s
-        simpson_new = (w/3) * (f(lowBound, n) + \
-                     4 * f(lowBound+w, n) + 2 * f(lowBound+2*w, n) + \
-                     4 * f(lowBound+3*w, n) + 2 * f(lowBound+4*w, n) + \
-                     4 * f(highBound - w, n) + f(highBound, n))
-        
-        if abs(simpson_new-simpson_old) / simpson_new > epsilon:
+        simpson_new = epsilon
+        while abs(simpson_new - simpson_old) / simpson_new > epsilon:
             simpson_old = simpson_new
-            s = s*2
-            w = (highBound - lowBound) / s
-            simpson_new = (w/3) * (f(lowBound, n) + \
-                     4 * f(lowBound+w, n) + 2 * f(lowBound+2*w, n) + \
-                     4 * f(lowBound+3*w, n) + 2 * f(lowBound+4*w, n) + \
-                     4 * f(lowBound+5*w, n) + 2 * f(lowBound+6*w, n) + \
-                     4 * f(lowBound+7*w, n) + 2 * f(lowBound+8*w, n) + \
-                     4 * f(highBound - w, n) + f(highBound, n))
-       
-        if abs(simpson_new-simpson_old) / simpson_new > epsilon:
-            simpson_old = simpson_new
-            s = s*2
-            w = (highBound - lowBound) / s
-            simpson_new = (w/3) * (f(lowBound, n) + \
-                     4 * f(lowBound+w, n) + 2 * f(lowBound+2*w, n) + \
-                     4 * f(lowBound+3*w, n) + 2 * f(lowBound+4*w, n) + \
-                     4 * f(lowBound+5*w, n) + 2 * f(lowBound+6*w, n) + \
-                     4 * f(lowBound+7*w, n) + 2 * f(lowBound+8*w, n) + \
-                     4 * f(lowBound+9*w, n) + 2 * f(lowBound+10*w, n) + \
-                     4 * f(lowBound+11*w, n) + 2 * f(lowBound+12*w, n) + \
-                     4 * f(lowBound+13*w, n) + 2 * f(lowBound+14*w, n) + \
-                     4 * f(lowBound+15*w, n) + 2 * f(lowBound+16*w, n) + \
-                     4 * f(highBound - w, n) + f(highBound, n))
-            
-        if abs(simpson_new-simpson_old) / simpson_new > epsilon:
-            simpson_old = simpson_new
-            s = s*2
-           
-            
-            s = 128
+            s *= 2
             w = (highBound - lowBound) / s
             middle_terms = 0
             for i in range(1, s+1):
                 #i is odd
                 if i % 2 == 1:
                     middle_terms = middle_terms + 4 * f(lowBound+i*w, n) + 2 * f(lowBound+(i+1)*w, n)
-            simpson_new = (w/3) * (f(lowBound, n) + middle_terms + \
-                      4 * f(highBound - w, n) + f(highBound, n))
+            
+            simpson_new = (w/3) * (f(lowBound, n) + middle_terms + 4 * f(highBound - w, n) + f(highBound, n))
+        
         return simpson_new
         
         
