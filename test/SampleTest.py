@@ -8,8 +8,15 @@ import math
 class SampleTest(unittest.TestCase):
 
     def setUp(self):
-        self.nominalN  = 4
+        self.nominalN  = 6
         self.nominalT = 1.4398
+
+        # table goes up to 30 but 30 is invalid in the constr. weird..
+        self.high_n = 20
+        self.high_t = 2.8453
+
+        self.low_n = 1
+        self.low_t = 0.3249
 
     def tearDown(self):
         pass
@@ -236,4 +243,33 @@ class SampleTest(unittest.TestCase):
     def test400_020_ShouldCalculateF(self):
         mySample = SM.Sample(self.nominalN)
         self.assertAlmostEquals(mySample.f(1, 5), 0.578703704)
+
+# 500 integrate
+# Analysis
+#    inputs
+#        lowbound -> numeric  0.0 prevalidated
+#        highBound -> number of tails, prevalidated
+#        n -> number of sample., from sample instance, prevalidated.
+#        f -> function to integrate, provided by sample instance, prevalidated
+#    outputs
+#        float .GE. 0
+# Happy path
+#   nominal case for 1 tail:  integrate(0.0, 1.4398,6, f) -> 0.9
+#   nominal case for 2 tail:  integrate(0.0, 1.4398,6,f) -> 0.8
+# Sad path
+#            none ... all inputs are pre-validated
+
+
+
+    def test500_010_ShouldIntegrateNominalCaseTail1(self):
+        my_sample = SM.Sample(self.nominalN)
+        self.assertAlmostEquals(my_sample.integrate(0.0, self.nominalT, my_sample.n, my_sample.f), 0.9)
+
+    def test500_020_ShouldIntegrateLowBoundCaseTail1(self):
+        #my_sample = SM.Sample(self.nominalN)
+       # self.assertAlmostEquals(my_sample.f(0.0, 5), 1, 4)
+
+    def test500_030_ShouldIntegrateHighBoundCaseTail1(self):
+        #my_sample = SM.Sample(self.nominalN)
+        #self.assertAlmostEquals(my_sample.f(0.0, 5), 1, 4)
         
