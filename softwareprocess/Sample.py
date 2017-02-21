@@ -66,12 +66,23 @@ class Sample(object):
     
     def integrate(self, lowBound, highBound, n, f):
         s = 4
+        epsilon = 0.001
+        simpson_old = 0.0
         simpson_new = 0.0
         w = (highBound - lowBound) / s
         simpson_new = (w/3) * (f(lowBound, n) + \
                      4 * f(lowBound+w, n) + 2 * f(lowBound+2*w, n) + \
                      4 * f(lowBound+3*w, n) + 2 * f(lowBound+4*w, n) + \
                      4 * f(highBound - w, n) + f(highBound, n))
+        
+        if abs(simpson_new-simpson_old) / simpson_new > epsilon:
+            s = s*2
+            w = (highBound - lowBound) / s
+        simpson_new = (w/3) * (f(lowBound, n) + \
+                     4 * f(lowBound+w, n) + 2 * f(lowBound+2*w, n) + \
+                     4 * f(lowBound+3*w, n) + 2 * f(lowBound+4*w, n) + \
+                     4 * f(highBound - w, n) + f(highBound, n))
+            
         return simpson_new
         
         

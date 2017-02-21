@@ -270,5 +270,5 @@ class SampleTest(unittest.TestCase):
         my_sample = SM.Sample(self.nominalN)
         def f(u, n):
             return u
-        self.assertAlmostEquals(my_sample.integrate(0.0, 1, 6, f), 0.5, self.ROUND_T)
+        self.assertAlmostEquals(my_sample.integrate(0.0, 1, 6, f), 0.5, self.ROUND_TO)
 
