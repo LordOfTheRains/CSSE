@@ -64,7 +64,7 @@ class Sample(object):
         result = base ** exponent
         return result
     
-    def integrate(self, lowBound, highBound, n, f):
+    def integrate(self, low_bound, high_bound, n, f):
         s = 4
         epsilon = 0.0001
         simpson_old = 0.0
@@ -77,14 +77,8 @@ class Sample(object):
             for i in range(1, s+1):
                 #i is odd
                 if i % 2 == 1:
-                    middle_terms = middle_terms + 4 * f(lowBound+i*w, n) + 2 * f(lowBound+(i+1)*w, n)
+                    middle_terms = middle_terms + 4 * f(low_bound+i*w, n) + 2 * f(low_bound+(i+1)*w, n)
             
-            simpson_new = (w/3) * (f(lowBound, n) + middle_terms + 4 * f(highBound - w, n) + f(highBound, n))
+            simpson_new = (w/3) * (f(low_bound, n) + middle_terms + 4 * f(high_bound - w, n) + f(high_bound, n))
         
         return simpson_new
-        
-        
-    
-        
-            
-        
