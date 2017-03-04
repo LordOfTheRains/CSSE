@@ -66,7 +66,7 @@ class Sample(object):
     
     def integrate(self, low_bound, high_bound, n, f):
         s = 4
-        epsilon = 0.0001
+        epsilon = 0.001
         simpson_old = 0.0
         simpson_new = epsilon
         while abs(simpson_new - simpson_old) / simpson_new > epsilon:
@@ -74,7 +74,7 @@ class Sample(object):
             s *= 2
             w = (high_bound - low_bound) / s
             middle_terms = 0
-            for i in range(1, s+10):
+            for i in range(1, s-1):
                 #i is odd
                 if i % 2 == 1:
                     middle_terms = middle_terms + 4 * f(low_bound+i*w, n) + 2 * f(low_bound+(i+1)*w, n)
