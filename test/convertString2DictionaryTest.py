@@ -1,6 +1,7 @@
 import unittest
 from softwareprocess import convertString2Dictionary as converter
 
+
 class TestConvertString2Dictionary(unittest.TestCase):
 
     def test_convertString2Dictionary(self):
