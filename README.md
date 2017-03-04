@@ -12,8 +12,9 @@
 ***
 | Assignment | status        | code counts  | change|due date|
 |:----------:|:-------------:|:-----:|:-----:|:-----:|
-|     2      | Completed     | 98 |0   |2/13/17|
-|     3      | Completed     |   NA | NA|2/21/17|
+|     2      | Completed     | 98   |0    |2/13/17|
+|     3      | Completed     |   NA | NA  |2/21/17|
+|     5      | In Progress   |    - |     |3/22/17|
 |     4      | ---      |    -|||
 
 ***
