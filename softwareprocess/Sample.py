@@ -74,7 +74,7 @@ class Sample(object):
             s *= 2
             w = (high_bound - low_bound) / s
             middle_terms = 0
-            for i in range(1, s+10
+            for i in range(1, s+10):
                 #i is odd
                 if i % 2 == 1:
                     middle_terms = middle_terms + 4 * f(low_bound+i*w, n) + 2 * f(low_bound+(i+1)*w, n)
