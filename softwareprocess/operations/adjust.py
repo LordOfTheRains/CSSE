@@ -3,8 +3,10 @@ from operation import Operation
 
 class Adjust(Operation):
     
-    def __init__(self):
+    def __init__(self, observation):
         Operation.__init__(self)
+        
+        self.observation = observation
         pass
     
     def validate_parameter(self):
