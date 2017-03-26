@@ -19,11 +19,11 @@ class Adjust(Operation):
         if param_dict is None or not isinstance(param_dict, dict):
             raise TypeError("No Valid Dictionary Provided")
         
-        observation = param_dict['observation']
-        height = param_dict['height']
-        temperature = param_dict['temperature']
-        pressure = param_dict['pressure']
-        horizon = param_dict['horizon']
+        #observation = param_dict['observation']
+        #height = param_dict['height']
+        #temperature = param_dict['temperature']
+        #pressure = param_dict['pressure']
+        #horizon = param_dict['horizon']
         
         return True
     
