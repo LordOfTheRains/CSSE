@@ -16,7 +16,7 @@ class AdjustTest(unittest.TestCase):
         # parameter must exist or  is dictionary
         expected_string = 'No Valid Dictionary Provided'
         validated = Adjust.validate_parameter()
-        self.assertTrue((expected_string is in validated))
+        self.assertTrue((expected_string in validated))
         
         validated = Adjust.validate_parameter("asdad")
         self.assertTrue((expected_string in validated))
