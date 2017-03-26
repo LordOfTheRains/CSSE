@@ -125,10 +125,9 @@ class AdjustTest(unittest.TestCase):
         
         # key exist
         validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                                   'pressure': '150', 'horizon': 'artificial',
-                                                   'op': 'adjust', 'temperature': '72'})
-        self.assertTrue((expected_string in validated))
-        self.assertTrue()
+                                               'pressure': '150', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue(validated)
         
     def test_validate_parameter_temperature(self):
         # Temperature: optional, unvalidated
