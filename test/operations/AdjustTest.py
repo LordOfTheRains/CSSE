@@ -98,7 +98,7 @@ class AdjustTest(unittest.TestCase):
         # pressure not an integer
         expected_string = 'Pressure Value Must Be A Integer'
         validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'pressure': 'asdad', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
         
