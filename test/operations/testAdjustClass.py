@@ -17,6 +17,7 @@ class AdjustClassTest(unittest.TestCase):
         # string: xdy.y
         self.assertRaises(TypeError, Adjust.validate_parameter())
         self.assertRaises(TypeError, Adjust.validate_parameter("asdad"))
+        self.assertRaises(ValueError, Adjust.validate_parameter("asdad"))
         # Happy path
         # observation is in the form of xdy.y
         # 0 <= x < 90
