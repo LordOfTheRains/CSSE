@@ -14,7 +14,7 @@ class Operation:
         all appropriate errors shall be thrown within the implementation
         :return: boolean indicating success/failure
         """
-        raise NotImplemented
+        return False
 
     @abstractmethod
     def perform(self):
@@ -23,6 +23,6 @@ class Operation:
         and attach the result as a key value pair to the original input dictionary
         :return: original dictionary + result key-value pair
         """
-    raise NotImplemented
+        raise NotImplemented
 
 
