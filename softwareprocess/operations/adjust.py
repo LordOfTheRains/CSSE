@@ -24,9 +24,13 @@ class Adjust(Operation):
         
         if "height" in param_dict:
             height = param_dict['height']
-            
-            raise ValueError("Missing Height Value in Dictionary")
-        
+            try:
+                height = float(height)
+            except ValueError:
+                raise ValueError("Height Value Must Be A Floating Number")
+            if height < 0:
+                raise ValueError("Height Value Must Be A Positive Floating Number")
+                
         if "pressure" not in param_dict:
             raise ValueError("Missing Pressure Value in Dictionary")
         
