@@ -52,7 +52,6 @@ class Adjust(Operation):
         if "horizon" not in param_dict:
             raise ValueError("Missing Horizon Value in Dictionary")
         
-        observation = param_dict['observation']
         #height = param_dict['height']
         #temperature = param_dict['temperature']
         #pressure = param_dict['pressure']
