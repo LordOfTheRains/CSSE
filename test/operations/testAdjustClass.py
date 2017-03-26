@@ -21,6 +21,7 @@ class AdjustClassTest(unittest.TestCase):
         # observation is in the form of xdy.y
         # 0 <= x < 90
         # 0.0 <= y < 60
+        print ("test called")
         try:
             Adjust.validate_parameter({'op': 'predict'})
         except TypeError:
