@@ -16,8 +16,10 @@ class Adjust(Operation):
         all appropriate errors shall be thrown within the implementation
         :return: boolean indicating success/failure
         """
+        error = ""
         if param_dict is None or not isinstance(param_dict, dict):
-            raise TypeError("No Valid Dictionary Provided")
+            error += "No Valid Dictionary Provided"
+            
         
         if "observation" not in param_dict:
             raise ValueError("Missing Observation Value in Dictionary")
@@ -31,8 +33,14 @@ class Adjust(Operation):
             if height < 0:
                 raise ValueError("Height Value Must Be A Positive Floating Number")
                 
-        if "pressure" not in param_dict:
-            raise ValueError("Missing Pressure Value in Dictionary")
+        if "pressure" in param_dict:
+            pressure = param_dict['pressure']
+            try:
+                pressure = int(pressure)
+            except ValueError:
+                raise ValueError("Pressure Value Must Be A Integer")
+            if pressure < 100:
+                raise ValueError("Pressure Value Is Under Threshold of 100 mbar")
         
         if "temperature" not in param_dict:
             raise ValueError("Missing Temperature Value in Dictionary")

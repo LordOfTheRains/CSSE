@@ -97,19 +97,40 @@ class AdjustTest(unittest.TestCase):
         
         # Sad Path
         
-        # missing key in the dictionary
-        expected_string = "Missing Pressure Value in Dictionary"
+        # pressure not an integer
+        expected_string = "Pressure Value Must Be A Integer"
         with self.assertRaises(ValueError) as context:
             Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                       'asd': '1010', 'horizon': 'artificial',
+                                       'pressure': '1010', 'horizon': 'artificial',
+                                       'op': 'adjust', 'temperature': '72'})
+        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        # pressure not an integer but a floating number
+        expected_string = "Pressure Value Must Be A Integer"
+        with self.assertRaises(ValueError) as context:
+            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                       'pressure': '1010.5', 'horizon': 'artificial',
+                                       'op': 'adjust', 'temperature': '72'})
+        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        # pressure not GE 100
+        expected_string = "Pressure Value Is Under Threshold of 100 mbar"
+        with self.assertRaises(ValueError) as context:
+            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                       'pressure': '80', 'horizon': 'artificial',
                                        'op': 'adjust', 'temperature': '72'})
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         
+        # pressure not less than 1100
+        expected_string = "Pressure Value Exceed Threshold of 1100 mbar"
+        with self.assertRaises(ValueError) as context:
+            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                       'pressure': '80000', 'horizon': 'artificial',
+                                       'op': 'adjust', 'temperature': '72'})
+        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         # Happy path
         
         # key exist
         self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                                   'pressure': '1010', 'horizon': 'artificial',
+                                                   'pressure': '150', 'horizon': 'artificial',
                                                    'op': 'adjust', 'temperature': '72'}))
         
     def test_validate_parameter_temperature(self):
