@@ -137,7 +137,7 @@ class AdjustTest(unittest.TestCase):
         expected_string = "Missing Horizon Value in Dictionary"
         with self.assertRaises(ValueError) as context:
             Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                       'pressure': '1010', 'horizon': 'artificial',
+                                       'pressure': '1010', 'horisszon': 'artificial',
                                        'op': 'adjust', 'temperature': '72'})
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         
