@@ -24,7 +24,6 @@ class Adjust(Operation):
         temperature = param_dict['temperature']
         pressure = param_dict['pressure']
         horizon = param_dict['horizon']
-        print ("test")
         
         return True
     
