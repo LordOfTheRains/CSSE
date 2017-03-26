@@ -23,25 +23,16 @@ class AdjustTest(unittest.TestCase):
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         # Happy path
         # parameter is a dictionary
+        typeError_not_raised = False
         try:
             Adjust.validate_parameter({'op': 'predict'})
         except TypeError:
-            self.fail("valid dictionary should not raise type error")
-            
+            typeError_not_raised = True
+         self.assertFalse(v, "valid dictionary should not raise type error")
     def test_validate_parameter_observation(self):
         # observation: mandatory, unvalidated
         # string: xdy.y
         
-        # Happy path
-        # observation key exist
-        # observation is in the form of xdy.y
-        # 0 <= x < 90
-        # 0.0 <= y < 60
-        
-        # observation key exist
-        self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                                   'pressure': '1010', 'horizon': 'artificial',
-                                                   'op': 'adjust', 'temperature': '72'}))
         
         # Sad Path
         # missing key in the dictionary
@@ -57,6 +48,16 @@ class AdjustTest(unittest.TestCase):
                                        'op': 'adjust', 'temperature': '72'})
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         
+        # Happy path
+        # observation key exist
+        # observation is in the form of xdy.y
+        # 0 <= x < 90
+        # 0.0 <= y < 60
+        
+        # observation key exist
+        self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                                   'pressure': '1010', 'horizon': 'artificial',
+                                                   'op': 'adjust', 'temperature': '72'}))
     
     
     def test_validate_parameter_height(self):
