@@ -14,7 +14,7 @@ class Operation:
         all appropriate errors shall be thrown within the implementation
         :return: boolean indicating success/failure
         """
-        return False
+        raise NotImplemented
 
     @abstractmethod
     def perform(self):
