@@ -13,8 +13,7 @@ class AdjustTest(unittest.TestCase):
         pass
     
     def test_validate_parameter_dictionary_exist(self):
-        # observation: mandatory, unvalidated
-        # string: xdy.y
+        # parameter must exist or  is dictionary
         expected_string = "No Valid Dictionary Provided"
         with self.assertRaises(TypeError) as context:
             Adjust.validate_parameter()
@@ -23,9 +22,7 @@ class AdjustTest(unittest.TestCase):
             Adjust.validate_parameter("asdad")
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         # Happy path
-        # observation is in the form of xdy.y
-        # 0 <= x < 90
-        # 0.0 <= y < 60
+        # parameter is a dictionary
         try:
             Adjust.validate_parameter({'op': 'predict'})
         except TypeError:
@@ -36,18 +33,31 @@ class AdjustTest(unittest.TestCase):
         # string: xdy.y
         
         # Happy path
+        # observation key exist
         # observation is in the form of xdy.y
         # 0 <= x < 90
         # 0.0 <= y < 60
+        
+        # observation key exist
         self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
                                                    'pressure': '1010', 'horizon': 'artificial',
                                                    'op': 'adjust', 'temperature': '72'}))
         
         # Sad Path
         # missing key in the dictionary
-        # observation is in the form of xdy.y
-        # 0 <= x < 90
-        # 0.0 <= y < 60
+        # observation is not in the form of xdy.y
+        # x is out of range for these: 0 <= x < 90
+        # y is out of range for these: 0.0 <= y < 60
+        
+        # missing key in the dictionary
+        expected_string = "Missing Observation Value in Dictionary"
+        with self.assertRaises(ValueError) as context:
+            Adjust.validate_parameter({'asd': '15d04.9', 'height': '6.0',
+                                       'pressure': '1010', 'horizon': 'artificial',
+                                       'op': 'adjust', 'temperature': '72'})
+        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        
+    
     
     def test_validate_parameter_height(self):
         pass

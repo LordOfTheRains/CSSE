@@ -19,7 +19,10 @@ class Adjust(Operation):
         if param_dict is None or not isinstance(param_dict, dict):
             raise TypeError("No Valid Dictionary Provided")
         
-        #observation = param_dict['observation']
+        if "observation" not in param_dict:
+            raise ValueError("Missing Observation Value in Dictionary")
+        
+        observation = param_dict['observation']
         #height = param_dict['height']
         #temperature = param_dict['temperature']
         #pressure = param_dict['pressure']
