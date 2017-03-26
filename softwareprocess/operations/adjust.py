@@ -45,7 +45,10 @@ class Adjust(Operation):
                 error.append("Pressure Value Must Be A Integer")
                 validated = False
             if pressure < 100:
-                error.append("Pressure Value Is Under Threshold of 100 mbar")
+                error.append("Pressure Value is Below the Threshold of 100 mbar")
+                validated = False
+            if pressure > 1100:
+                error.append("Pressure Value Exceed Threshold of 1100 mbar")
                 validated = False
         
         if "temperature" not in param_dict:
