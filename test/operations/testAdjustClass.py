@@ -27,8 +27,7 @@ class AdjustClassTest(unittest.TestCase):
             Adjust.validate_parameter({'op': 'predict'})
         except TypeError:
             self.fail("valid dictionary should not raise type error")
-        
-    
+            
     def test_validate_parameter_observation(self):
         # observation: mandatory, unvalidated
         # string: xdy.y
