@@ -26,13 +26,6 @@ class AdjustTest(unittest.TestCase):
         
         validated = Adjust.validate_parameter({'op': 'predict'})
         self.assertFalse(expected_string in validated)
-        type_error_not_raised = False
-        try:
-            Adjust.validate_parameter()
-        except Exception as exc:
-            if exc is TypeError:
-                type_error_not_raised = True
-        self.assertFalse(type_error_not_raised, "valid dictionary should not raise type error")
         
     def test_validate_parameter_observation(self):
         # observation: mandatory, unvalidated

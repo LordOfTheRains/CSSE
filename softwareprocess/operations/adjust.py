@@ -21,6 +21,7 @@ class Adjust(Operation):
         if param_dict is None or not isinstance(param_dict, dict):
             error.append("No Valid Dictionary Provided")
             validated = False
+            return ';'.join([str(x) for x in error])
         
         if "observation" not in param_dict:
             raise ValueError("Missing Observation Value in Dictionary")
