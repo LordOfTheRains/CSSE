@@ -26,8 +26,9 @@ class AdjustTest(unittest.TestCase):
         type_error_not_raised = False
         try:
             Adjust.validate_parameter({'op': 'predict'})
-        except TypeError:
-            type_error_not_raised = True
+        except Exception as exc:
+            if exc is TypeError:
+                type_error_not_raised = True
         self.assertFalse(type_error_not_raised, "valid dictionary should not raise type error")
         
     def test_validate_parameter_observation(self):
