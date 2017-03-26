@@ -42,8 +42,11 @@ class Adjust(Operation):
             try:
                 pressure = int(pressure)
             except ValueError:
-                raise ValueError("Pressure Value Must Be A Integer")
+                error.append("Pressure Value Must Be A Integer")
+                validated = False
             if pressure < 100:
+                error.append("Pressure Value Is Under Threshold of 100 mbar")
+                validated = False
                 raise ValueError("Pressure Value Is Under Threshold of 100 mbar")
         
         if "temperature" not in param_dict:
