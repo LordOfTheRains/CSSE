@@ -40,13 +40,11 @@ class AdjustTest(unittest.TestCase):
         # y is out of range for these: 0.0 <= y < 60
         
         # missing key in the dictionary
-        expected_string = "Missing Observation Value in Dictionary"
-        with self.assertRaises(ValueError) as context:
-            
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         
         expected_string = 'Missing Observation Value in Dictionary'
-        validated = Adjust.validate_parameter()
+        validated = Adjust.validate_parameter({'asd': '15d04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
         
         # Happy path
@@ -56,9 +54,10 @@ class AdjustTest(unittest.TestCase):
         # 0.0 <= y < 60
         
         # observation key exist
-        self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                                   'pressure': '1010', 'horizon': 'artificial',
-                                                   'op': 'adjust', 'temperature': '72'}))
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertFalse((expected_string in validated))
         
     def test_validate_parameter_height(self):
         # height: optional, unvalidated
