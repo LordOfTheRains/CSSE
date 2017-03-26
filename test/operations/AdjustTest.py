@@ -67,10 +67,18 @@ class AdjustTest(unittest.TestCase):
         
         # Sad Path
         
-        # missing key in the dictionary
-        expected_string = "Missing Height Value in Dictionary"
+        # negative height
+        
+        expected_string = "Height Value Must Be A Positive Floating Number"
         with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'heisdght': '6.0',
+            Adjust.validate_parameter({'observation': '15d04.9', 'height': '-123',
+                                       'pressure': '1010', 'horizon': 'artificial',
+                                       'op': 'adjust', 'temperature': '72'})
+        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        #  height not a number
+        expected_string = "Height Value Must Be A Floating Number"
+        with self.assertRaises(ValueError) as context:
+            Adjust.validate_parameter({'observation': '15d04.9', 'height': 'asdad',
                                        'pressure': '1010', 'horizon': 'artificial',
                                        'op': 'adjust', 'temperature': '72'})
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
