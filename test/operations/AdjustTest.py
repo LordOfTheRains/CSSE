@@ -20,7 +20,7 @@ class AdjustTest(unittest.TestCase):
             Adjust.validate_parameter()
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         with self.assertRaises(TypeError) as context:
-            Adjust.validate_parameter("asdad"
+            Adjust.validate_parameter("asdad")
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         # Happy path
         # observation is in the form of xdy.y
