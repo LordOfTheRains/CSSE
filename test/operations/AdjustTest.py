@@ -68,26 +68,25 @@ class AdjustTest(unittest.TestCase):
         
         # negative height
         
-        expected_string = "Height Value Must Be A Positive Floating Number"
-        with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'height': '-123',
-                                       'pressure': '1010', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temperature': '72'})
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
-        #  height not a number
-        expected_string = "Height Value Must Be A Floating Number"
-        with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'height': 'asdad',
-                                       'pressure': '1010', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temperature': '72'})
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        expected_string = 'Height Value Must Be A Positive Floating Number'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '-123',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
         
+        #  height not a number
+        expected_string = 'Height Value Must Be A Floating Number'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '-asdad',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
         # Happy path
         
         # key exist
-        self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
                                                    'pressure': '1010', 'horizon': 'artificial',
-                                                   'op': 'adjust', 'temperature': '72'}))
+                                                   'op': 'adjust', 'temperature': '72'})
+        self.assertTrue(validated)
     
     def test_validate_parameter_pressure(self):
         # pressure: optional, unvalidated
@@ -97,40 +96,39 @@ class AdjustTest(unittest.TestCase):
         # Sad Path
         
         # pressure not an integer
-        expected_string = "Pressure Value Must Be A Integer"
-        with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                       'pressure': '1010', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temperature': '72'})
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        expected_string = 'Pressure Value Must Be A Integer'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        
         # pressure not an integer but a floating number
-        expected_string = "Pressure Value Must Be A Integer"
-        with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                       'pressure': '1010.5', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temperature': '72'})
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '1010.5', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        
         # pressure not GE 100
-        expected_string = "Pressure Value Is Under Threshold of 100 mbar"
-        with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                       'pressure': '80', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temperature': '72'})
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        expected_string = 'Pressure Value is Below the Threshold of 100 mbar'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '80', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
         
         # pressure not less than 1100
-        expected_string = "Pressure Value Exceed Threshold of 1100 mbar"
-        with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                       'pressure': '80000', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temperature': '72'})
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        expected_string = 'Pressure Value Exceed Threshold of 1100 mbar'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '80000', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
         # Happy path
         
         # key exist
-        self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
                                                    'pressure': '150', 'horizon': 'artificial',
-                                                   'op': 'adjust', 'temperature': '72'}))
+                                                   'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        self.assertTrue()
         
     def test_validate_parameter_temperature(self):
         # Temperature: optional, unvalidated

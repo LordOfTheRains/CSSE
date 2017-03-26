@@ -47,7 +47,6 @@ class Adjust(Operation):
             if pressure < 100:
                 error.append("Pressure Value Is Under Threshold of 100 mbar")
                 validated = False
-                raise ValueError("Pressure Value Is Under Threshold of 100 mbar")
         
         if "temperature" not in param_dict:
             raise ValueError("Missing Temperature Value in Dictionary")
@@ -55,16 +54,11 @@ class Adjust(Operation):
         if "horizon" not in param_dict:
             raise ValueError("Missing Horizon Value in Dictionary")
         
-        #height = param_dict['height']
-        #temperature = param_dict['temperature']
-        #pressure = param_dict['pressure']
-        #horizon = param_dict['horizon']
         if validated:
             return True
         else:
             return ';'.join([str(x) for x in error])
         
-    
     def perform(self):
         """
         this method will perform the calculation for designated operation
