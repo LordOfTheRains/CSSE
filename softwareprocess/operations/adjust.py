@@ -19,8 +19,7 @@ class Adjust(Operation):
         validated = True
         error = []
         if param_dict is None or not isinstance(param_dict, dict):
-            error.append("No Valid Dictionary Provided")
-            validated = False
+            error.append('No Valid Dictionary Provided')
             return ';'.join([str(x) for x in error])
         
         if "observation" not in param_dict:
@@ -31,6 +30,7 @@ class Adjust(Operation):
             try:
                 height = float(height)
             except ValueError:
+                error.append("Height Value Must Be A Floating Number")
                 raise ValueError("Height Value Must Be A Floating Number")
             if height < 0:
                 raise ValueError("Height Value Must Be A Positive Floating Number")

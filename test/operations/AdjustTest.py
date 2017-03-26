@@ -14,9 +14,9 @@ class AdjustTest(unittest.TestCase):
     
     def test_validate_parameter_dictionary_exist(self):
         # parameter must exist or  is dictionary
-        expected_string = "No Valid Dictionary Provided"
+        expected_string = 'No Valid Dictionary Provided'
         validated = Adjust.validate_parameter()
-        self.assertTrue((expected_string in validated))
+        self.assertTrue((expected_string is in validated))
         
         validated = Adjust.validate_parameter("asdad")
         self.assertTrue((expected_string in validated))
@@ -24,7 +24,7 @@ class AdjustTest(unittest.TestCase):
         # Happy path
         # parameter is a dictionary
         
-        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'add': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertFalse((expected_string in validated))
