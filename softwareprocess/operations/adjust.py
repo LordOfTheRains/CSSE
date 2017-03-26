@@ -16,15 +16,15 @@ class Adjust(Operation):
         all appropriate errors shall be thrown within the implementation
         :return: boolean indicating success/failure
         """
-        if param_dict is None:
-            raise TypeError("No Dictionary Provided")
+        if param_dict is None or not isinstance(param_dict, dict):
+            raise TypeError("No Valid Dictionary Provided")
         
         observation = param_dict['observation']
         height = param_dict['height']
         temperature = param_dict['temperature']
         pressure = param_dict['pressure']
         horizon = param_dict['horizon']
-        
+        print ("test")
         
         return True
     
