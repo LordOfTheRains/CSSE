@@ -22,6 +22,8 @@ class Adjust(Operation):
         if "observation" not in param_dict:
             raise ValueError("Missing Observation Value in Dictionary")
         
+        if "height" not in param_dict:
+            raise ValueError("Missing Height Value in Dictionary")
         observation = param_dict['observation']
         #height = param_dict['height']
         #temperature = param_dict['temperature']
