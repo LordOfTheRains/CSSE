@@ -9,12 +9,23 @@ class Adjust(Operation):
         self.observation = observation
         pass
     
-    def validate_parameter(self):
+    @staticmethod
+    def validate_parameter(param_dict=None):
         """
         this method will validate each input parameter. the validation includes type check and range check
         all appropriate errors shall be thrown within the implementation
         :return: boolean indicating success/failure
         """
+        if param_dict is None:
+            raise TypeError("No Dictionary Provided")
+        
+        observation = param_dict['observation']
+        height = param_dict['height']
+        temperature = param_dict['temperature']
+        pressure = param_dict['pressure']
+        horizon = param_dict['horizon']
+        
+        
         return True
     
     def perform(self):

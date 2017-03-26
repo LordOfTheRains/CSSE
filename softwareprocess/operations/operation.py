@@ -7,7 +7,7 @@ class Operation:
     def __init__(self):
         pass
     
-    @abstractmethod
+    @staticmethod
     def validate_parameter(self):
         """
         this method will validate each input parameter. the validation includes type check and range check
