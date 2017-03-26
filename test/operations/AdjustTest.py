@@ -24,7 +24,9 @@ class AdjustTest(unittest.TestCase):
         # Happy path
         # parameter is a dictionary
         
-        validated = Adjust.validate_parameter({'op': 'predict'})
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                                   'pressure': '1010', 'horizon': 'artificial',
+                                                   'op': 'adjust', 'temperature': '72'})
         self.assertFalse(expected_string in validated)
         
     def test_validate_parameter_observation(self):
