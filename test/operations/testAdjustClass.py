@@ -41,3 +41,6 @@ class AdjustClassTest(unittest.TestCase):
     
     def test_validate_parameter_height(self):
         pass
+    
+    def test_validate_parameter_pressure(self):
+        pass
