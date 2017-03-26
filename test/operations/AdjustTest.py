@@ -24,7 +24,7 @@ class AdjustTest(unittest.TestCase):
         # Happy path
         # parameter is a dictionary
         
-        validated = Adjust.validate_parameter({'observation': '15d04.9', 'add': '6.0',
+        validated = Adjust.validate_parameter({'sss': '15d04.9', 'add': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertFalse((expected_string in validated))
@@ -42,10 +42,12 @@ class AdjustTest(unittest.TestCase):
         # missing key in the dictionary
         expected_string = "Missing Observation Value in Dictionary"
         with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'asd': '15d04.9', 'height': '6.0',
-                                       'pressure': '1010', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temperature': '72'})
+            
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        
+        expected_string = 'Missing Observation Value in Dictionary'
+        validated = Adjust.validate_parameter()
+        self.assertTrue((expected_string in validated))
         
         # Happy path
         # observation key exist

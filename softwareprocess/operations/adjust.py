@@ -23,7 +23,8 @@ class Adjust(Operation):
             return ';'.join([str(x) for x in error])
         
         if "observation" not in param_dict:
-            raise ValueError("Missing Observation Value in Dictionary")
+            validated = False
+            error.append('Missing Observation Value in Dictionary')
         
         if "height" in param_dict:
             height = param_dict['height']
@@ -31,9 +32,10 @@ class Adjust(Operation):
                 height = float(height)
             except ValueError:
                 error.append("Height Value Must Be A Floating Number")
-                raise ValueError("Height Value Must Be A Floating Number")
+                validated = False
             if height < 0:
-                raise ValueError("Height Value Must Be A Positive Floating Number")
+                error.append("Height Value Must Be A Positive Floating Number")
+                validated = False
                 
         if "pressure" in param_dict:
             pressure = param_dict['pressure']
