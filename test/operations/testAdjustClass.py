@@ -22,7 +22,7 @@ class AdjustClassTest(unittest.TestCase):
         # 0 <= x < 90
         # 0.0 <= y < 60
         try:
-            Adjust.validate_parameter()
+            Adjust.validate_parameter({'op': 'predict'})
         except TypeError:
             self.fail("valid dictionary should not raise type error")
         
