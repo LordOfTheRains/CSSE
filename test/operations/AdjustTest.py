@@ -15,17 +15,20 @@ class AdjustTest(unittest.TestCase):
     def test_validate_parameter_dictionary_exist(self):
         # parameter must exist or  is dictionary
         expected_string = "No Valid Dictionary Provided"
-        with self.assertRaises(TypeError) as context:
-            Adjust.validate_parameter()
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
-        with self.assertRaises(TypeError) as context:
-            Adjust.validate_parameter("asdad")
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        validated = Adjust.validate_parameter()
+        self.assertTrue(expected_string in validated)
+        
+        validated = Adjust.validate_parameter("asdad")
+        self.assertTrue(expected_string in validated)
+        
         # Happy path
         # parameter is a dictionary
+        
+        validated = Adjust.validate_parameter({'op': 'predict'})
+        self.assertFalse(expected_string in validated)
         type_error_not_raised = False
         try:
-            Adjust.validate_parameter({'op': 'predict'})
+            Adjust.validate_parameter()
         except Exception as exc:
             if exc is TypeError:
                 type_error_not_raised = True

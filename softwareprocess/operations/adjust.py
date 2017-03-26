@@ -16,10 +16,11 @@ class Adjust(Operation):
         all appropriate errors shall be thrown within the implementation
         :return: boolean indicating success/failure
         """
-        error = ""
+        validated = True
+        error = []
         if param_dict is None or not isinstance(param_dict, dict):
-            error += "No Valid Dictionary Provided"
-            
+            error.append("No Valid Dictionary Provided")
+            validated = False
         
         if "observation" not in param_dict:
             raise ValueError("Missing Observation Value in Dictionary")
@@ -53,8 +54,11 @@ class Adjust(Operation):
         #temperature = param_dict['temperature']
         #pressure = param_dict['pressure']
         #horizon = param_dict['horizon']
+        if validated:
+            return True
+        else:
+            return ';'.join([str(x) for x in error])
         
-        return True
     
     def perform(self):
         """
