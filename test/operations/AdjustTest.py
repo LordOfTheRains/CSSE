@@ -23,16 +23,16 @@ class AdjustTest(unittest.TestCase):
         self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
         # Happy path
         # parameter is a dictionary
-        typeError_not_raised = False
+        type_error_not_raised = False
         try:
             Adjust.validate_parameter({'op': 'predict'})
         except TypeError:
-            typeError_not_raised = True
-         self.assertFalse(v, "valid dictionary should not raise type error")
+            type_error_not_raised = True
+        self.assertFalse(type_error_not_raised, "valid dictionary should not raise type error")
+        
     def test_validate_parameter_observation(self):
         # observation: mandatory, unvalidated
         # string: xdy.y
-        
         
         # Sad Path
         # missing key in the dictionary
