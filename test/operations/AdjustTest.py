@@ -15,6 +15,7 @@ class AdjustTest(unittest.TestCase):
     # Acceptance tests
     
     def test_constructor(self):
+        pass
         # parameter dictionary validated internally
         # input_dict = {'observation': '0d00.1', 'height': '6asdsad',
         #          'pressure': '1010', 'horizon': 'artificial',
