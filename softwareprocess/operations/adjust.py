@@ -29,13 +29,13 @@ class Adjust(Operation):
         
         if "temperature" not in param_dict:
             self.temperature = int(param_dict['temperature'])
-        else: 
+        else:
             self.temperature = self.DEFAULT_TEMP
             
         if "horizon" not in param_dict:
             self.horizon = param_dict['horizon']
         else:
-            self.temperature = self.DEFAULT_HORIZON
+            self.horizon = self.DEFAULT_HORIZON
         
         pass
     
