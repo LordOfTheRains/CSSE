@@ -34,7 +34,7 @@ class AdjustTest(unittest.TestCase):
         
         # test default values
         input_dict = {'observation': '0d00.1', 'asd': '6.8',
-                      'asd': '1000', 'horizon': 'arasdadtiFicial',
+                      'asd': '1000', 's': 'arasdadtiFicial',
                       'op': 'adjust', 's': '60'}
         validated = Adjust.validate_parameter(input)
         if validated:
