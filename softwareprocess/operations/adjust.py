@@ -41,7 +41,8 @@ class Adjust(Operation):
                 if float(y) < 0.0 or not float(y) < 60:
                     validated = False
                     error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
-                
+                print(int(x))
+                print(float(y))
                 if int(x) == 0 and float(y) < 0.1:
                     validated = False
                     error.append('Observation value cannot be less than 0d0.1')
