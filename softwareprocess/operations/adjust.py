@@ -1,6 +1,6 @@
 from operation import Operation
 import re
-
+import math
 
 class Adjust(Operation):
     
@@ -11,33 +11,32 @@ class Adjust(Operation):
     
     def __init__(self, param_dict):
         Operation.__init__(self)
+        self.original =
         observation = param_dict['observation']
         x, y = observation.split("d")
         y = y.lstrip("0")
         self.observation_degree = int(x)
         self.observation_minute = float(y)
         
-        if "height" not in param_dict:
+        if "height" in param_dict:
             self.height = float(param_dict['height'])
         else:
             self.height = self.DEFAULT_HEIGHT
         
-        if "pressure" not in param_dict:
+        if "pressure" in param_dict:
             self.pressure = int(param_dict['pressure'])
         else:
             self.pressure = self.DEFAULT_PRESSURE
         
-        if "temperature" not in param_dict:
+        if "temperature" in param_dict:
             self.temperature = int(param_dict['temperature'])
         else:
             self.temperature = self.DEFAULT_TEMP
             
-        if "horizon" not in param_dict:
+        if "horizon" in param_dict:
             self.horizon = param_dict['horizon']
         else:
             self.horizon = self.DEFAULT_HORIZON
-        
-        pass
     
     @staticmethod
     def validate_parameter(param_dict=None):
@@ -140,4 +139,11 @@ class Adjust(Operation):
         and attach the result as a key value pair to the original input dictionary
         :return: original dictionary + result key-value pair
         """
+        if self.horizon.lower()  == "natural":
+            dip = (-0.97 * math.sqrt(self.height))/60
+        else:
+            dip = 0
+        observed = self.observation_degree + self.observation_minute/60
+        refraction = (0.00452*self.pressure)/(273+(self.temperature-32)*5/9)/math.tan(observed)
+        adjusted = observed + dip + refraction
         return {}
