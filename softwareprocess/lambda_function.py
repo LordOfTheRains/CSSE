@@ -1,6 +1,7 @@
 import dispatch as dispatch
 import re
 
+
 def lambda_handler(event, context):
     try:
         if('querystring' in event):
