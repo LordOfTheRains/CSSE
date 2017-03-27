@@ -6,6 +6,7 @@ class Adjust(Operation):
     
     DEFAULT_TEMP = 72
     DEFAULT_PRESSURE = 1010
+    DEFAULT_HEIGHT = 0
     DEFAULT_HORIZON = "natural"
     
     def __init__(self, param_dict):
@@ -18,7 +19,7 @@ class Adjust(Operation):
         self.height = float(param_dict['height'])
         self.pressure = int(param_dict['pressure'])
         self.temperature = int(param_dict['temperature'])
-        self.horizon = param_dict['horizon']
+        self.horizon = param_dict['horizon'].lower()
         pass
     
     @staticmethod

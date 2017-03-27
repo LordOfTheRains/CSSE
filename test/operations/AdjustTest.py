@@ -15,9 +15,9 @@ class AdjustTest(unittest.TestCase):
     # Acceptance tests
     
     def test_constructor(self):
-        pass
         # parameter dictionary validated internally
-        
+        # all constructor should be created,
+        # mainly testing for default value
         # happy path all values provided
         input_dict = {'observation': '0d00.1', 'height': '6.8',
                       'pressure': '1000', 'horizon': 'artiFicial',
@@ -31,6 +31,20 @@ class AdjustTest(unittest.TestCase):
             self.assertEqual(adj.pressure, 1000)
             self.assertEqual(adj.temperature, 60)
             self.assertEqual(adj.height, 6.8)
+        
+        # test default values
+        input_dict = {'observation': '0d00.1', 'asd': '6.8',
+                      'asd': '1000', 'horizon': 'arasdadtiFicial',
+                      'op': 'adjust', 's': '60'}
+        validated = Adjust.validate_parameter(input)
+        if validated:
+            adj = Adjust(input_dict)
+            self.assertEqual(adj.observation_degree, 0)
+            self.assertEqual(adj.observation_minute, 0.1)
+            self.assertEqual(adj.horizon, Adjust.DEFAULT_HORIZON)
+            self.assertEqual(adj.pressure, Adjust.DEFAULT_PRESSURE)
+            self.assertEqual(adj.temperature, Adjust.DEFAULT_TEMP)
+            self.assertEqual(adj.height, Adjust.DEFAULT_HEIGHT)
         
     
     # Unittests
