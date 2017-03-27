@@ -33,7 +33,7 @@ class Adjust(Operation):
                 pass
             else:
                 validated = False
-                error.append('Missing or Invalid Observation Value in Dictionary')
+                error.append('Invalid Observation Value in Dictionary')
                 
         if "height" in param_dict:
             height = param_dict['height']

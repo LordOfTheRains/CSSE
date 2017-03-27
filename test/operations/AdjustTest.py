@@ -47,6 +47,24 @@ class AdjustTest(unittest.TestCase):
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
         
+        expected_string = 'Invalid Observation Value in Dictionary'
+        validated = Adjust.validate_parameter({'asd': 'asdd04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        validated = Adjust.validate_parameter({'asd': '15d04.922', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        validated = Adjust.validate_parameter({'asd': 'asdd04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        validated = Adjust.validate_parameter({'asd': 'asdd04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        
         # Happy path
         # observation key exist
         # observation is in the form of xdy.y
