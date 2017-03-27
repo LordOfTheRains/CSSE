@@ -20,7 +20,7 @@ class AdjustTest(unittest.TestCase):
         
         # happy path all values provided
         input_dict = {'observation': '0d00.1', 'height': '6.8',
-                      'pressure': '1000', 'horizon': 'artificial',
+                      'pressure': '1000', 'horizon': 'artiFicial',
                       'op': 'adjust', 'temperature': '60'}
         validated = Adjust.validate_parameter(input)
         if validated:

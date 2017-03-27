@@ -15,7 +15,10 @@ class Adjust(Operation):
         y = y.lstrip("0")
         self.observation_degree = int(x)
         self.observation_minute = float(y)
-        
+        self.height = float(param_dict['height'])
+        self.pressure = int(param_dict['pressure'])
+        self.temperature = int(param_dict['temperature'])
+        self.horizon = param_dict['horizon']
         pass
     
     @staticmethod
