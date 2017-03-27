@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 import unittest
 from softwareprocess.operations.adjust import Adjust
-from softwareprocess import dispatch
+from softwareprocess import dispatch as dispatcher
 
 
 class AdjustTest(unittest.TestCase):
@@ -23,7 +23,7 @@ class AdjustTest(unittest.TestCase):
                     'height': '19.0', 'pressure': '1000',
                     'horizon': 'artificial', 'op': 'adjust',
                     'temperature': '85'}
-        result = dispatch(input_dict)
+        result = dispatcher.dispatch(input_dict)
         self.assertEqual(result, expected)
             
         input_dict = {'observation': '45d15.2', 'height': '6',
@@ -34,17 +34,17 @@ class AdjustTest(unittest.TestCase):
                     'horizon': 'artificial', 'op': 'adjust',
                     'temperature': '85'}
         
-        result = dispatch(input_dict)
+        result = dispatcher.dispatch(input_dict)
         self.assertEqual(result, expected)
             
         input_dict = {'observation': '42d0.0',  'op': 'adjust'}
         expected = {'altitude': '41d59.0', 'observation': '42d0.0',  'op': 'adjust'}
-        result = dispatch(input_dict)
+        result = dispatcher.dispatch(input_dict)
         self.assertEqual(result, expected)
             
         input_dict = {'observation': '42d0.0',  'op': 'adjust', 'extraKey': 'ignore'}
         expected = {'altitude': '41d59.0', 'observation': '42d0.0',  'op': 'adjust', 'extraKey':'ignore'}
-        result = dispatch(input_dict)
+        result = dispatcher.dispatch(input_dict)
         self.assertEqual(result, expected)
             
     # Unittests
