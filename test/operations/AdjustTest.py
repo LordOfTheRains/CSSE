@@ -136,20 +136,33 @@ class AdjustTest(unittest.TestCase):
         
         # Sad Path
         
-        # missing key in the dictionary
-        expected_string = "Missing Temperature Value in Dictionary"
-        with self.assertRaises(ValueError) as context:
-            Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                       'pressure': '1010', 'horizon': 'artificial',
-                                       'op': 'adjust', 'temssssperature': '72'})
-        self.assertEquals(expected_string, context.exception.args[0][0:len(expected_string)])
+        # Temperature not an integer
+        expected_string = 'Temperature Value Must Be A Integer'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '80000', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '9asdc'})
+        self.assertTrue((expected_string in validated))
+        
+        expected_string = 'Temperature Value is Below the Threshold of 20'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '80000', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '19'})
+        self.assertTrue((expected_string in validated))
+        
+        expected_string = 'Temperature Value Exceed Threshold of 120'
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '80000', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '120'})
+        self.assertTrue((expected_string in validated))
+        
         
         # Happy path
         
         # key exist
-        self.assertTrue(Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
-                                                   'pressure': '1010', 'horizon': 'artificial',
-                                                   'op': 'adjust', 'temperature': '72'}))
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue(validated)
         
     def test_validate_parameter_horizon(self):
         # Horizon: optional, unvalidated
