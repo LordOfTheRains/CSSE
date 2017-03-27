@@ -145,7 +145,7 @@ class Adjust(Operation):
             dip = 0
         observed = self.observation_degree + self.observation_minute/60
         print (observed)
-        refraction = (0.00452*self.pressure)/(273+(self.temperature-32)*5/9)/math.tan(observed)
+        refraction = (-0.00452*self.pressure)/(273+(self.temperature-32)*5/9)/math.tan(observed)
         adjusted = observed + dip + refraction
         print (adjusted)
         degree = int(adjusted)
