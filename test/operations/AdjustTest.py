@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 import unittest
 from softwareprocess.operations.adjust import Adjust
-import softwareprocess.operations.dispatch as dispatch
+import softwareprocess.dispatch as dispatch
 
 
 class AdjustTest(unittest.TestCase):
