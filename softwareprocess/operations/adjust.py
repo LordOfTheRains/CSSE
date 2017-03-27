@@ -2,6 +2,7 @@ from operation import Operation
 import re
 import math
 
+
 class Adjust(Operation):
     
     DEFAULT_TEMP = 72
