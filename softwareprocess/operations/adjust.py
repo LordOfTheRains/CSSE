@@ -70,6 +70,10 @@ class Adjust(Operation):
             if horizon != "natural" or horizon != "artificial":
                 error.append("Not A Valid  Horizon  Value, Must be 'artificial' or 'natural'")
                 validated = False
+                
+        if "altitude" in param_dict:
+            error.append("Input Dictionary Contains Forbidden Parameter: altitude")
+            validated = False
         
         if validated:
             return True
