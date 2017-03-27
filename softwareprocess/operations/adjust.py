@@ -37,7 +37,7 @@ class Adjust(Operation):
                     error.append('Observation degree must be integer between 0 and 89. inclusive')
                     
                 # trim leading 0
-                print float('.9')
+                print float('.')
                 if len(y) > 3:
                     pass
                 if float(y) < 0.0 or not int(y) < 60:
