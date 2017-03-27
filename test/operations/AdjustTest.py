@@ -12,6 +12,22 @@ class AdjustTest(unittest.TestCase):
     def tearDown(self):
         pass
     
+    # Acceptance tests
+    
+    def test_constructor(self):
+        # parameter dictionary validated internally
+        input = {'observation': '0d00.1', 'height': '6asdsad',
+                 'pressure': '1010', 'horizon': 'artificial',
+                 'op': 'adjust', 'temperature': '72'}
+        validated = Adjust.validate_parameter(input)
+        if validated:
+            adj = Adjust(input)
+            self.assertEqual(adj.observation_degree, 0)
+        self.assertEqual(adj.observation_minute, 0.1)
+        
+    
+    # Unittests
+        
     def test_validate_parameter_dictionary_exist(self):
         # parameter must exist or  is dictionary
         expected_string = 'No Valid Dictionary Provided'
@@ -56,7 +72,7 @@ class AdjustTest(unittest.TestCase):
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
-        validated = Adjust.validate_parameter({'observation': 'asdd04.9', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': '-41d04.9', 'height': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
@@ -87,10 +103,15 @@ class AdjustTest(unittest.TestCase):
         # observation key exist
         # observation is in the form of xdy.y
         # 0 <= x < 90
-        # 0.0 <= y < 60
+        # 0.0 <= y < 60.0
         
         # observation value valid
         validated = Adjust.validate_parameter({'observation': '0d00.1', 'height': '6asdsad',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertFalse((expected_string in validated))
+        
+        validated = Adjust.validate_parameter({'observation': '89d059.9', 'height': '6asdsad',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertFalse((expected_string in validated))

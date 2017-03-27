@@ -4,10 +4,14 @@ import re
 
 class Adjust(Operation):
     
-    def __init__(self, observation):
+    def __init__(self, param_dict):
         Operation.__init__(self)
+        observation = param_dict['observation']
+        x, y = observation.split("d")
+        y = y.lstrip("0")
+        self.observation_degree = int(x)
+        self.observation_minute = float(y)
         
-        self.observation = observation
         pass
     
     @staticmethod
