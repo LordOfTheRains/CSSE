@@ -48,22 +48,35 @@ class AdjustTest(unittest.TestCase):
         self.assertTrue((expected_string in validated))
         
         expected_string = 'Invalid Observation Value in Dictionary'
-        validated = Adjust.validate_parameter({'asd': 'asdd04.9', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': 'asdd04.9', 'height': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
-        validated = Adjust.validate_parameter({'asd': '15d04.922', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': '15d04.922', 'height': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
-        validated = Adjust.validate_parameter({'asd': 'asdd04.9', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': 'asdd04.9', 'height': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
-        validated = Adjust.validate_parameter({'asd': 'asdd04.9', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': 'asdd0--.9', 'height': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
+        
+        expected_string = 'Observation degree must be integer between 0 and 89. inclusive'
+        validated = Adjust.validate_parameter({'observation': '90d04.9', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        
+        expected_string = 'Observation minute must be float between GE 0.0 and LT 60.0.'
+        validated = Adjust.validate_parameter({'observation': '89d60.1', 'height': '6.0',
+                                               'pressure': '1010', 'horizon': 'artificial',
+                                               'op': 'adjust', 'temperature': '72'})
+        self.assertTrue((expected_string in validated))
+        
         
         # Happy path
         # observation key exist

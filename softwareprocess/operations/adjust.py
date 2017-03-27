@@ -30,7 +30,18 @@ class Adjust(Operation):
             observation = param_dict['observation']
             observation = re.match('^[0-9]+d[0-9]+.\d$', observation)
             if observation:
-                pass
+                observation = observation.group()
+                x, y = observation.split("d")
+                if int(x) < 0 or int(x) > 89:
+                    validated = False
+                    error.append('Observation degree must be integer between 0 and 89. inclusive')
+                if float(y) < 0.0 or not int(y) < 60:
+                    validated = False
+                    error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
+                
+                if int(x) == 0 and float(y) == 0.1:
+                    
+                
             else:
                 validated = False
                 error.append('Invalid Observation Value in Dictionary')
