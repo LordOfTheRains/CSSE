@@ -19,14 +19,18 @@ class AdjustTest(unittest.TestCase):
         # parameter dictionary validated internally
         
         # happy path all values provided
-        input_dict = {'observation': '0d00.1', 'height': '6asdsad',
-                      'pressure': '1010', 'horizon': 'artificial',
-                      'op': 'adjust', 'temperature': '72'}
+        input_dict = {'observation': '0d00.1', 'height': '6.8',
+                      'pressure': '1000', 'horizon': 'artificial',
+                      'op': 'adjust', 'temperature': '60'}
         validated = Adjust.validate_parameter(input)
         if validated:
             adj = Adjust(input_dict)
             self.assertEqual(adj.observation_degree, 0)
             self.assertEqual(adj.observation_minute, 0.1)
+            self.assertEqual(adj.horizon, 'artificial')
+            self.assertEqual(adj.pressure, 1000)
+            self.assertEqual(adj.temperature, 60)
+            self.assertEqual(adj.height, 6.8)
         
     
     # Unittests
