@@ -19,10 +19,24 @@ class Adjust(Operation):
         
         if "height" not in param_dict:
             self.height = float(param_dict['height'])
+        else:
+            self.height = self.DEFAULT_HEIGHT
         
-        self.pressure = int(param_dict['pressure'])
-        self.temperature = int(param_dict['temperature'])
-        self.horizon = param_dict['horizon'].lower()
+        if "pressure" not in param_dict:
+            self.pressure = int(param_dict['pressure'])
+        else:
+            self.pressure = self.DEFAULT_PRESSURE
+        
+        if "temperature" not in param_dict:
+            self.temperature = int(param_dict['temperature'])
+        else: 
+            self.temperature = self.DEFAULT_TEMP
+            
+        if "horizon" not in param_dict:
+            self.horizon = param_dict['horizon']
+        else:
+            self.temperature = self.DEFAULT_HORIZON
+        
         pass
     
     @staticmethod

@@ -27,7 +27,7 @@ class AdjustTest(unittest.TestCase):
             adj = Adjust(input_dict)
             self.assertEqual(adj.observation_degree, 0)
             self.assertEqual(adj.observation_minute, 0.1)
-            self.assertEqual(adj.horizon, 'artificial')
+            self.assertEqual(adj.horizon, 'artiFicial')
             self.assertEqual(adj.pressure, 1000)
             self.assertEqual(adj.temperature, 60)
             self.assertEqual(adj.height, 6.8)
