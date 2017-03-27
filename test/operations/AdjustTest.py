@@ -50,8 +50,8 @@ class AdjustTest(unittest.TestCase):
             result = adj.perform()
             self.assertEqual(result, expected)
             
-        input_dict = {'observation': '42d0.0',  'op': 'adjust', 'extraKey':'ignore'}
-        expected = {'altitude': '41d59.0', 'observation': '42d0.0',  'op': 'adjust'}
+        input_dict = {'observation': '42d0.0',  'op': 'adjust', 'extraKey': 'ignore'}
+        expected = {'altitude': '41d59.0', 'observation': '42d0.0',  'op': 'adjust', 'extraKey':'ignore'}
         validated = Adjust.validate_parameter(input_dict)
         if validated:
             adj = Adjust(input_dict)
