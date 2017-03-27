@@ -117,7 +117,7 @@ class Adjust(Operation):
         
         if "horizon" in param_dict:
             horizon = param_dict['horizon'].lower()
-            if horizon != "natural" or horizon != "artificial":
+            if horizon != "natural" and horizon != "artificial":
                 error.append("Not A Valid  Horizon  Value, Must be 'artificial' or 'natural'")
                 validated = False
                 
