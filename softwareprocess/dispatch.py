@@ -1,5 +1,6 @@
 from operations.adjust import Adjust
 
+
 def dispatch(values=None):
 
     #Validate parm
@@ -16,7 +17,7 @@ def dispatch(values=None):
         validated = Adjust.validate_parameter(values)
         if validated:
             adj = Adjust(values)
-            return adj
+            return adj.perform()
         else:
             values['error'] = validated
         return values    #<-------------- replace this with your implementation
