@@ -11,7 +11,7 @@ class Adjust(Operation):
     
     def __init__(self, param_dict):
         Operation.__init__(self)
-        self.original =
+        self.original = param_dict
         observation = param_dict['observation']
         x, y = observation.split("d")
         y = y.lstrip("0")
@@ -144,6 +144,7 @@ class Adjust(Operation):
         else:
             dip = 0
         observed = self.observation_degree + self.observation_minute/60
+        print (observed)
         refraction = (0.00452*self.pressure)/(273+(self.temperature-32)*5/9)/math.tan(observed)
         adjusted = observed + dip + refraction
         return {}
