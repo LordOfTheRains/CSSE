@@ -47,12 +47,23 @@ class Adjust(Operation):
             if pressure < 100:
                 error.append("Pressure Value is Below the Threshold of 100 mbar")
                 validated = False
-            if pressure > 1100:
+            if not pressure < 1100:
                 error.append("Pressure Value Exceed Threshold of 1100 mbar")
                 validated = False
         
-        if "temperature" not in param_dict:
-            raise ValueError("Missing Temperature Value in Dictionary")
+        if "temperature" in param_dict:
+            temperature = param_dict['temperature']
+            try:
+                temperature = int(temperature)
+            except ValueError:
+                error.append("Temperature Value Must Be A Integer")
+                validated = False
+            if temperature < 20:
+                error.append("Temperature Value is Below the Threshold of 20")
+                validated = False
+            if not temperature < 120:
+                error.append("Temperature Value Exceed Threshold of 120")
+                validated = False
         
         if "horizon" not in param_dict:
             raise ValueError("Missing Horizon Value in Dictionary")
