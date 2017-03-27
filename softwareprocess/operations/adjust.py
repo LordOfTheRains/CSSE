@@ -69,12 +69,11 @@ class Adjust(Operation):
                 if int(x) == 0 and float(y) < 0.1:
                     validated = False
                     error.append('Observation value cannot be less than 0d0.1')
-                
             else:
                 validated = False
                 error.append('Invalid Observation Value in Dictionary')
-        
         else:
+            print ("false")
             validated = False
             error.append('Missing Observation Value in Dictionary')
             
