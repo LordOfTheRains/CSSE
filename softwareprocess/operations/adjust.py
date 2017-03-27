@@ -1,4 +1,5 @@
 from operation import Operation
+import re
 
 
 class Adjust(Operation):
@@ -25,7 +26,15 @@ class Adjust(Operation):
         if "observation" not in param_dict:
             validated = False
             error.append('Missing Observation Value in Dictionary')
-        
+        else:
+            observation = param_dict['observation']
+            observation = re.match('^[0-9]+d[0-9]+.\d$', observation)
+            if observation:
+                pass
+            else:
+                validated = False
+                error.append('Missing or Invalid Observation Value in Dictionary')
+                
         if "height" in param_dict:
             height = param_dict['height']
             try:
@@ -74,7 +83,7 @@ class Adjust(Operation):
         if "altitude" in param_dict:
             error.append("Input Dictionary Contains Forbidden Parameter: altitude")
             validated = False
-        
+            
         if validated:
             return True
         else:
