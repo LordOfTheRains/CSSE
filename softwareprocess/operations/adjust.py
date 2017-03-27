@@ -150,5 +150,6 @@ class Adjust(Operation):
         print (adjusted)
         degree = int(adjusted)
         min = (adjusted - degree) * 60
+        min = round(min, 1)
         print (min)
         return {}
