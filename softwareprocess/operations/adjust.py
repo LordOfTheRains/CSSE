@@ -155,6 +155,7 @@ class Adjust(Operation):
             min = "0" + str(min)
         else:
             min = str(min)
-        altitude = str(degree) + "d" +min
+        altitude = str(degree) + "d" + min
         print (altitude)
-        return {}
+        self.original['altitude'] = altitude
+        return self.original
