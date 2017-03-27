@@ -68,9 +68,9 @@ class AdjustTest(unittest.TestCase):
         result = dispatcher.dispatch(input_dict)
         self.assertTrue("error" in result)
         
-        input_dict = {'observation': '101d15.2',
-                      'height': '6', 'pressure': '1010',
-                      'horizon': 'natural', 'op': 'adjust',
+        input_dict = {'observation': '45d15.2',
+                      'height': '6', 'horizon': '   ',
+                      'pressure': '1010', 'op': 'adjust',
                       'temperature': '71'}
 
         result = dispatcher.dispatch(input_dict)

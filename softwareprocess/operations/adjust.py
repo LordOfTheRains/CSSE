@@ -54,6 +54,8 @@ class Adjust(Operation):
         if "observation" not in param_dict:
             validated = False
             error.append('Missing Observation Value in Dictionary')
+            return ';'.join([str(x) for x in error])
+        
         else:
             observation = param_dict['observation']
             observation = re.match('^[0-9]+d[0-9]+.\d$', observation)
