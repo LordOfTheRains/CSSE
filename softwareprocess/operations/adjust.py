@@ -35,12 +35,17 @@ class Adjust(Operation):
                 if int(x) < 0 or int(x) > 89:
                     validated = False
                     error.append('Observation degree must be integer between 0 and 89. inclusive')
+                    
+                # trim leading 0
+                if len(y) > 3:
+                    
                 if float(y) < 0.0 or not int(y) < 60:
                     validated = False
                     error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
                 
-                if int(x) == 0 and float(y) == 0.1:
-                    
+                if int(x) == 0 and float(y) < 0.1:
+                    validated = False
+                    error.append('Observation value cannot be less than 0d0.1')
                 
             else:
                 validated = False
