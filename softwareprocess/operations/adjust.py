@@ -38,7 +38,7 @@ class Adjust(Operation):
                     
                 # trim leading 0
                 y = y.lstrip("0")
-                if float(y) < 0.0 or not int(y) < 60:
+                if float(y) < 0.0 or not float(y) < 60:
                     validated = False
                     error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
                 
