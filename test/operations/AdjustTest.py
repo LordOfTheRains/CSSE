@@ -78,7 +78,7 @@ class AdjustTest(unittest.TestCase):
         self.assertTrue((expected_string in validated))
         
         expected_string = 'Observation value cannot be less than 0d0.0'
-        validated = Adjust.validate_parameter({'observation': '0d00.1', 'height': '6.0',
+        validated = Adjust.validate_parameter({'observation': '0d00.0', 'height': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertTrue((expected_string in validated))
