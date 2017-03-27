@@ -17,14 +17,16 @@ class AdjustTest(unittest.TestCase):
     def test_constructor(self):
         pass
         # parameter dictionary validated internally
-        # input_dict = {'observation': '0d00.1', 'height': '6asdsad',
-        #          'pressure': '1010', 'horizon': 'artificial',
-        #          'op': 'adjust', 'temperature': '72'}
-        # validated = Adjust.validate_parameter(input)
-        # if validated:
-        #     adj = Adjust(input_dict)
-        #     self.assertEqual(adj.observation_degree, 0)
-        #     self.assertEqual(adj.observation_minute, 0.1)
+        
+        # happy path all values provided
+        input_dict = {'observation': '0d00.1', 'height': '6asdsad',
+                      'pressure': '1010', 'horizon': 'artificial',
+                      'op': 'adjust', 'temperature': '72'}
+        validated = Adjust.validate_parameter(input)
+        if validated:
+            adj = Adjust(input_dict)
+            self.assertEqual(adj.observation_degree, 0)
+            self.assertEqual(adj.observation_minute, 0.1)
         
     
     # Unittests
