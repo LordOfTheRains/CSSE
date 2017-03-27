@@ -30,8 +30,8 @@ class AdjustTest(unittest.TestCase):
                       'pressure': '1010', 'horizon': 'natural',
                       'op': 'adjust', 'temperature': '71'}
         expected = {'altitude': '45d11.9', 'observation': '30d1.5',
-                    'height': '6', 'pressure': '1000',
-                    'horizon': 'artificial', 'op': 'adjust',
+                    'height': '6', 'pressure': '1010',
+                    'horizon': 'natural', 'op': 'adjust',
                     'temperature': '85'}
         
         result = dispatcher.dispatch(input_dict)
