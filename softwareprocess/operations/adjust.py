@@ -65,7 +65,9 @@ class Adjust(Operation):
                 error.append("Temperature Value Exceed Threshold of 120")
                 validated = False
         
-        if "horizon" not in param_dict:
+        if "horizon" in param_dict:
+            horizon = param_dict['horizon']
+            if horizon != "natural" or horizon != "artificial"
             raise ValueError("Missing Horizon Value in Dictionary")
         
         if validated:
