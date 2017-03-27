@@ -73,7 +73,6 @@ class Adjust(Operation):
                 validated = False
                 error.append('Invalid Observation Value in Dictionary')
         else:
-            print ("false")
             validated = False
             error.append('Missing Observation Value in Dictionary')
             

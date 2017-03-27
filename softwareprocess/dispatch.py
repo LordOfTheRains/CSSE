@@ -15,7 +15,7 @@ def dispatch(values=None):
     #Perform designated function
     if(values['op'] == 'adjust'):
         validated = Adjust.validate_parameter(values)
-        if validated:
+        if validated is True:
             adj = Adjust(values)
             return adj.perform()
         else:
