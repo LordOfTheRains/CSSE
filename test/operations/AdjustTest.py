@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import unittest
 from softwareprocess.operations.adjust import Adjust
+import softwareprocess.operations.dispatch as dispatch
 
 
 class AdjustTest(unittest.TestCase):
@@ -22,11 +23,8 @@ class AdjustTest(unittest.TestCase):
                     'height': '19.0', 'pressure': '1000',
                     'horizon': 'artificial', 'op': 'adjust',
                     'temperature': '85'}
-        validated = Adjust.validate_parameter(input_dict)
-        if validated:
-            adj = Adjust(input_dict)
-            result = adj.perform()
-            self.assertEqual(result, expected)
+        result = dispatch(input_dict)
+        self.assertEqual(result, expected)
             
         input_dict = {'observation': '45d15.2', 'height': '6',
                       'pressure': '1010', 'horizon': 'natural',
@@ -36,27 +34,18 @@ class AdjustTest(unittest.TestCase):
                     'horizon': 'artificial', 'op': 'adjust',
                     'temperature': '85'}
         
-        validated = Adjust.validate_parameter(input_dict)
-        if validated:
-            adj = Adjust(input_dict)
-            result = adj.perform()
-            self.assertEqual(result, expected)
+        result = dispatch(input_dict)
+        self.assertEqual(result, expected)
             
         input_dict = {'observation': '42d0.0',  'op': 'adjust'}
         expected = {'altitude': '41d59.0', 'observation': '42d0.0',  'op': 'adjust'}
-        validated = Adjust.validate_parameter(input_dict)
-        if validated:
-            adj = Adjust(input_dict)
-            result = adj.perform()
-            self.assertEqual(result, expected)
+        result = dispatch(input_dict)
+        self.assertEqual(result, expected)
             
         input_dict = {'observation': '42d0.0',  'op': 'adjust', 'extraKey': 'ignore'}
         expected = {'altitude': '41d59.0', 'observation': '42d0.0',  'op': 'adjust', 'extraKey':'ignore'}
-        validated = Adjust.validate_parameter(input_dict)
-        if validated:
-            adj = Adjust(input_dict)
-            result = adj.perform()
-            self.assertEqual(result, expected)
+        result = dispatch(input_dict)
+        self.assertEqual(result, expected)
             
     # Unittests
     

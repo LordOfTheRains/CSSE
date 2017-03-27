@@ -139,7 +139,7 @@ class Adjust(Operation):
         and attach the result as a key value pair to the original input dictionary
         :return: original dictionary + result key-value pair
         """
-        if self.horizon.lower()  == "natural":
+        if self.horizon.lower() == "natural":
             dip = (-0.97 * math.sqrt(self.height))/60
         else:
             dip = 0

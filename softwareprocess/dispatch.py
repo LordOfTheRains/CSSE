@@ -1,3 +1,5 @@
+from operations.adjust import Adjust
+
 def dispatch(values=None):
 
     #Validate parm
@@ -11,6 +13,12 @@ def dispatch(values=None):
 
     #Perform designated function
     if(values['op'] == 'adjust'):
+        validated = Adjust.validate_parameter(values)
+        if validated:
+            adj = Adjust(values)
+            return adj
+        else:
+            values['error'] = validated
         return values    #<-------------- replace this with your implementation
     elif(values['op'] == 'predict'):
         return values    #This calculation is stubbed out
