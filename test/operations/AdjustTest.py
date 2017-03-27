@@ -90,7 +90,7 @@ class AdjustTest(unittest.TestCase):
         # 0.0 <= y < 60
         
         # observation key exist
-        validated = Adjust.validate_parameter({'observation': '15d4.9', 'height': '6asdsad',
+        validated = Adjust.validate_parameter({'observation': '15d04.9', 'height': '6asdsad',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
         self.assertFalse((expected_string in validated))

@@ -37,8 +37,9 @@ class Adjust(Operation):
                     error.append('Observation degree must be integer between 0 and 89. inclusive')
                     
                 # trim leading 0
+                float('.9')
                 if len(y) > 3:
-                    
+                    pass
                 if float(y) < 0.0 or not int(y) < 60:
                     validated = False
                     error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
