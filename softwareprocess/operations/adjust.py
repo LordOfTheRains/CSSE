@@ -155,5 +155,6 @@ class Adjust(Operation):
             min = "0" + str(min)
         else:
             min = str(min)
-        print (min)
+        altitude = degree+ "d" +min
+        print (altitude)
         return {}
