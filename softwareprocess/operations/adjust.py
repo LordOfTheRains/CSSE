@@ -51,12 +51,7 @@ class Adjust(Operation):
             error.append('No Valid Dictionary Provided')
             return ';'.join([str(x) for x in error])
         
-        if "observation" not in param_dict:
-            validated = False
-            error.append('Missing Observation Value in Dictionary')
-            return ';'.join([str(x) for x in error])
-        
-        else:
+        if "observation" in param_dict:
             observation = param_dict['observation']
             observation = re.match('^[0-9]+d[0-9]+.\d$', observation)
             if observation:
@@ -78,7 +73,10 @@ class Adjust(Operation):
             else:
                 validated = False
                 error.append('Invalid Observation Value in Dictionary')
-                
+        
+        else:
+            
+            validated = Falsezz
         if "height" in param_dict:
             height = param_dict['height']
             try:
