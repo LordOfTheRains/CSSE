@@ -151,5 +151,9 @@ class Adjust(Operation):
         degree = int(adjusted)
         min = (adjusted - degree) * 60
         min = round(min, 1)
+        if len(str(min)) == 3:
+            min = "0" + str(min)
+        else:
+            min = str(min)
         print (min)
         return {}
