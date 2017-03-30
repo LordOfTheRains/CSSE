@@ -30,7 +30,7 @@ class Predict(Operation):
             input_date = param_dict['date']
             input_date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', input_date)
             
-            if date:
+            if input_date:
                 input_date = input_date.group()
                 (year, month, day) = input_date.split('-')
                 year = int(year)
