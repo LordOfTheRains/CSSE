@@ -44,7 +44,7 @@ class Adjust(Operation):
         """
         this method will validate each input parameter. the validation includes type check and range check
         all appropriate errors shall be thrown within the implementation
-        :return: boolean indicating success/failure
+        :return: boolean indicating success/ error value indicating error
         """
         validated = True
         error = []

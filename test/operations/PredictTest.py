@@ -29,10 +29,6 @@ class PredictTest(unittest.TestCase):
         self.assertTrue((expected_string in validated))
         
         # star not in star list
-        expected_string = 'Star Name is Empty in Dictionary'
-        validated = Predict.validate_parameter({'name': ' ', 'date': '2016-01-17',
-                                               'time': '03:15:42', 'op': 'predict'})
-        self.assertTrue((expected_string in validated))
         
         expected_string = 'Star Not Found on Star List'
         validated = Predict.validate_parameter({'name': 'Be--telgeuse', 'date': '2016-01-17',
