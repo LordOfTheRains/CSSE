@@ -27,7 +27,7 @@ class Predict(Operation):
                 error.append('Star Not Found on Star List')
         
         if "date" in param_dict:
-            date = param_dict['observation']
+            date = param_dict['date']
             date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', date)
             if date:
                 date = date.group()
