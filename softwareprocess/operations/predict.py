@@ -33,6 +33,9 @@ class Predict(Operation):
             if date:
                 date = date.group()
                 (year, month, day) = date.split('-')
+                print (year)
+                print (month)
+                print (day)
                 if year < 2001:
                     validated = False
                     error.append('Date Out of Range: Date Must be at least 2001')
