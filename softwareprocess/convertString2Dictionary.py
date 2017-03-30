@@ -4,15 +4,15 @@
 
 """
 
-
 import urllib
 
 URL_ENCODE_TYPE = "utf8"
-PAIR_SEPARATOR = ","    # delimitor between each key value pair
-KEY_VALUE_DELIM = "="   # delimitor between key and value
-ERROR_DICT = {'error':'true'}
+PAIR_SEPARATOR = ","  # delimitor between each key value pair
+KEY_VALUE_DELIM = "="  # delimitor between key and value
+ERROR_DICT = {'error': 'true'}
 
-def convertString2Dictionary(inputString = ""):
+
+def convertString2Dictionary(inputString=""):
     """ Returns dictionary of url encoded input string
 
     This function converts url encoded string to key value dictionary.
@@ -35,46 +35,47 @@ def convertString2Dictionary(inputString = ""):
     """
     if inputString == '':
         return ERROR_DICT
-
-    url=urllib.unquote(inputString).decode(URL_ENCODE_TYPE)
-    #print url
+    
+    url = urllib.unquote(inputString).decode(URL_ENCODE_TYPE)
+    # print url
     key_value_pairs = url.split(PAIR_SEPARATOR)
     key_list = []
-    valid_dict ={}
-    #print key_value_pairs
-
+    valid_dict = {}
+    # print key_value_pairs
+    
     for pair in key_value_pairs:
-        #print pair
-        #valid pair only has one delimitor
-    	if pair.count(KEY_VALUE_DELIM) != 1:
-        	return ERROR_DICT
-
-    	splitted = pair.split(KEY_VALUE_DELIM)
-    	key = splitted[0].strip()
-    	value = splitted[1].strip()
-
-        #key validity
-    	if is_valid_key(key) and key not in key_list:
+        # print pair
+        # valid pair only has one delimitor
+        if pair.count(KEY_VALUE_DELIM) != 1:
+            return ERROR_DICT
+        
+        splitted = pair.split(KEY_VALUE_DELIM)
+        key = splitted[0].strip()
+        value = splitted[1].strip()
+        
+        # key validity
+        if is_valid_key(key) and key not in key_list:
             if is_valid_value(value):
                 key_list.append(key)
                 valid_dict[key] = value
-            else: #value is not valid
+            else:  # value is not valid
                 print("value error for [" + value + ']')
                 return ERROR_DICT
-        else: #key is not valid or is repeated
+        else:  # key is not valid or is repeated
             print("key error for [" + key + ']')
             return ERROR_DICT
-
+    
     return valid_dict
+
 
 def is_valid_key(key):
     """
         Return false if key is not alphnumeric or start with letter
     """
     if key == "": return False
-    #check if no invalid charaters
+    # check if no invalid charaters
     if key.isalnum():
-        #check if first char is letter
+        # check if first char is letter
         return key[:1].isalpha()
     return False
 
@@ -85,6 +86,7 @@ def is_valid_value(value):
     """
     if value == "": return False
     return value.strip().isalnum()
+
 
 def error_dict():
     """
