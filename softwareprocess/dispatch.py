@@ -1,4 +1,5 @@
 from operations.adjust import Adjust
+from operations.predict import Predict
 
 
 def dispatch(values=None):
@@ -22,6 +23,12 @@ def dispatch(values=None):
             values['error'] = validated
         return values    # <-------------- replace this with your implementation
     elif values['op'] == 'predict':
+        validated = Predict.validate_parameter(values)
+        if validated is True:
+            predict = Predict(values)
+            return predict.perform()
+        else:
+            values['error'] = validated
         return values    # This calculation is stubbed out
     elif values['op'] == 'correct':
         return values    # This calculation is stubbed out
