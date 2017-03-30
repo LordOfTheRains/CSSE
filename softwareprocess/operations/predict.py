@@ -2,6 +2,7 @@ from operation import Operation
 from softwareprocess.utility.stars import STARS
 import re
 import math
+import time
 
 
 class Predict(Operation):
@@ -26,7 +27,14 @@ class Predict(Operation):
                 error.append('Star Not Found on Star List')
         
         if "date" in param_dict:
-            pass
+            date = param_dict['observation']
+            date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', date)
+            if date:
+                date = date.group()
+                (year, month, day) = date.split('-')
+            else:
+                validated = False
+                error.append('Incorrect Date Format: Must be yyyy-mm-dd')
         
         if "time" in param_dict:
             pass
