@@ -68,6 +68,13 @@ class PredictTest(unittest.TestCase):
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         
+        # not leap year
+        
+        expected_string = 'Date Out of Range: Date Must be at least 2001'
+        validated = Predict.validate_parameter({'name': 'Be--telgeuse', 'date': '2001-02-30',
+                                               'time': '03:15:42', 'op': 'predict'})
+        self.assertTrue((expected_string in validated))
+        
         # Happy path
         
         # valid date

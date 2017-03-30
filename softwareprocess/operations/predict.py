@@ -2,7 +2,7 @@ from operation import Operation
 from softwareprocess.utility.stars import STARS
 import re
 import math
-import time
+from datetime import date
 
 
 class Predict(Operation):
@@ -27,21 +27,22 @@ class Predict(Operation):
                 error.append('Star Not Found on Star List')
         
         if "date" in param_dict:
-            date = param_dict['date']
-            date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', date)
+            input_date = param_dict['date']
+            input_date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', input_date)
             
             if date:
-                date = date.group()
-                (year, month, day) = date.split('-')
-                print (year)
-                print (month)
-                print (day)
-                if int(year) < 2001:
+                input_date = input_date.group()
+                (year, month, day) = input_date.split('-')
+                year = int(year)
+                month = int(month)
+                day = int(day)
+                if year < 2001:
                     validated = False
                     error.append('Date Out of Range: Date Must be at least 2001')
                 else:
-                    if not (int(month) < 13 and int(month) > 0):
-                        pass
+                    if not date(year, month, day):
+                        validated = False
+                        error.append('Invalid Date')
             else:
                 validated = False
                 error.append('Incorrect Date Format: Must be yyyy-mm-dd')
