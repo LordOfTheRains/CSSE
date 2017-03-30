@@ -146,12 +146,12 @@ class Adjust(Operation):
         refraction = ((-0.00452*self.pressure)/(273+(self.temperature-32)*5/9))/math.tan(observed_radian)
         adjusted = observed + dip + refraction
         degree = int(adjusted)
-        min = (adjusted - degree) * 60
-        min = round(min, 1)
-        if len(str(min)) == 3:
-            min = "0" + str(min)
+        minute = (adjusted - degree) * 60
+        minute = round(minute, 1)
+        if len(str(minute)) == 3:
+            minute = "0" + str(minute)
         else:
-            min = str(min)
-        altitude = str(degree) + "d" + min
+            minute = str(minute)
+        altitude = str(degree) + "d" + minute
         self.original['altitude'] = altitude
         return self.original
