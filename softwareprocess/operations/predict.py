@@ -32,6 +32,10 @@ class Predict(Operation):
             if date:
                 date = date.group()
                 (year, month, day) = date.split('-')
+                if year < 2001:
+                    validated = False
+                    error.append('Date Out of Range: Date Must be at least 2001')
+                    
             else:
                 validated = False
                 error.append('Incorrect Date Format: Must be yyyy-mm-dd')
