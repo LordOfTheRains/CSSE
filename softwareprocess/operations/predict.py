@@ -29,13 +29,15 @@ class Predict(Operation):
         if "date" in param_dict:
             date = param_dict['date']
             date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', date)
+            
             if date:
                 date = date.group()
                 (year, month, day) = date.split('-')
                 if year < 2001:
                     validated = False
                     error.append('Date Out of Range: Date Must be at least 2001')
-                    
+                else:
+                    pass
             else:
                 validated = False
                 error.append('Incorrect Date Format: Must be yyyy-mm-dd')
