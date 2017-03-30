@@ -40,7 +40,9 @@ class Predict(Operation):
                     validated = False
                     error.append('Date Out of Range: Date Must be at least 2001')
                 else:
-                    if not date(year, month, day):
+                    try:
+                        date(year, month, day)
+                    except ValueError:
                         validated = False
                         error.append('Invalid Date')
             else:
