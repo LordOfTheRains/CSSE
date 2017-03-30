@@ -16,7 +16,7 @@ class PredictTest(unittest.TestCase):
         pass
     
     def test_validate_parameter_body(self):
-        # Body: mandatory, unvalidated
+        # Body: mandatory, dictionary type checked. value unvalidated
         # string of star name, must be
         # present in stars list
         

@@ -13,7 +13,8 @@ class Predict(Operation):
         
     @staticmethod
     def validate_parameter(param_dict=None):
-        pass
+        
+        return True
     
     def perform(self):
-        pass
+        return {}
