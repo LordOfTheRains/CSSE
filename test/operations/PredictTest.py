@@ -41,3 +41,41 @@ class PredictTest(unittest.TestCase):
         validated = Predict.validate_parameter({'name': 'Betelgeuse', 'date': '2016-01-17',
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue(validated)
+        
+        # case insensitive
+        validated = Predict.validate_parameter({'name': 'BetelGeuse', 'date': '2016-01-17',
+                                               'time': '03:15:42', 'op': 'predict'})
+        self.assertTrue(validated)
+        
+    def test_validate_parameter_date(self):
+        # Date: optional,  unvalidated
+        # date string in format: yyyy-mm-dd
+        # yyyy > = 2001
+        # default to 2001-01-01
+        
+        # Sad Path
+        
+        # incorrect date format
+        expected_string = 'Incorrect Date Format: Must be yyyy-mm--dd'
+        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
+                                               'time': '03:15:42', 'op': 'predict'})
+        self.assertTrue((expected_string in validated))
+        
+        # date below minimum of 2001
+        
+        expected_string = 'Star Not Found on Star List'
+        validated = Predict.validate_parameter({'name': 'Be--telgeuse', 'date': '2016-01-17',
+                                               'time': '03:15:42', 'op': 'predict'})
+        self.assertTrue((expected_string in validated))
+        
+        # Happy path
+        
+        # key exist
+        validated = Predict.validate_parameter({'name': 'Betelgeuse', 'date': '2016-01-17',
+                                               'time': '03:15:42', 'op': 'predict'})
+        self.assertTrue(validated)
+        
+        # case insensitive
+        validated = Predict.validate_parameter({'name': 'BetelGeuse', 'date': '2016-01-17',
+                                               'time': '03:15:42', 'op': 'predict'})
+        self.assertTrue(validated)
