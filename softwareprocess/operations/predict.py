@@ -36,11 +36,12 @@ class Predict(Operation):
                 print (year)
                 print (month)
                 print (day)
-                if year < 2001:
+                if int(year) < 2001:
                     validated = False
                     error.append('Date Out of Range: Date Must be at least 2001')
                 else:
-                    pass
+                    if not (int(month) < 13 and int(month) > 0):
+                        pass
             else:
                 validated = False
                 error.append('Incorrect Date Format: Must be yyyy-mm-dd')
