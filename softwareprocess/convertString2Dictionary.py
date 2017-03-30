@@ -59,10 +59,8 @@ def convertString2Dictionary(inputString=""):
                 key_list.append(key)
                 valid_dict[key] = value
             else:  # value is not valid
-                print("value error for [" + value + ']')
                 return ERROR_DICT
         else:  # key is not valid or is repeated
-            print("key error for [" + key + ']')
             return ERROR_DICT
     
     return valid_dict
