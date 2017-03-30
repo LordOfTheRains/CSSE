@@ -143,10 +143,8 @@ class Adjust(Operation):
             dip = 0
         observed = self.observation_degree + self.observation_minute/60
         observed_radian = observed * math.pi/180
-        print ("asdhasid:" + str(observed_radian))
         refraction = ((-0.00452*self.pressure)/(273+(self.temperature-32)*5/9))/math.tan(observed_radian)
         adjusted = observed + dip + refraction
-        print (adjusted)
         degree = int(adjusted)
         min = (adjusted - degree) * 60
         min = round(min, 1)
@@ -155,6 +153,5 @@ class Adjust(Operation):
         else:
             min = str(min)
         altitude = str(degree) + "d" + min
-        print (altitude)
         self.original['altitude'] = altitude
         return self.original
