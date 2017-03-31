@@ -59,7 +59,7 @@ class Predict(Operation):
                 hour = int(hour)
                 minute = int(minute)
                 second = int(second)
-                if hour > 24 or minute > 60 or second > 60:
+                if hour > 23 or minute > 59 or second > 59:
                     validated = False
                     error.append('Invalid Time')
             else:

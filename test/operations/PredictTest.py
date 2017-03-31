@@ -100,14 +100,23 @@ class PredictTest(unittest.TestCase):
         
         # Sad Path
         
-        # incorrect date format
+        # incorrect time format
         expected_string = 'Incorrect Time Format: Must be hh:mm:ss'
         validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '--03:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         
-         # incorrect time format
+        # Invalid time
         expected_string = 'Invalid Time'
         validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '99:15:42', 'op': 'predict'})
+        self.assertTrue((expected_string in validated))
+        
+        # Happy Path
+        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
+                                               'timsse': '99:15:42', 'op': 'predict'})
+        self.assertTrue(validated)
+        
+        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
+                                               'time': '23:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
