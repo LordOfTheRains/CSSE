@@ -50,7 +50,20 @@ class Predict(Operation):
                 error.append('Incorrect Date Format: Must be yyyy-mm-dd')
         
         if "time" in param_dict:
-            pass
+            input_time = param_dict['time']
+            input_time = re.match('^[0-9]{2}:[0-9]{2}:[0-9]{2}$', input_time)
+            
+            if input_time:
+                (hour, minute, second) = input_time.split(':')
+                hour = int(hour)
+                minute = int(minute)
+                second = int(second)
+                if hour > 24 or minute > 60 or second > 60:
+                    validated = False
+                    error.append('Invalid Time')
+            else:
+                validated = False
+                error.append('Incorrect Time Format: Must be hh:mm:ss')
         
         if validated:
             return True
