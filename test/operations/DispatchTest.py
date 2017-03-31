@@ -85,3 +85,4 @@ class DispatchTest(unittest.TestCase):
 #
 # result = dispatcher.dispatch(input_dict)
 # self.assertEqual(result, expected)
+        pass

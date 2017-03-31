@@ -13,7 +13,14 @@ class PredictTest(unittest.TestCase):
         pass
     
     def test_constructor(self):
-        pass
+        input_dict = {'name': 'BetelGeuse', 'date': '2016-01-17',
+                      'time': '03:15:42', 'op': 'predict'}
+        predict = Predict(input_dict)
+        self.assertEqual(predict.name, 'BetelGeuse')
+        self.assertEqual(predict.date, '2016-01-17')
+        self.assertEqual(predict.time, '03:15:42')
+        self.assertEqual(predict.sidereal, '270d59.1')
+        self.assertEqual(predict.declination, '03:15:42')
     
     def test_validate_parameter_body(self):
         # Body: mandatory, dictionary type checked. value unvalidated
