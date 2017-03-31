@@ -80,9 +80,9 @@ class DispatchTest(unittest.TestCase):
     def test_dispatch_valid_predict(self):
         input_dict = {'name': 'BetelGeuse', 'date': '2016-01-17',
                       'time': '03:15:42', 'op': 'predict'}
-        expected = {'altitude': '29d59.9', 'observation': '30d1.5',
-                    'height': '19.0', 'pressure': '1000',
-                    'horizon': 'artificial', 'op': 'adjust',
-                    'temperature': '85'}
+        expected = {'op': 'predict', 'body': 'Betelgeuse',
+                    'date': '2016-01-17', 'time': '03:15:42',
+                    'long': '75d53.6', 'lat':'7d24.3'}
+        
         result = dispatcher.dispatch(input_dict)
         self.assertEqual(result, expected)
