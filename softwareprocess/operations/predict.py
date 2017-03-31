@@ -11,7 +11,19 @@ class Predict(Operation):
     
     def __init__(self, param_dict):
         Operation.__init__(self)
-    
+        self.name = param_dict['name']
+        if 'date' in param_dict:
+            self.date = param_dict['date']
+        else:
+            self.date = self.DEFAULT_DATE
+        
+        if 'time' in param_dict:
+            self.date = param_dict['time']
+        else:
+            self.date = self.DEFAULT_TIME
+        self.sidereal = STARS[self.name]['sidereal']
+        self.declination = STARS[self.name]['declination']
+        
     @staticmethod
     def validate_parameter(param_dict=None):
         validated = True
