@@ -122,5 +122,9 @@ class PredictTest(unittest.TestCase):
         self.assertTrue(validated)
         
         validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
-                                               'time': '23:15:42', 'op': 'predict'})
+                                               'time': '23:59:59', 'op': 'predict'})
+        self.assertTrue(validated)
+        
+        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
+                                               'time': '00:00:00', 'op': 'predict'})
         self.assertTrue(validated)
