@@ -112,6 +112,10 @@ class PredictTest(unittest.TestCase):
                                                'time': '99:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         
+        expected_string = 'Invalid Time'
+        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
+                                               'time': '23:60:60', 'op': 'predict'})
+        self.assertTrue((expected_string in validated))
         # Happy Path
         validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
                                                'timsse': '99:15:42', 'op': 'predict'})
