@@ -20,7 +20,7 @@ class PredictTest(unittest.TestCase):
         self.assertEqual(predict.date, '2016-01-17')
         self.assertEqual(predict.time, '03:15:42')
         self.assertEqual(predict.sidereal, '270d59.1')
-        self.assertEqual(predict.declination, '03:15:42')
+        self.assertEqual(predict.declination, '7d24.3')
     
     def test_validate_parameter_body(self):
         # Body: mandatory, dictionary type checked. value unvalidated
