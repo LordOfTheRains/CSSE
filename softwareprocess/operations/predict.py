@@ -19,9 +19,9 @@ class Predict(Operation):
             self.date = self.DEFAULT_DATE
         
         if 'time' in param_dict:
-            self.date = param_dict['time']
+            self.time = param_dict['time']
         else:
-            self.date = self.DEFAULT_TIME
+            self.time = self.DEFAULT_TIME
         self.sidereal = STARS[self.name]['sidereal']
         self.declination = STARS[self.name]['declination']
         
