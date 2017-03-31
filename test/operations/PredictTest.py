@@ -16,7 +16,7 @@ class PredictTest(unittest.TestCase):
         input_dict = {'name': 'BetelGeuse', 'date': '2016-01-17',
                       'time': '03:15:42', 'op': 'predict'}
         predict = Predict(input_dict)
-        self.assertEqual(predict.name, 'BetelGeuse')
+        self.assertEqual(predict.name, 'Betelgeuse')
         self.assertEqual(predict.date, '2016-01-17')
         self.assertEqual(predict.time, '03:15:42')
         self.assertEqual(predict.sidereal, '270d59.1')
