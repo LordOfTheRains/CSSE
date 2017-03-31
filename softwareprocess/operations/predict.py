@@ -54,6 +54,7 @@ class Predict(Operation):
             input_time = re.match('^[0-9]{2}:[0-9]{2}:[0-9]{2}$', input_time)
             
             if input_time:
+                input_time = input_time.group()
                 (hour, minute, second) = input_time.split(':')
                 hour = int(hour)
                 minute = int(minute)
