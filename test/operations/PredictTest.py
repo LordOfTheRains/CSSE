@@ -70,7 +70,7 @@ class PredictTest(unittest.TestCase):
         
         # not leap year
         
-        expected_string = 'Date Out of Range: Date Must be at least 2001'
+        expected_string = 'Invalid Date'
         validated = Predict.validate_parameter({'name': 'Be--telgeuse', 'date': '2001-02-30',
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
@@ -91,3 +91,17 @@ class PredictTest(unittest.TestCase):
         validated = Predict.validate_parameter({'name': 'BetelGeuse', 'dsadate': '2016-01-17',
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue(validated)
+        
+    def test_validate_parameter_date(self):
+        # time: optional,  unvalidated
+        # time string in format: hh-mm-ss
+        #
+        # default to 00:00:00
+        
+        # Sad Path
+        
+        # incorrect date format
+        expected_string = 'Incorrect Time Format: Must be yyyy-mm-dd'
+        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
+                                               'time': '03:15:42', 'op': 'predict'})
+        self.assertTrue((expected_string in validated))
