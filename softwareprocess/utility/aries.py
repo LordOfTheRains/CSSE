@@ -44,7 +44,7 @@ class Aries:
         """
         reference_rotation = Angle.from_string("100d42.6")
         # cumulative progression: delta(year-2001) * -0d14.31667
-        annual_gha_decrement = Angle.from_string("-0d14.31667")
+        annual_gha_decrement = Angle.from_string("-0d14.32")
         delta_year = year - Aries.REFERENCE_YEAR
         cumulative_progression = Angle.multiply(annual_gha_decrement, delta_year)
         
