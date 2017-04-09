@@ -33,7 +33,6 @@ class PredictTest(unittest.TestCase):
         self.assertEqual(predict.sidereal, '270d59.1')
         self.assertEqual(predict.declination, '7d24.3')
     
-    
     def test_validate_parameter_body(self):
         # Body: mandatory, dictionary type checked. value unvalidated
         # string of star name, must be
