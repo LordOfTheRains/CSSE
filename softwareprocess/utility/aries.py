@@ -1,4 +1,10 @@
+import calendar
+import math
+from angle import Angle
+
 class Aries:
+    
+    REFERENCE_YEAR = 2001
     def __init__(self):
         pass
     
@@ -14,32 +20,39 @@ class Aries:
         :param second:
         :return:
         """
-        pass
-    
-    @staticmethod
-    def __get_reference_greenwich_hour_angle():
-        """
-        using date 2001-01-01
-        using time 0:00:00 (utc)
-        using angle: 100d42.6
-            
-        :return: returns reference angle based on know greenwich hour angle for aries
-        """
+        elapsed_sed_since_ref = second
+        relative_pm = Aries.__get_relative_prime_meridian(year)
+        earth_rotation = elapsed_sed_since_ref
         
         pass
+    
     
     @staticmethod
     def __get_relative_prime_meridian(year):
         """
         
         - total progression = 100d42.6 + cumulative prog + leap progs
-        - cumulative progression: delta(year-2001) * -0d14.3667
+        - cumulative progression: delta(year-2001) * -0d14.31667
         - leap progression: (leap years elapsed) * 0d59.0
         :param year: observation year
         :return: angle of prime meridian
         """
+        reference_rotation = Angle.from_string("100d42.6")
+        # cumulative progression: delta(year-2001) * -0d14.31667
+        annual_gha_decrement = Angle.from_string("-0d14.31667")
+        delta_year = year - Aries.REFERENCE_YEAR
+        cumulative_progression = Angle.multiply(annual_gha_decrement,delta_year)
         
-        pass
+        # leap progression: (leap years elapsed) * 0d59.0
+        daily_rotation = Angle.from_string("0d59.0")
+        leap_years = math.floor((year - Aries.REFERENCE_YEAR)/4)
+        leap_progression = Angle.multiply(daily_rotation, leap_years)
+        
+        # total progression = 100d42.6 + cumulative prog + leap progs
+        
+        total_progression = Angle.add(reference_rotation, cumulative_progression)
+        total_progression = Angle.add(total_progression, leap_progression)
+        return total_progression
     
     @staticmethod
     def __get_earth_rotation_since_observation(elapsed_seconds):
@@ -49,4 +62,6 @@ class Aries:
         :param elapsed_seconds: second between ref time and observed time
         :return: hour angle
         """
-        pass
+        full_angle = Angle.from_string("360d00.0")
+        rotation = math.floor(elapsed_seconds/86164.1)
+        return Angle.multiply(full_angle, rotation)
