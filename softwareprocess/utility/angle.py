@@ -1,4 +1,5 @@
-
+import re
+import math
 
 class Angle:
     
@@ -9,6 +10,10 @@ class Angle:
         :param minute_degree:
         :returns: angle instance
         """
+        self.hour_degree = int(hour_degree)
+        self.minute_degree = float(minute_degree)
+        self.str = str(hour_degree) + "d" + str(minute_degree)
+        self.decimal = hour_degree/360*24 + minute_degree*
         pass
     
     @staticmethod
@@ -38,8 +43,10 @@ class Angle:
         :return:
         """
         validated = True
-        error =[]
-        angle_string = re.match('^[0-9]+d[0-9]+.\d$', string)
+        error = []
+        hr_degree = 0
+        minute_degree = 0
+        angle_string = re.match('^[-]?[0-9]+d[0-9]+.\d$', string)
         if angle_string:
                 observation = angle_string.group()
                 x, y = observation.split("d")
@@ -51,16 +58,21 @@ class Angle:
                 y = y.lstrip("0")
                 if float(y) < 0.0 or not float(y) < 60:
                     validated = False
-                    error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
+                    error.append('angle minute must be float between GE 0.0 and LT 60.0.')
                 if (int(x) == 360 or int(x) == -360) and float(y) > 0.0:
                     validated = False
                     error.append('Observation degree must be between -360d0.0 and 360d0.0')
-            else:
-                validated = False
-                error.append('Invalid angle string')
-            
+                if validated:
+                    hr_degree = x
+                    minute_degree = y
+        else:
+            validated = False
+            error.append('Invalid angle string')
+                
         if not validated:
             raise ValueError(error)
+        else:
+            return Angle(hr_degree, minute_degree)
     
     @classmethod
     def from_decimal(cls, decimal=None):
@@ -68,5 +80,12 @@ class Angle:
         returns angle converted form decimal
         :return:
         """
+        reduced = decimal - math.floor(decimal)
+        hrs = math.floor(reduced*360) #keep whole number part
+        minute_part = reduced*360 - hrs # keep decimal part
+        minute = round(minute_part*60, 2)
+        
+        return Angle(hrs, minute)
+        
         pass
 
