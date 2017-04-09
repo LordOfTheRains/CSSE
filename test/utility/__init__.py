@@ -13,7 +13,7 @@ class AriesTest(unittest.TestCase):
     def tearDown(self):
         pass
     
-    def test_get_GHA(self):
+    def test_get_greenwich_hour_angle(self):
         """
         internal and validated inputs
         :return:
