@@ -84,7 +84,7 @@ class Angle:
         :return:
         """
         reduced = decimal - math.floor(decimal)
-        hrs = math.floor(reduced*360) # keep whole number part
+        hrs = int(math.floor(reduced*360)) # keep whole number part
         minute_part = reduced*360 - hrs # keep decimal part
         minute = round(minute_part*60, 1)
         print("asdasda")
