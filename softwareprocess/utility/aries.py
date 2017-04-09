@@ -1,4 +1,4 @@
-import calendar
+from datetime import datetime as Time
 import math
 from angle import Angle
 
@@ -20,11 +20,16 @@ class Aries:
         :param second:
         :return:
         """
-        elapsed_sed_since_ref = second
-        relative_pm = Aries.__get_relative_prime_meridian(year)
-        earth_rotation = elapsed_sed_since_ref
+        reference_datetime_str = "2001,01,01,00,00,00"
+        observation_datetime_str = year + ',' + month + ',' + day + hour + ',' + minute + ',' + second
+        observation_datetime = Time.strptime(observation_datetime_str, '%Y,%m,%d,%H,%M,%S')
+        reference_datetime = Time.strptime(reference_datetime_str, '%Y,%m,%d,%H,%M,%S')
+        elapsed_sed_since_ref = observation_datetime - reference_datetime
         
-        pass
+        relative_pm = Aries.__get_relative_prime_meridian(year)
+        earth_rotation = Aries.__get_earth_rotation_since_observation(elapsed_sed_since_ref)
+        return Angle.add(relative_pm, earth_rotation)
+        
     
     
     @staticmethod
