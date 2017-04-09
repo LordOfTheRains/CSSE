@@ -13,7 +13,7 @@ class Angle:
         self.hour_degree = int(hour_degree)
         self.minute_degree = float(minute_degree)
         self.str = str(hour_degree) + "d" + str(minute_degree)
-        self.decimal = hour_degree/360 + minute_degree/60
+        self.decimal = self.hour_degree/360 + self.minute_degree/60
         pass
     
     @staticmethod
