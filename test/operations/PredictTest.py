@@ -21,6 +21,18 @@ class PredictTest(unittest.TestCase):
         self.assertEqual(predict.time, '03:15:42')
         self.assertEqual(predict.sidereal, '270d59.1')
         self.assertEqual(predict.declination, '7d24.3')
+        
+        # test default values
+        
+        input_dict = {'name': 'BetelGeuse', 'daadte': '2016-01-17',
+                      'tisssme': '03:15:42', 'op': 'predict'}
+        predict = Predict(input_dict)
+        self.assertEqual(predict.name, 'Betelgeuse')
+        self.assertEqual(predict.date, predict.DEFAULT_DATE)
+        self.assertEqual(predict.time, predict.DEFAULT_TIME)
+        self.assertEqual(predict.sidereal, '270d59.1')
+        self.assertEqual(predict.declination, '7d24.3')
+    
     
     def test_validate_parameter_body(self):
         # Body: mandatory, dictionary type checked. value unvalidated
