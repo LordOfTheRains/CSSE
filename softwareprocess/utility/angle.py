@@ -13,8 +13,10 @@ class Angle:
         self.hour_degree = int(hour_degree)
         self.minute_degree = float(minute_degree)
         self.str = str(hour_degree) + "d" + str(minute_degree)
-        self.decimal = (self.hour_degree + self.minute_degree/60)/360
-    
+        if self.hour_degree < 0:
+            self.decimal = (self.hour_degree - self.minute_degree/60)/360
+        else:
+            self.decimal = (self.hour_degree + self.minute_degree/60)/360
     @staticmethod
     def add(angle1=None, angle2=None):
         """
@@ -84,5 +86,5 @@ class Angle:
         minute_part = reduced*360 - hrs # keep decimal part
         minute = round(minute_part*60, 1)
         
-        return Angle(hrs, minute)
+        return Angle(hrs, abs(minute))
 
