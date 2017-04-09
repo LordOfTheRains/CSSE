@@ -13,7 +13,7 @@ class Angle:
         self.hour_degree = int(hour_degree)
         self.minute_degree = float(minute_degree)
         self.str = str(hour_degree) + "d" + str(minute_degree)
-        self.decimal = hour_degree/360*24 + minute_degree*
+        self.decimal = hour_degree/360 + minute_degree/60
         pass
     
     @staticmethod
@@ -81,7 +81,7 @@ class Angle:
         :return:
         """
         reduced = decimal - math.floor(decimal)
-        hrs = math.floor(reduced*360) #keep whole number part
+        hrs = math.floor(reduced*360) # keep whole number part
         minute_part = reduced*360 - hrs # keep decimal part
         minute = round(minute_part*60, 2)
         
