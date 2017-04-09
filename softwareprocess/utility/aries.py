@@ -1,4 +1,4 @@
-from datetime import datetime as Time
+from datetime import datetime, timedelta
 import math
 from angle import Angle
 
@@ -24,11 +24,13 @@ class Aries:
         observation_datetime_str = str(year) + ',' + str(month) + ',' + str(day) + ','
         observation_datetime_str += str(hour) + ',' + str(minute) + ',' + str(second)
         
-        observation_datetime = Time.strptime(observation_datetime_str, '%Y,%m,%d,%H,%M,%S')
-        reference_datetime = Time.strptime(reference_datetime_str, '%Y,%m,%d,%H,%M,%S')
+        observation_datetime = datetime.strptime(observation_datetime_str, '%Y,%m,%d,%H,%M,%S')
+        reference_datetime = datetime.strptime(reference_datetime_str, '%Y,%m,%d,%H,%M,%S')
         print(observation_datetime)
         print (reference_datetime)
-        elapsed_sed_since_ref = (observation_datetime - reference_datetime)/1000.0
+        print         elapsed_sed_since_ref = timedelta(observation_datetime - reference_datetime)/1000.0
+((observation_datetime - reference_datetime)
+        elapsed_sed_since_ref = timedelta(observation_datetime - reference_datetime)/1000.0
         
         relative_pm = Aries.__get_relative_prime_meridian(year)
         earth_rotation = Aries.__get_earth_rotation_since_observation(elapsed_sed_since_ref)
