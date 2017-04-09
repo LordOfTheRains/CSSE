@@ -85,6 +85,4 @@ class Angle:
         minute = round(minute_part*60, 1)
         
         return Angle(hrs, minute)
-        
-        pass
 

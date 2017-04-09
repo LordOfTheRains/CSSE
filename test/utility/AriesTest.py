@@ -19,5 +19,5 @@ class AriesTest(unittest.TestCase):
         """
         gha = Aries.get_greenwich_hour_angle(2016, 1, 17,
                                              3, 15, 42)
-        self.assertEqual(gha, "164d54.5")
+        self.assertEqual(gha.str, "164d54.5")
         pass
