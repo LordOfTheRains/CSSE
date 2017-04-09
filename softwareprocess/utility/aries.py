@@ -21,8 +21,8 @@ class Aries:
         :return:
         """
         reference_datetime_str = "2001,01,01,00,00,00"
-        observation_datetime_str = str(year) + ',' + str(month) + ','
-        observation_datetime_str += str(day) + str(hour) + ',' + str(minute) + ',' + str(second)
+        observation_datetime_str = str(year) + ',' + str(month) + ',' + str(day) + ','
+        observation_datetime_str += str(hour) + ',' + str(minute) + ',' + str(second)
         
         observation_datetime = Time.strptime(observation_datetime_str, '%Y,%m,%d,%H,%M,%S')
         reference_datetime = Time.strptime(reference_datetime_str, '%Y,%m,%d,%H,%M,%S')
