@@ -46,7 +46,7 @@ class Angle:
         error = []
         hr_degree = 0
         minute_degree = 0
-        angle_string = re.match('^[-]?[0-9]+d[0-9]+.\d$', string)
+        angle_string = re.match('^[-]?[0-9]+d[0-9]+.[0-9]+$', string)
         if angle_string:
                 observation = angle_string.group()
                 x, y = observation.split("d")
