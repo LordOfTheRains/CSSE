@@ -87,7 +87,5 @@ class Angle:
         hrs = int(math.floor(reduced*360)) # keep whole number part
         minute_part = reduced*360 - hrs # keep decimal part
         minute = round(minute_part*60, 1)
-        print("asdasda")
-        print(hrs)
         return Angle(hrs, abs(minute))
 
