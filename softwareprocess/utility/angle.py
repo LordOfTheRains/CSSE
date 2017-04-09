@@ -34,10 +34,33 @@ class Angle:
     @classmethod
     def from_string(cls, string=None):
         """
-        returns angle converted form decimal
+        returns angle converted form string
         :return:
         """
-        pass
+        validated = True
+        error =[]
+        angle_string = re.match('^[0-9]+d[0-9]+.\d$', string)
+        if angle_string:
+                observation = angle_string.group()
+                x, y = observation.split("d")
+                if int(x) < -360 or int(x) > 360:
+                    validated = False
+                    error.append('Observation degree must be between -360 and 360')
+                    
+                # trim leading 0
+                y = y.lstrip("0")
+                if float(y) < 0.0 or not float(y) < 60:
+                    validated = False
+                    error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
+                if (int(x) == 360 or int(x) == -360) and float(y) > 0.0:
+                    validated = False
+                    error.append('Observation degree must be between -360d0.0 and 360d0.0')
+            else:
+                validated = False
+                error.append('Invalid angle string')
+            
+        if not validated:
+            raise ValueError(error)
     
     @classmethod
     def from_decimal(cls, decimal=None):

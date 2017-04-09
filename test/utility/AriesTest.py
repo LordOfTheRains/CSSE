@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 import unittest
-from datetime import datetime as Time
 from softwareprocess.utility.aries import Aries
 
 
