@@ -21,9 +21,12 @@ class Aries:
         :return:
         """
         reference_datetime_str = "2001,01,01,00,00,00"
-        observation_datetime_str = year + ',' + month + ',' + day + hour + ',' + minute + ',' + second
+        observation_datetime_str = str(year) + ',' + str(month) + ','
+        observation_datetime_str += str(day) + str(hour) + ',' + str(minute) + ',' + str(second)
+        
         observation_datetime = Time.strptime(observation_datetime_str, '%Y,%m,%d,%H,%M,%S')
         reference_datetime = Time.strptime(reference_datetime_str, '%Y,%m,%d,%H,%M,%S')
+        
         elapsed_sed_since_ref = observation_datetime - reference_datetime
         
         relative_pm = Aries.__get_relative_prime_meridian(year)
