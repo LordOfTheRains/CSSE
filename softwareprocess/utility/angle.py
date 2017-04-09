@@ -23,17 +23,17 @@ class Angle:
         :param angle2: '''
         :return: result angle
         """
-        pass
+        return angle1.decimal + angle2.decimal
     
     @staticmethod
-    def multiply(angle1=None, num=None):
+    def multiply(angle=None, num=None):
         """
         angle1*num(float
         :param angle1: angle
         :param num: float
         :return: result angle
         """
-        pass
+        return angle.decimal * num
     
     @classmethod
     def from_string(cls, string=None):
