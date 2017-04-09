@@ -28,8 +28,7 @@ class Aries:
         reference_datetime = datetime.strptime(reference_datetime_str, '%Y,%m,%d,%H,%M,%S')
         print(observation_datetime)
         print (reference_datetime)
-        print         elapsed_sed_since_ref = timedelta(observation_datetime - reference_datetime)/1000.0
-((observation_datetime - reference_datetime)
+        print timedelta((observation_datetime - reference_datetime))
         elapsed_sed_since_ref = timedelta(observation_datetime - reference_datetime)/1000.0
         
         relative_pm = Aries.__get_relative_prime_meridian(year)
