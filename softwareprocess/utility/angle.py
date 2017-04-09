@@ -18,7 +18,7 @@ class Angle:
             self.decimal = (self.hour_degree - self.minute_degree/60)/360
         else:
             self.decimal = (self.hour_degree + self.minute_degree/60)/360
-            
+        
     @staticmethod
     def add(angle1=None, angle2=None):
         """
@@ -37,7 +37,9 @@ class Angle:
         :param num: float
         :return: result angle
         """
-        return Angle.from_decimal(angle.decimal * num)
+        rounded = math.round(angle.decimal, 3)
+        
+        return Angle.from_decimal(rounded * num)
     
     @classmethod
     def from_string(cls, string=None):
