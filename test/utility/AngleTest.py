@@ -25,7 +25,16 @@ class AriesTest(unittest.TestCase):
         test angle addition
         :return:
         """
-        pass
+        angle1 = Angle.from_string("100d4.8")
+        angle2 = Angle.from_string("64d49.7")
+        result = Angle.add(angle1, angle2)
+        self.assertEqual(result.str, "164d54.5")
+    
+    def test_multiply(self):
+        
+        angle = Angle.from_string("0d59.0")
+        result = Angle.multiply(angle, 3)
+        self.assertEqual(result.str, "2d56.9")
     
     def test_get_angle_from_decimal(self):
         """

@@ -5,6 +5,7 @@ from angle import Angle
 class Aries:
     
     REFERENCE_YEAR = 2001
+    
     def __init__(self):
         pass
     
