@@ -82,7 +82,7 @@ class Angle:
         reduced = decimal - math.floor(decimal)
         hrs = math.floor(reduced*360) # keep whole number part
         minute_part = reduced*360 - hrs # keep decimal part
-        minute = round(minute_part*60, 2)
+        minute = round(minute_part*60, 1)
         
         return Angle(hrs, minute)
         
