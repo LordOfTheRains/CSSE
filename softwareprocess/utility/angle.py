@@ -120,5 +120,6 @@ class Angle:
         print("from_decimal:")
         print(hrs)
         print(minute_part)
+        print (Angle(hrs, minute_part).str)
         return Angle(hrs, minute_part)
 
