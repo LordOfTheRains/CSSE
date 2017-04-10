@@ -31,8 +31,8 @@ class Angle:
         :param angle2: '''
         :return: result angle
         """
-        rounded1 = round(angle1.decimal, 5)
-        rounded2 = round(angle2.decimal, 5)
+        rounded1 = round(angle1.decimal, 7)
+        rounded2 = round(angle2.decimal, 7)
         result = round((rounded1 + rounded2), 5)
         print("added result:")
         print(result)
