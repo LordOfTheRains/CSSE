@@ -84,3 +84,53 @@ class DispatchTest(unittest.TestCase):
             'long': '75d53.6', 'lat': '7d24.3'}
         result = dispatcher.dispatch(input_dict)
         self.assertEqual(result, expected)
+        
+        input_dict = {'name': 'BetelGeuse', 'time': '03:15:42', 'op': 'predict'}
+        expected = {'op': 'predict', 'body': 'BetelGeuse', 'time': '03:15:42',
+            'long': '75d53.6', 'lat': '7d24.3'}
+        result = dispatcher.dispatch(input_dict)
+        self.assertEqual(result, expected)
+        
+        input_dict = {'name': 'BetelGeuse', 'date': '2016-01-17', 'op': 'predict'}
+        expected = {'op': 'predict', 'body': 'BetelGeuse', 'date': '2016-01-17',
+            'long': '75d53.6', 'lat': '7d24.3'}
+        result = dispatcher.dispatch(input_dict)
+        self.assertEqual(result, expected)
+        
+    def test_dispatch_invalid_predict(self):
+        input_dict = {'op': 'predict'}
+        
+        result = dispatcher.dispatch(input_dict)
+        self.assertTrue("error" in result)
+        
+        input_dict = {'op': 'predict',
+                      'body': 'unknow', 'date': '2016-01-17',
+                      'time': '03:15:42', 'op': 'predict',
+                      }
+        
+        result = dispatcher.dispatch(input_dict)
+        self.assertTrue("error" in result)
+        
+        input_dict = {'op': 'predict',
+                      'body': 'unknown', 'date': '2016-99-17',
+                      'time': '03:15:42', 'op': 'predict',
+                      }
+        
+        result = dispatcher.dispatch(input_dict)
+        self.assertTrue("error" in result)
+        
+        input_dict = {'op': 'predict',
+                      'body': 'unknown', 'date': '2016-01-17',
+                      'time': '03:15:99', 'op': 'predict',
+                      }
+        
+        result = dispatcher.dispatch(input_dict)
+        self.assertTrue("error" in result)
+        
+        input_dict = {'op': 'predict', 'lat':"asdsad", 'long':"adsa",
+                      'body': 'unknown', 'date': '2016-01-17',
+                      'time': '03:15:99', 'op': 'predict',
+                      }
+        
+        result = dispatcher.dispatch(input_dict)
+        self.assertTrue("error" in result)
