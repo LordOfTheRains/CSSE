@@ -33,6 +33,7 @@ class Angle:
         """
         result = angle1.decimal + angle2.decimal
         print("result")
+        print(result)
         return Angle.from_decimal(result)
     
     @staticmethod
