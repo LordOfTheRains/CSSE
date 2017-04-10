@@ -107,14 +107,14 @@ class Angle:
         right = "0." + right
         hrs = int(math.floor(float(right)*360.0))
         
-        minute = round(float(right), 7) * 360.00000
+        minute = round(float(right), 7) * 360.00000000
         print(minute)
         (left, right) = str(minute).split(".")
         print("second split:")
         print(left)
         print(right)
         right = "0." + right
-        right = round(float(right), 7) * 60.00000
+        right = round(float(right), 7) * 60.00000000
         print("finalsss")
         print(right)
         minute_part = round(right, 1) # keep decimal part
