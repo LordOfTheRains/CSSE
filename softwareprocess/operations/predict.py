@@ -41,7 +41,7 @@ class Predict(Operation):
             validated = False
             error.append('Missing Star Name in Dictionary')
         else:
-            star_name = param_dict['name'].lower().capitalize()
+            star_name = param_dict['body'].lower().capitalize()
             if star_name not in STARS:
                 validated = False
                 error.append('Star Not Found on Star List')
