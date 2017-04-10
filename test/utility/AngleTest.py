@@ -63,7 +63,6 @@ class AriesTest(unittest.TestCase):
         result = Angle.multiply(angle, -3)
         self.assertEqual(result.str, "2d56.9")
         
-        
     def test_get_angle_from_decimal(self):
         """
         internal and not validated, mandatory
