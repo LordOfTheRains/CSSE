@@ -57,5 +57,4 @@ STARS = {"Alpheratz": {'sidereal': '357d41.7', 'declination': '29d10.9'},
          "Fomalhaut": {'sidereal': '15d22.4', 'declination': '-29d32.3'},
          "Scheat": {'sidereal': '13d51.8', 'declination': '28d10.3'},
          "Markab": {'sidereal': '13d36.7', 'declination': '15d17.6'},
-    
          }

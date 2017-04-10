@@ -77,12 +77,10 @@ class DispatchTest(unittest.TestCase):
     
     # Predict Test
     def test_dispatch_valid_predict(self):
-# input_dict = {'name': 'BetelGeuse', 'date': '2016-01-17',
-#               'time': '03:15:42', 'op': 'predict'}
-# expected = {'op': 'predict', 'body': 'Betelgeuse',
-#             'date': '2016-01-17', 'time': '03:15:42',
-#             'long': '75d53.6', 'lat':'7d24.3'}
-#
-# result = dispatcher.dispatch(input_dict)
-# self.assertEqual(result, expected)
-        pass
+        input_dict = {'name': 'BetelGeuse', 'date': '2016-01-17',
+              'time': '03:15:42', 'op': 'predict'}
+        expected = {'op': 'predict', 'body': 'Betelgeuse',
+            'date': '2016-01-17', 'time': '03:15:42',
+            'long': '75d53.6', 'lat': '7d24.3'}
+        result = dispatcher.dispatch(input_dict)
+        self.assertEqual(result, expected)

@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import math
 from angle import Angle
 
+
 class Aries:
     
     REFERENCE_YEAR = 2001

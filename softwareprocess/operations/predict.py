@@ -1,5 +1,8 @@
 from operation import Operation
 from softwareprocess.utility.stars import STARS
+from softwareprocess.utility.angle import Angle
+from softwareprocess.utility.aries import Aries
+
 import re
 import math
 from datetime import date
@@ -85,4 +88,6 @@ class Predict(Operation):
             return error
     
     def perform(self):
+        lat = Angle.from_string(self.declination)
+        star_gha = Aries.get_greenwich_hour_angle()
         return {}
