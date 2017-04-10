@@ -23,9 +23,11 @@ class Angle:
             print("negative")
         else:
             self.decimal = (self.hour_degree + self.minute_degree/60)/360
-        
+        print("---------")
         print(self.hour_degree)
         print(self.decimal)
+        
+    
     @staticmethod
     def add(angle1=None, angle2=None):
         """
