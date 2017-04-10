@@ -33,6 +33,10 @@ class Predict(Operation):
         validated = True
         error = []
         
+        if "lat" in param_dict or "long" in param_dict:
+            validated = False
+            error.append('[lat] or [long] key cannot be in Dictionary')
+        
         if "name" not in param_dict:
             validated = False
             error.append('Missing Star Name in Dictionary')
