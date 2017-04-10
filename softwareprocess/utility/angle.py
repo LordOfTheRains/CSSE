@@ -101,7 +101,7 @@ class Angle:
         hrs = int(math.floor(float(right)*360.0))
         print("hrs:")
         print(hrs)
-        (left, right) = str(float(hrs)).split(".")
+        (left, right) = str(float(right)).split(".")
         print("right:")
         print(right)
         right = "0." + right
