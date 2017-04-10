@@ -48,6 +48,9 @@ class Angle:
         result = rounded * num
         print("multiplied result:")
         print(result)
+        print("multiplied number:")
+        print(angle.decimal)
+        
         return Angle.from_decimal(result)
     
     @classmethod
