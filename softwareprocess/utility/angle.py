@@ -96,7 +96,7 @@ class Angle:
         negative = decimal < 0
         (left, right) = str(decimal).split(".")
         right = "0." + right
-        hrs = int(math.floor(float(right)*360.0))
+        hrs = int(math.floor(float(right)*360.0000))
         if decimal < 2 and decimal > 1 :
             print("sasdhshadjah")
             print(right)
