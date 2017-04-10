@@ -20,15 +20,9 @@ class Angle:
         if '-' in str(hour_degree):
             self.is_negative = True
             self.decimal = (self.hour_degree - self.minute_degree/60.0)
-            print("negative")
         else:
             self.decimal = (self.hour_degree + self.minute_degree/60.0)
-        print("---------")
         print(self.str)
-        print(self.hour_degree)
-        print(self.minute_degree)
-        print(self.decimal)
-        
     
     @staticmethod
     def add(angle1=None, angle2=None):
@@ -53,9 +47,8 @@ class Angle:
         print(angle.str)
         print(angle.decimal)
         print(rounded)
-        print()
         result = Angle.from_decimal(rounded * num)
-        print(result.str)
+        print(result.hour_degree)
         return Angle.from_decimal(rounded * num)
     
     @classmethod
