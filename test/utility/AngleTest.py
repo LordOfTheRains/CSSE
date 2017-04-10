@@ -73,6 +73,11 @@ class AriesTest(unittest.TestCase):
         angle = Angle.from_decimal(16.180079)
         self.assertEqual(angle.hour_degree, 64)
         self.assertEqual(angle.minute_degree, 49.7)
+        
+        angle = Angle.from_decimal(-16.180079)
+        self.assertEqual(angle.hour_degree, -64)
+        self.assertEqual(angle.minute_degree, 49.7)
+        
         pass
     
     def test_get_angle_from_string(self):

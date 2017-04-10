@@ -91,6 +91,9 @@ class Angle:
         returns angle converted form decimal
         :return:
         """
+        negat
+        if decimal < 0:
+            
         reduced = decimal - math.floor(decimal)
         hrs = int(math.floor(reduced*360)) # keep whole number part
         minute_part = reduced*360 - hrs # keep decimal part
