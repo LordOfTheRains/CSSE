@@ -26,6 +26,7 @@ class AriesTest(unittest.TestCase):
         :return:
         """
         angle1 = Angle.from_string("100d4.8")
+        print("********")
         print(angle1.decimal)
         angle2 = Angle.from_string("64d49.7")
         print(angle2.decimal)

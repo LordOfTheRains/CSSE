@@ -44,12 +44,7 @@ class Angle:
         :return: result angle
         """
         rounded = round(angle.decimal, 3)
-        print("adsadasdsa")
-        print(angle.str)
-        print(angle.decimal)
-        print(rounded)
         result = Angle.from_decimal(rounded * num)
-        print(result.hour_degree)
         return Angle.from_decimal(rounded * num)
     
     @classmethod
