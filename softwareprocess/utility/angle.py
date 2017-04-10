@@ -32,7 +32,7 @@ class Angle:
         :return: result angle
         """
         result = angle1.decimal + angle2.decimal
-        print("result")
+        print("added result:")
         print(result)
         return Angle.from_decimal(result)
     
@@ -45,9 +45,10 @@ class Angle:
         :return: result angle
         """
         rounded = round(angle.decimal, 3)
+        result = rounded * num
         print("multiplied result:")
-        result = Angle.from_decimal(rounded * num)
-        return result
+        print(result)
+        return Angle.from_decimal(result)
     
     @classmethod
     def from_string(cls, string=None):
