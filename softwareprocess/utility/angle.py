@@ -37,7 +37,7 @@ class Angle:
         :param num: float
         :return: result angle
         """
-        rounded = math.round(angle.decimal, 3)
+        rounded = round(angle.decimal, 3)
         
         return Angle.from_decimal(rounded * num)
     
