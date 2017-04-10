@@ -46,7 +46,7 @@ class Angle:
         """
         rounded = round(angle.decimal, 3)
         result = Angle.from_decimal(rounded * num)
-        return Angle.from_decimal(rounded * num)
+        return Angle.from_decimal(result)
     
     @classmethod
     def from_string(cls, string=None):
