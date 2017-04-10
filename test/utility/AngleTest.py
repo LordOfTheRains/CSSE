@@ -61,7 +61,7 @@ class AriesTest(unittest.TestCase):
         
         angle = Angle.from_string("-1d0.0")
         result = Angle.multiply(angle, 3)
-        self.assertEqual(result.str, "-3d0.0")
+        self.assertEqual(result.str, "-2d59.9")
         
         angle = Angle.from_string("-0d59.0")
         result = Angle.multiply(angle, -3)
