@@ -31,6 +31,9 @@ class Aries:
         
         relative_pm = Aries.__get_relative_prime_meridian(year)
         earth_rotation = Aries.__get_earth_rotation_since_observation(elapsed_sed_since_ref)
+        
+        print("relative_pm" + relative_pm.str)
+        print("earth_rotation" + earth_rotation.str)
         return Angle.add(relative_pm, earth_rotation)
         
     @staticmethod
@@ -58,6 +61,7 @@ class Aries:
         
         total_progression = Angle.add(reference_rotation, cumulative_progression)
         total_progression = Angle.add(total_progression, leap_progression)
+        print("total progression" + str(total_progression))
         return total_progression
     
     @staticmethod
@@ -70,4 +74,5 @@ class Aries:
         """
         full_angle = Angle.from_string("360d00.0")
         rotation = math.floor(elapsed_seconds/86164.1)
+        print("get_earth_rotation_" + Angle.multiply(full_angle, rotation).str)
         return Angle.multiply(full_angle, rotation)
