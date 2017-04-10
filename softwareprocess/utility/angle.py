@@ -45,8 +45,9 @@ class Angle:
         :return: result angle
         """
         rounded = round(angle.decimal, 3)
+        print("multiplied result:")
         result = Angle.from_decimal(rounded * num)
-        return Angle.from_decimal(result)
+        return result
     
     @classmethod
     def from_string(cls, string=None):
