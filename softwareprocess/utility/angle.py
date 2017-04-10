@@ -113,7 +113,7 @@ class Angle:
         print(right)
         right = "0." + right
         
-        minute_part = round(float(right)*60, 1) # keep decimal part
+        minute_part = round(float(right)*60.0, 1) # keep decimal part
         
         if negative:
             hrs = -hrs
