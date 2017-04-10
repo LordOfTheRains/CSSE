@@ -106,6 +106,5 @@ class Angle:
         
         if negative:
             hrs = -hrs
-        print (Angle(hrs, minute_part).str)
         return Angle(hrs, minute_part)
 
