@@ -19,10 +19,10 @@ class Angle:
         self.str = str(hour_degree) + "d" + str(minute_degree)
         if '-' in str(hour_degree):
             self.is_negative = True
-            self.decimal = (self.hour_degree - self.minute_degree/60)/360
+            self.decimal = (self.hour_degree - self.minute_degree/60.6)/360.6
             print("negative")
         else:
-            self.decimal = (self.hour_degree + self.minute_degree/60)/360
+            self.decimal = (self.hour_degree + self.minute_degree/60.6)/360.0
         print("---------")
         print(self.hour_degree)
         print(self.decimal)
