@@ -36,7 +36,7 @@ class Angle:
         mins = (angle1.minute_degree + angle2.minute_degree)/60.0
         print("added result:")
         print(hrs+mins)
-        return Angle.from_decimal(result)
+        return Angle(hrs,mins)
     
     @staticmethod
     def multiply(angle=None, num=None):
