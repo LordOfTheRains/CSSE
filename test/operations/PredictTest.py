@@ -110,7 +110,7 @@ class PredictTest(unittest.TestCase):
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue(validated)
         
-    def test_validate_parameter_date(self):
+    def test_validate_parameter_time(self):
         # time: optional,  unvalidated
         # time string in format: hh-mm-ss
         #
