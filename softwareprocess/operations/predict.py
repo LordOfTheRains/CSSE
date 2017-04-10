@@ -103,7 +103,7 @@ class Predict(Operation):
         longitude = Angle.add(star_gha, star_sha)
         full_angle = Angle.from_string("-360d0.0")
         print ("star_gha.str")
-        print (longitude.str)
+        print (star_gha.str)
         if longitude.hour_degree > 360:
             longitude = Angle.add(longitude, full_angle)
         if longitude.hour_degree == 360 and longitude.minute_degree > 0:
