@@ -74,6 +74,7 @@ class Aries:
         """
         full_angle = Angle.from_string("360d00.0")
         rotation = math.floor(elapsed_seconds/86164.1)
-        
+        print("full_angle_:" + full_angle.str)
+        print("rotation_:" + str(rotation))
         print("get_earth_rotation_:" + Angle.multiply(full_angle, rotation).str)
         return Angle.multiply(full_angle, rotation)
