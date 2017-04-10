@@ -99,12 +99,12 @@ class Predict(Operation):
         sec = int(sec)
         star_gha = Aries.get_greenwich_hour_angle(year, month, day, hour, minute, sec)
         star_sha = Angle.from_string(self.sidereal)
-        longitude = Angle.add(star_gha+star_sha)
+        longitude = Angle.add(star_gha, star_sha)
         full_angle = Angle.from_string("-360d0.0")
         if longitude.hour_degree > 360:
-            longitude = Angle.add(longitude,full_angle)
+            longitude = Angle.add(longitude, full_angle)
         if longitude.hour_degree == 360 and longitude.minute_degree > 0:
-            longitude = Angle.add(longitude,full_angle)
+            longitude = Angle.add(longitude, full_angle)
             
         self.original['lat'] = lat.str
         self.original['long'] = longitude.str
