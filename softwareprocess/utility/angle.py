@@ -19,9 +19,9 @@ class Angle:
         self.str = str(hour_degree) + "d" + str(minute_degree)
         if '-' in str(hour_degree):
             self.is_negative = True
-            self.decimal = (self.hour_degree - self.minute_degree/60.0)/360
+            self.decimal = self.hour_degree - (self.minute_degree/60.0)
         else:
-            self.decimal = (self.hour_degree + self.minute_degree/60.0)/360
+            self.decimal = self.hour_degree + (self.minute_degree/60.0)
     
     @staticmethod
     def add(angle1=None, angle2=None):
@@ -31,7 +31,9 @@ class Angle:
         :param angle2: '''
         :return: result angle
         """
-        return Angle.from_decimal(angle1.decimal + angle2.decimal)
+        result = angle1.decimal + angle2.decimal
+        print("result")
+        return Angle.from_decimal(result)
     
     @staticmethod
     def multiply(angle=None, num=None):
