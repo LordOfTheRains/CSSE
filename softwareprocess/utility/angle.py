@@ -10,13 +10,16 @@ class Angle:
         :param minute_degree:
         :returns: angle instance
         """
+        if minute_degree < 0:
+            raise ValueError("minute Degree has to be positive")
+        
         self.hour_degree = int(hour_degree)
         self.minute_degree = float(minute_degree)
         self.str = str(hour_degree) + "d" + str(minute_degree)
         if '-' in str(hour_degree):
             self.is_negative = True
             self.decimal = (self.hour_degree - self.minute_degree/60)/360
-            print(self.hour_degree)
+            
         else:
             self.decimal = (self.hour_degree + self.minute_degree/60)/360
         
