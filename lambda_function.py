@@ -1,4 +1,4 @@
-import dispatch as dispatch
+import softwareprocess.dispatch as dispatch
 import re
 
 
