@@ -106,5 +106,10 @@ class Angle:
         
         if negative:
             hrs = -hrs
+        
+        if decimal == 164.908333333:
+            print("ahsdkahkjsahdkjshad")
+            print(hrs)
+            print(minute_part)
         return Angle(hrs, minute_part)
 
