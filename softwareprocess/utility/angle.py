@@ -99,8 +99,6 @@ class Angle:
         
         (left, right) = str(float(hrs)).split(".")
         
-        
-        minute_part = round(right*60, 1) # keep decimal part
-        minute =
-        return Angle(hrs, abs(minute))
+        minute_part = round(float(right)*60, 1) # keep decimal part
+        return Angle(hrs, minute_part)
 
