@@ -100,7 +100,7 @@ class Angle:
         if decimal < 2 and decimal > 1 :
             print("sasdhshadjah")
             print(right)
-        minute = round(float(right), 5) * 360.0000000
+        minute = round(float(right), 5) * 360.00000
         (left, right) = str(minute).split(".")
         right = "0." + right
         if decimal < 2 and decimal > 1 :
