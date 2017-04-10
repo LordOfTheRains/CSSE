@@ -22,6 +22,7 @@ class Angle:
             self.decimal = (self.hour_degree - self.minute_degree/60.0)
         else:
             self.decimal = (self.hour_degree + self.minute_degree/60.0)
+        print("------------")
         print(self.str)
     
     @staticmethod
