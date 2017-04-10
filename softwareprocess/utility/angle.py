@@ -99,7 +99,7 @@ class Angle:
         :return:
         """
         negative = decimal < 0
-        
+        print(decimal)
         (left, right) = str(decimal).split(".")
         print("first split:")
         print(left)
@@ -120,9 +120,5 @@ class Angle:
         print("from_decimal:")
         print(hrs)
         print(minute_part)
-        if decimal == 164.908333333:
-            print("ahsdkahkjsahdkjshad")
-            print(hrs)
-            print(minute_part)
         return Angle(hrs, minute_part)
 
