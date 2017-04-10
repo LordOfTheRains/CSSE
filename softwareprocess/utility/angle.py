@@ -26,6 +26,7 @@ class Angle:
         print("---------")
         print(self.str)
         print(self.hour_degree)
+        print(self.minute_degree)
         print(self.decimal)
         
     
