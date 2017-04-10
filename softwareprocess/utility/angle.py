@@ -33,7 +33,7 @@ class Angle:
         """
         rounded1 = round(angle1.decimal, 5)
         rounded2 = round(angle2.decimal, 5)
-        result = rounded1 + rounded2
+        result = round((rounded1 + rounded2, 3))
         print("added result:")
         print(result)
         return Angle.from_decimal(result)
