@@ -15,6 +15,7 @@ class Angle:
         self.str = str(hour_degree) + "d" + str(minute_degree)
         if self.hour_degree < 0:
             self.decimal = (self.hour_degree - self.minute_degree/60)/360
+            print(self.hour_degree)
         else:
             self.decimal = (self.hour_degree + self.minute_degree/60)/360
         
