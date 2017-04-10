@@ -73,8 +73,8 @@ class Aries:
         :return: hour angle
         """
         full_angle = Angle.from_string("360d00.0")
-        rotation = math.floor(elapsed_seconds/86164.1)
+        rotation = round(elapsed_seconds/86164.1, 3)
         print("full_angle_:" + full_angle.str)
         print("rotation_:" + str(rotation))
         print("get_earth_rotation_:" + Angle.from_decimal(rotation).str)
-        return Angle.multiply(full_angle, rotation)
+        return Angle.from_decimal(rotation)
