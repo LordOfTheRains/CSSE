@@ -38,6 +38,7 @@ class Angle:
         :return: result angle
         """
         rounded = round(angle.decimal, 3)
+        print("adsadasdsa")
         print(rounded)
         return Angle.from_decimal(rounded * num)
     
