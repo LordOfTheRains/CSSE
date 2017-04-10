@@ -53,6 +53,8 @@ class Angle:
         print(angle.str)
         print(angle.decimal)
         print(rounded)
+        print(rounded * num)
+        print(Angle.from_decimal(rounded * num).str)
         return Angle.from_decimal(rounded * num)
     
     @classmethod
