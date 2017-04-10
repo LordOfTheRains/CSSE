@@ -31,6 +31,7 @@ class AriesTest(unittest.TestCase):
         angle2 = Angle.from_string("64d49.7")
         print(angle2.decimal)
         result = Angle.add(angle1, angle2)
+        print(result.decimal)
         self.assertEqual(result.str, "164d54.5")
         
         angle1 = Angle.from_string("100d4.8")
