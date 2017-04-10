@@ -103,7 +103,9 @@ class Angle:
         right = "0." + right
         right = round(float(right), 7) * 60.00000000
         minute_part = round(right, 1) # keep decimal part
-        
+        if decimal < 2 and decimal > 1 :
+            print(minute_part)
+            print(hrs)
         if negative:
             hrs = -hrs
         return Angle(hrs, minute_part)
