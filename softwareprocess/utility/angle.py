@@ -47,12 +47,6 @@ class Angle:
         """
         
         result = angle.decimal * num
-        print(angle.str)
-        print("multiplied result:")
-        print(result)
-        print("multiplied number:")
-        print(angle.decimal)
-        
         return Angle.from_decimal(result)
     
     @classmethod
@@ -100,31 +94,18 @@ class Angle:
         :return:
         """
         negative = decimal < 0
-        print(decimal)
         (left, right) = str(decimal).split(".")
-        print("first split:")
-        print(left)
-        print(right)
         right = "0." + right
         hrs = int(math.floor(float(right)*360.0))
         
         minute = round(float(right), 5) * 360.0000
-        print(minute)
         (left, right) = str(minute).split(".")
-        print("second split:")
-        print(left)
-        print(right)
         right = "0." + right
         right = round(float(right), 7) * 60.00000000
-        print("finalsss")
-        print(right)
         minute_part = round(right, 1) # keep decimal part
         
         if negative:
             hrs = -hrs
-        print("from_decimal:")
-        print(hrs)
-        print(minute_part)
         print (Angle(hrs, minute_part).str)
         return Angle(hrs, minute_part)
 
