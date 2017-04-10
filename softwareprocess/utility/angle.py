@@ -31,15 +31,12 @@ class Angle:
         :param angle2: '''
         :return: result angle
         """
-        
-        hrs = angle1.hour_degree + angle2.hour_degree
-        extra = (angle1.minute_degree + angle2.minute_degree)/60
-        hrs = math.floor(hrs + extra)
-        mins = (angle1.minute_degree + angle2.minute_degree) % 60.0
-        mins = round(mins , 1)
+        rounded1 = round(angle1.decimal, 5)
+        rounded2 = round(angle2.decimal, 5)
+        result = rounded1 + rounded2
         print("added result:")
-        print(hrs+mins)
-        return Angle(hrs, mins)
+        print(result)
+        return Angle.from_decimal(result)
     
     @staticmethod
     def multiply(angle=None, num=None):
