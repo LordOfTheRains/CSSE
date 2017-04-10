@@ -27,7 +27,7 @@ class Aries:
         
         observation_datetime = datetime.strptime(observation_datetime_str, '%Y,%m,%d,%H,%M,%S')
         reference_datetime = datetime.strptime(reference_datetime_str, '%Y,%m,%d,%H,%M,%S')
-        elapsed_sed_since_ref = (observation_datetime - reference_datetime).total_seconds()/1000.0
+        elapsed_sed_since_ref = (observation_datetime - reference_datetime).total_seconds()
         
         relative_pm = Aries.__get_relative_prime_meridian(year)
         earth_rotation = Aries.__get_earth_rotation_since_observation(elapsed_sed_since_ref)
