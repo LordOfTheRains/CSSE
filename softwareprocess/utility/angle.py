@@ -1,6 +1,7 @@
 import re
 import math
 
+
 class Angle:
     
     def __init__(self, hour_degree, minute_degree):
@@ -94,6 +95,8 @@ class Angle:
         floated = float(decimal)
         
         (left, right) = str(decimal).split(".")
+        print("------------------")
+        print(left)
         right = "0." + right
         hrs = int(math.floor(float(right)*360.0))
         print("hrs:")
@@ -104,6 +107,6 @@ class Angle:
         right = "0." + right
         minute_part = round(float(right)*60, 2) # keep decimal part
         print(Angle(hrs, minute_part).str)
-        
+        print("------------------")
         return Angle(hrs, minute_part)
 
