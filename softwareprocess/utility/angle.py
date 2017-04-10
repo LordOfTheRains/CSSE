@@ -96,9 +96,11 @@ class Angle:
         (left, right) = str(decimal).split(".")
         
         hrs = int(math.floor(float(right)*360.0))
-        
+        print("hrs:")
+        print(hrs)
         (left, right) = str(float(hrs)).split(".")
-        
+        print("right:")
+        print(right)
         minute_part = round(float(right)*60, 1) # keep decimal part
         return Angle(hrs, minute_part)
 
