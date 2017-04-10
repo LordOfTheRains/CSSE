@@ -44,8 +44,8 @@ class Angle:
         :param num: float
         :return: result angle
         """
-        rounded = round(angle.decimal, 5)
-        result = rounded * num
+        
+        result = angle.decimal * num
         print(angle.str)
         print("multiplied result:")
         print(result)
