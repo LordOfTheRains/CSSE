@@ -89,5 +89,15 @@ class Predict(Operation):
     
     def perform(self):
         lat = Angle.from_string(self.declination)
-        star_gha = Aries.get_greenwich_hour_angle()
+        (year, month, day) = self.date.split("-")
+        (hour, minute, sec) = self.time.split(":")
+        year = int(year)
+        month = int(month)
+        day = int(day)
+        hour = int(hour)
+        minute = int(minute)
+        sec = int(sec)
+        longitude = Aries.get_greenwich_hour_angle(year, month, day, hour, minute, sec)
+        self.original['lat'] = lat.str
+        self.original['long'] = longitude.str
         return {}
