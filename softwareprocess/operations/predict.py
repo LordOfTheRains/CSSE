@@ -100,4 +100,4 @@ class Predict(Operation):
         longitude = Aries.get_greenwich_hour_angle(year, month, day, hour, minute, sec)
         self.original['lat'] = lat.str
         self.original['long'] = longitude.str
-        return {}
+        return self.original
