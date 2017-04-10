@@ -34,6 +34,7 @@ class Angle:
         
         hrs = angle1.hour_degree + angle2.hour_degree
         mins = (angle1.minute_degree + angle2.minute_degree)/60.0
+        mins = round(mins, 1)
         print("added result:")
         print(hrs+mins)
         return Angle(hrs,mins)
