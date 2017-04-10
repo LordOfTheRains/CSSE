@@ -46,7 +46,7 @@ class Angle:
         """
         rounded = round(angle.decimal, 5)
         result = rounded * num
-        
+        print(num)
         print("multiplied result:")
         print(result)
         print("multiplied number:")
