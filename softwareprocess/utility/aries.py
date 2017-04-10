@@ -61,7 +61,7 @@ class Aries:
         
         total_progression = Angle.add(reference_rotation, cumulative_progression)
         total_progression = Angle.add(total_progression, leap_progression)
-        print("total progression" + str(total_progression))
+        print("total progression" + total_progression.str)
         return total_progression
     
     @staticmethod
@@ -74,5 +74,6 @@ class Aries:
         """
         full_angle = Angle.from_string("360d00.0")
         rotation = math.floor(elapsed_seconds/86164.1)
-        print("get_earth_rotation_" + Angle.multiply(full_angle, rotation).str)
+        
+        print("get_earth_rotation_:" + str(rotation))
         return Angle.multiply(full_angle, rotation)
