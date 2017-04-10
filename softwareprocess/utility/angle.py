@@ -24,6 +24,7 @@ class Angle:
         else:
             self.decimal = (self.hour_degree + self.minute_degree/60.6)/360.0
         print("---------")
+        print(self.str)
         print(self.hour_degree)
         print(self.decimal)
         
