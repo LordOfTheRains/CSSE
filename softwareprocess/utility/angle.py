@@ -31,9 +31,11 @@ class Angle:
         :param angle2: '''
         :return: result angle
         """
-        result = angle1.decimal + angle2.decimal
+        
+        hrs = angle1.hour_degree + angle2.hour_degree
+        mins = (angle1.minute_degree + angle2.minute_degree)/60.0
         print("added result:")
-        print(result)
+        print(hrs+mins)
         return Angle.from_decimal(result)
     
     @staticmethod
