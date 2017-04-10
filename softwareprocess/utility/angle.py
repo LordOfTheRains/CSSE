@@ -96,22 +96,14 @@ class Angle:
         negative = decimal < 0
         (left, right) = str(decimal).split(".")
         right = "0." + right
-        hrs = int(math.floor(float(right)*360.0000))
-        if decimal < 2 and decimal > 1 :
-            print("sasdhshadjah")
-            print(right)
-        minute = round(float(right), 3) * 360.00000
+        hrs = int(math.floor(float(right)*360.0))
+        
+        minute = round(float(right), 5) * 360.0000
         (left, right) = str(minute).split(".")
         right = "0." + right
-        if decimal < 2 and decimal > 1 :
-            print("------------")
-            print(minute)
-            print(right)
         right = round(float(right), 7) * 60.00000000
         minute_part = round(right, 1) # keep decimal part
-        if decimal < 2 and decimal > 1 :
-            print(right)
-            print(hrs)
+        
         if negative:
             hrs = -hrs
         return Angle(hrs, minute_part)
