@@ -92,7 +92,7 @@ class Angle:
         returns angle converted form decimal
         :return:
         """
-        floated = float(decimal)
+        negative = decimal < 0
         
         (left, right) = str(decimal).split(".")
         print("------------------")
@@ -101,7 +101,7 @@ class Angle:
         hrs = int(math.floor(float(right)*360.0))
         print("hrs:")
         print(hrs)
-        (left, right) = str(float(right)).split(".")
+        (left, right) = str(float(right)*360.0).split(".")
         
         right = "0." + right
         print("right:")
@@ -109,5 +109,7 @@ class Angle:
         minute_part = round(float(right)*60, 1) # keep decimal part
         print(Angle(hrs, minute_part).str)
         print("------------------")
+        if negative:
+            hrs = -hrs
         return Angle(hrs, minute_part)
 
