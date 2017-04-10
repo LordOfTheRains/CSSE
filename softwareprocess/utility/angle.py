@@ -13,7 +13,8 @@ class Angle:
         self.hour_degree = int(hour_degree)
         self.minute_degree = float(minute_degree)
         self.str = str(hour_degree) + "d" + str(minute_degree)
-        if self.hour_degree < 0:
+        if '-' in hour_degree:
+            self.is_negative = True
             self.decimal = (self.hour_degree - self.minute_degree/60)/360
             print(self.hour_degree)
         else:
