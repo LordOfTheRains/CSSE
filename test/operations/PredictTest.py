@@ -75,7 +75,7 @@ class PredictTest(unittest.TestCase):
         
         # incorrect date format
         expected_string = 'Incorrect Date Format: Must be yyyy-mm-dd'
-        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'nameee': 'Betelgeuse', 'date': '42',
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         
