@@ -11,8 +11,9 @@ class Adjust(Operation):
     DEFAULT_HORIZON = "natural"
     
     def __init__(self, param_dict):
-        Operation.__init__(self)
         self.original = param_dict
+        Operation.__init__(self)
+        
         observation = param_dict['observation']
         x, y = observation.split("d")
         y = y.lstrip("0")

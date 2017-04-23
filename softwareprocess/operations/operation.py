@@ -5,7 +5,7 @@ class Operation:
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        pass
+        remove_error_key()
     
     @staticmethod
     def validate_parameter(self):
@@ -25,4 +25,5 @@ class Operation:
         """
         raise NotImplemented
 
-
+    def remove_error_key(self):
+        self.original.pop('error', None)
