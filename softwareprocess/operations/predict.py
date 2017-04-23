@@ -4,7 +4,6 @@ from softwareprocess.utility.angle import Angle
 from softwareprocess.utility.aries import Aries
 
 import re
-import math
 from datetime import date
 
 

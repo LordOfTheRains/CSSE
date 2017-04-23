@@ -4,13 +4,14 @@ from operations.predict import Predict
 
 def dispatch(values=None):
     
-    # removes error key if present
-    values.pop('error', None)
     # Validate parm
     if values is None:
         return {'error': 'parameter is missing'}
     if not(isinstance(values, dict)):
         return {'error': 'parameter is not a dictionary'}
+    # removes error key if present
+    values.pop('error', None)
+    
     if not('op' in values):
         values['error'] = 'no op  is specified'
         return values
