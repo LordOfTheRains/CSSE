@@ -77,7 +77,7 @@ class DispatchTest(unittest.TestCase):
     
     # Predict Test
     def test_dispatch_valid_predict(self):
-        input_dict = {'name': 'BetelGeuse', 'date': '2016-01-17',
+        input_dict = {'body': 'BetelGeuse', 'date': '2016-01-17',
               'time': '03:15:42', 'op': 'predict'}
         expected = {'op': 'predict', 'body': 'BetelGeuse',
             'date': '2016-01-17', 'time': '03:15:42',
