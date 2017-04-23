@@ -7,7 +7,7 @@ class Operation:
     original = {}
     
     def __init__(self):
-        self.remove_error_key()
+        pass
     
     @staticmethod
     def validate_parameter(self):
@@ -26,9 +26,6 @@ class Operation:
         :return: original dictionary + result key-value pair
         """
         raise NotImplemented
-
-    def remove_error_key(self):
-        self.original.pop('error', None)
 
     @staticmethod
     def check_mandatory_param(input_dict, mandatory_param):

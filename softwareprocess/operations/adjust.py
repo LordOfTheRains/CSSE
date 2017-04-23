@@ -12,8 +12,8 @@ class Adjust(Operation):
     MANDATORY_PARAMS = ['observation']
     
     def __init__(self, param_dict):
-        self.original = param_dict
         Operation.__init__(self)
+        self.original = param_dict
         
         observation = param_dict['observation']
         x, y = observation.split("d")

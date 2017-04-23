@@ -3,7 +3,9 @@ from operations.predict import Predict
 
 
 def dispatch(values=None):
-
+    
+    # removes error key if present
+    values.pop('error', None)
     # Validate parm
     if values is None:
         return {'error': 'parameter is missing'}
@@ -12,7 +14,7 @@ def dispatch(values=None):
     if not('op' in values):
         values['error'] = 'no op  is specified'
         return values
-
+    
     # Perform designated function
     if values['op'] == 'adjust':
         validated = Adjust.validate_parameter(values)

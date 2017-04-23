@@ -14,8 +14,8 @@ class Predict(Operation):
     MANDATORY_PARAMS = ['body']
     
     def __init__(self, param_dict):
-        self.original = param_dict
         Operation.__init__(self)
+        self.original = param_dict
         
         self.body = param_dict['body'].lower().capitalize()
         if 'date' in param_dict:

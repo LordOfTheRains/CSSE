@@ -41,7 +41,7 @@ class PredictTest(unittest.TestCase):
         # Sad Path
         
         # star not in dictionary
-        expected_string = 'missing mandatory information'
+        expected_string = 'mandatory information is missing'
         validated = Predict.validate_parameter({'bodyyy': 'Betelgeuse', 'date': '2016-01-17',
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertEqual(expected_string, validated, "missing mandatory [body] key ")
