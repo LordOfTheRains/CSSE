@@ -47,11 +47,9 @@ class Predict(Operation):
             else:
                 star_name = param_dict['body'].lower().capitalize()
                 if star_name not in STARS:
-                validated = False
-                error.append('Star Not Found on Star List')
+                    validated = False
+                    error.append('Star Not Found on Star List')
             
-            
-        
         if "date" in param_dict:
             input_date = param_dict['date']
             input_date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', input_date)
