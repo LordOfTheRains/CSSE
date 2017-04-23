@@ -47,11 +47,14 @@ class Adjust(Operation):
         all appropriate errors shall be thrown within the implementation
         :return: boolean indicating success/ error value indicating error
         """
+        
         validated = True
         error = []
         if param_dict is None or not isinstance(param_dict, dict):
             error.append('No Valid Dictionary Provided')
             return ';'.join([str(x) for x in error])
+        
+        if not Operation.check_mandatory_param(param_dict,MANDATORY_PARAMS)
         
         if "observation" in param_dict:
             observation = param_dict['observation']

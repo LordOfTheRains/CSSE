@@ -5,7 +5,8 @@ class Operation:
     __metaclass__ = ABCMeta
     
     original = {}
-
+    MANDATORY_PARAMS = []
+    
     def __init__(self):
         self.remove_error_key()
     
@@ -29,3 +30,11 @@ class Operation:
 
     def remove_error_key(self):
         self.original.pop('error', None)
+
+    @staticmethod
+    def check_mandatory_param(input_dict, mandatory_param):
+        for param in mandatory_param:
+            if param not in input_dict:
+                input_dict['error'] = "mandatory information is missing"
+                return input_dict
+        return True
