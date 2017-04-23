@@ -15,7 +15,7 @@ class Predict(Operation):
     def __init__(self, param_dict):
         Operation.__init__(self)
         self.original = param_dict
-        self.name = param_dict['body'].lower().capitalize()
+        self.body = param_dict['body'].lower().capitalize()
         if 'date' in param_dict:
             self.date = param_dict['date']
         else:
