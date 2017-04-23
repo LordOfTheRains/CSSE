@@ -15,7 +15,7 @@ class Predict(Operation):
     def __init__(self, param_dict):
         Operation.__init__(self)
         self.original = param_dict
-        self.name = param_dict['name'].lower().capitalize()
+        self.name = param_dict['body'].lower().capitalize()
         if 'date' in param_dict:
             self.date = param_dict['date']
         else:
@@ -37,11 +37,11 @@ class Predict(Operation):
             validated = False
             error.append('[lat] or [long] key cannot be in Dictionary')
         
-        if "name" not in param_dict:
+        if "body" not in param_dict:
             validated = False
             error.append('Missing Star Name in Dictionary')
         else:
-            star_name = param_dict['name'].lower().capitalize()
+            star_name = param_dict['body'].lower().capitalize()
             if star_name not in STARS:
                 validated = False
                 error.append('Star Not Found on Star List')
