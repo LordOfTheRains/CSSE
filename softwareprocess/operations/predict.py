@@ -25,8 +25,8 @@ class Predict(Operation):
             self.time = param_dict['time']
         else:
             self.time = self.DEFAULT_TIME
-        self.sidereal = STARS[self.name]['sidereal']
-        self.declination = STARS[self.name]['declination']
+        self.sidereal = STARS[self.body]['sidereal']
+        self.declination = STARS[self.body]['declination']
         
     @staticmethod
     def validate_parameter(param_dict=None):
