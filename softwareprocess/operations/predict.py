@@ -35,7 +35,7 @@ class Predict(Operation):
         validated = True
         error = []
         
-        if not Operation.check_mandatory_param(param_dict, Adjust.MANDATORY_PARAMS):
+        if not Operation.check_mandatory_param(param_dict, Predict.MANDATORY_PARAMS):
             return param_dict
         
         if "lat" in param_dict or "long" in param_dict:
