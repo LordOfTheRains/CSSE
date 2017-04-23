@@ -83,20 +83,18 @@ class Predict(Operation):
                 error.append('Invalid Time Value')
             else:
                 input_time = re.match('^[0-9]{2}:[0-9]{2}:[0-9]{2}$', input_time)
-            
-            
-            if input_time:
-                input_time = input_time.group()
-                (hour, minute, second) = input_time.split(':')
-                hour = int(hour)
-                minute = int(minute)
-                second = int(second)
-                if hour > 23 or minute > 59 or second > 59:
+                if input_time:
+                    input_time = input_time.group()
+                    (hour, minute, second) = input_time.split(':')
+                    hour = int(hour)
+                    minute = int(minute)
+                    second = int(second)
+                    if hour > 23 or minute > 59 or second > 59:
+                        validated = False
+                        error.append('Invalid Time')
+                else:
                     validated = False
-                    error.append('Invalid Time')
-            else:
-                validated = False
-                error.append('Incorrect Time Format: Must be hh:mm:ss')
+                    error.append('Incorrect Time Format: Must be hh:mm:ss')
         
         if validated:
             return True
