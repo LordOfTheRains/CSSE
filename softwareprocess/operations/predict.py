@@ -13,8 +13,9 @@ class Predict(Operation):
     DEFAULT_TIME = "00:00:00"
     
     def __init__(self, param_dict):
-        Operation.__init__(self)
+        
         self.original = param_dict
+        Operation.__init__(self)
         self.body = param_dict['body'].lower().capitalize()
         if 'date' in param_dict:
             self.date = param_dict['date']

@@ -3,9 +3,11 @@ from abc import ABCMeta, abstractmethod
 
 class Operation:
     __metaclass__ = ABCMeta
+    
+    original = {}
 
     def __init__(self):
-        remove_error_key()
+        self.remove_error_key()
     
     @staticmethod
     def validate_parameter(self):
