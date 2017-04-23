@@ -56,7 +56,7 @@ class Adjust(Operation):
             return ';'.join([str(x) for x in error])
         
         if not Operation.check_mandatory_param(param_dict, Adjust.MANDATORY_PARAMS):
-            return param_dict
+            return "mandatory information is missing"
         
         if "observation" in param_dict:
             observation = param_dict['observation']

@@ -34,6 +34,5 @@ class Operation:
     def check_mandatory_param(input_dict, mandatory_param):
         for param in mandatory_param:
             if param not in input_dict:
-                input_dict['error'] = "mandatory information is missing"
-                return input_dict
+                return False
         return True
