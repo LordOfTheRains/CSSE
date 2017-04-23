@@ -44,7 +44,7 @@ class PredictTest(unittest.TestCase):
         expected_string = 'missing mandatory information'
         validated = Predict.validate_parameter({'bodyyy': 'Betelgeuse', 'date': '2016-01-17',
                                                'time': '03:15:42', 'op': 'predict'})
-        self.assertEqual((expected_string, validated))
+        self.assertEqual(expected_string, validated, "missing mandatory [body] key ")
         
         # star not in star list
         

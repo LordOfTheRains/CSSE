@@ -80,7 +80,7 @@ class AdjustTest(unittest.TestCase):
         validated = Adjust.validate_parameter({'asd': '15d04.9', 'height': '6.0',
                                                'pressure': '1010', 'horizon': 'artificial',
                                                'op': 'adjust', 'temperature': '72'})
-        self.assertEqual((expected_string,validated))
+        self.assertEqual(expected_string, validated, "missing mandatory [observation] key ")
         
         expected_string = 'Invalid Observation Value in Dictionary'
         validated = Adjust.validate_parameter({'observation': 'asdd04.9', 'height': '6.0',
