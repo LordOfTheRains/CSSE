@@ -41,7 +41,7 @@ class PredictTest(unittest.TestCase):
         # Sad Path
         
         # star not in dictionary
-        expected_string = 'Missing Star body in Dictionary'
+        expected_string = 'Missing Star Name in Dictionary'
         validated = Predict.validate_parameter({'bodyyy': 'Betelgeuse', 'date': '2016-01-17',
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
