@@ -5,7 +5,6 @@ class Operation:
     __metaclass__ = ABCMeta
     
     original = {}
-    MANDATORY_PARAMS = []
     
     def __init__(self):
         self.remove_error_key()

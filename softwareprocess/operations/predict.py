@@ -11,6 +11,7 @@ from datetime import date
 class Predict(Operation):
     DEFAULT_DATE = '2001-01-01'
     DEFAULT_TIME = "00:00:00"
+    MANDATORY_PARAMS = ['body']
     
     def __init__(self, param_dict):
         self.original = param_dict
@@ -33,6 +34,9 @@ class Predict(Operation):
     def validate_parameter(param_dict=None):
         validated = True
         error = []
+        
+        if not Operation.check_mandatory_param(param_dict, Adjust.MANDATORY_PARAMS):
+            return param_dict
         
         if "lat" in param_dict or "long" in param_dict:
             validated = False

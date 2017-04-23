@@ -9,6 +9,7 @@ class Adjust(Operation):
     DEFAULT_PRESSURE = 1010
     DEFAULT_HEIGHT = 0
     DEFAULT_HORIZON = "natural"
+    MANDATORY_PARAMS = ['observation']
     
     def __init__(self, param_dict):
         self.original = param_dict
@@ -54,7 +55,8 @@ class Adjust(Operation):
             error.append('No Valid Dictionary Provided')
             return ';'.join([str(x) for x in error])
         
-        if not Operation.check_mandatory_param(param_dict,MANDATORY_PARAMS)
+        if not Operation.check_mandatory_param(param_dict, Adjust.MANDATORY_PARAMS):
+            return param_dict
         
         if "observation" in param_dict:
             observation = param_dict['observation']
