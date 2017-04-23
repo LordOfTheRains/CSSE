@@ -41,7 +41,7 @@ class Predict(Operation):
             validated = False
             error.append('Missing Star Name in Dictionary')
         else:
-            if (param_dict['body']) is not str:
+            if type(param_dict['body']) is not str:
                 validated = False
                 error.append('Invalid Star Name')
             else:
@@ -52,30 +52,38 @@ class Predict(Operation):
             
         if "date" in param_dict:
             input_date = param_dict['date']
-            input_date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', input_date)
-            
-            if input_date:
-                input_date = input_date.group()
-                (year, month, day) = input_date.split('-')
-                year = int(year)
-                month = int(month)
-                day = int(day)
-                if year < 2001:
-                    validated = False
-                    error.append('Date Out of Range: Date Must be at least 2001')
-                else:
-                    try:
-                        date(year, month, day)
-                    except ValueError:
-                        validated = False
-                        error.append('Invalid Date')
-            else:
+            if type(input_date) is not str:
                 validated = False
-                error.append('Incorrect Date Format: Must be yyyy-mm-dd')
-        
+                error.append('Invalid Date Value')
+            else:
+                input_date = re.match('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$', input_date)
+                if input_date:
+                    input_date = input_date.group()
+                    (year, month, day) = input_date.split('-')
+                    year = int(year)
+                    month = int(month)
+                    day = int(day)
+                    if year < 2001:
+                        validated = False
+                        error.append('Date Out of Range: Date Must be at least 2001')
+                    else:
+                        try:
+                            date(year, month, day)
+                        except ValueError:
+                            validated = False
+                            error.append('Invalid Date')
+                else:
+                    validated = False
+                    error.append('Incorrect Date Format: Must be yyyy-mm-dd')
+            
         if "time" in param_dict:
             input_time = param_dict['time']
-            input_time = re.match('^[0-9]{2}:[0-9]{2}:[0-9]{2}$', input_time)
+            if type(input_time) is not str:
+                validated = False
+                error.append('Invalid Time Value')
+            else:
+                input_time = re.match('^[0-9]{2}:[0-9]{2}:[0-9]{2}$', input_time)
+            
             
             if input_time:
                 input_time = input_time.group()
