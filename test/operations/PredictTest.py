@@ -41,10 +41,10 @@ class PredictTest(unittest.TestCase):
         # Sad Path
         
         # star not in dictionary
-        expected_string = 'Missing Star Name in Dictionary'
+        expected_string = 'missing mandatory information'
         validated = Predict.validate_parameter({'bodyyy': 'Betelgeuse', 'date': '2016-01-17',
                                                'time': '03:15:42', 'op': 'predict'})
-        self.assertTrue((expected_string in validated))
+        self.assertEqual((expected_string in validated))
         
         # star not in star list
         
@@ -76,7 +76,7 @@ class PredictTest(unittest.TestCase):
         # incorrect date format
         expected_string = 'Incorrect Date Format: Must be yyyy-mm-dd'
 
-        validated = Predict.validate_parameter({'bodyee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'body': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '03:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         
@@ -121,29 +121,29 @@ class PredictTest(unittest.TestCase):
         
         # incorrect time format
         expected_string = 'Incorrect Time Format: Must be hh:mm:ss'
-        validated = Predict.validate_parameter({'bodyee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'body': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '--03:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         
         # Invalid time
         expected_string = 'Invalid Time'
-        validated = Predict.validate_parameter({'bodyee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'body': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '99:15:42', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         
         expected_string = 'Invalid Time'
-        validated = Predict.validate_parameter({'bodyee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'body': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '23:60:60', 'op': 'predict'})
         self.assertTrue((expected_string in validated))
         # Happy Path
-        validated = Predict.validate_parameter({'bodyee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'body': 'Betelgeuse', 'date': '2016-1-17',
                                                'timsse': '99:15:42', 'op': 'predict'})
         self.assertTrue(validated)
         
-        validated = Predict.validate_parameter({'bodyee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'body': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '23:59:59', 'op': 'predict'})
         self.assertTrue(validated)
         
-        validated = Predict.validate_parameter({'bodyee': 'Betelgeuse', 'date': '2016-1-17',
+        validated = Predict.validate_parameter({'body': 'Betelgeuse', 'date': '2016-1-17',
                                                'time': '00:00:00', 'op': 'predict'})
         self.assertTrue(validated)
