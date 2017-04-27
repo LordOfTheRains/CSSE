@@ -4,7 +4,7 @@ import unittest
 from softwareprocess.operations.correct import Correct
 
 
-class AriesTest(unittest.TestCase):
+class CorrectTest(unittest.TestCase):
     
     def setUp(self):
         pass
@@ -27,7 +27,7 @@ class AriesTest(unittest.TestCase):
                       'assumedLat': 'unknown', 'assumedLong': '2016-01-17',
                       'altitude': '03:15:99'}
         result = Correct.validate_parameter(input_dict)
-        self.assertTrue(expected not in result)
+        self.assertTrue(result)
         
         # sad path
         # missing lat

@@ -20,7 +20,10 @@ class Correct(Operation):
         if not Operation.check_mandatory_param(param_dict, Correct.MANDATORY_PARAMS):
             return "mandatory information is missing"
         
-        pass
+        if validated:
+            return True
+        else:
+            return error
     
     def perform(self):
         pass
