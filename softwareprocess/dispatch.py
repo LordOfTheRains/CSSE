@@ -10,7 +10,8 @@ def dispatch(values=None):
     if not(isinstance(values, dict)):
         return {'error': 'parameter is not a dictionary'}
     # removes error key if present
-    values.pop('error', None)
+    if values.pop('error', None) is not None:
+        return values
     
     if not('op' in values):
         values['error'] = 'no op  is specified'
