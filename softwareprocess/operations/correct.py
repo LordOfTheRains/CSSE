@@ -7,14 +7,18 @@ from datetime import date
 
 class Correct(Operation):
     
-    MANDATORY_PARAMS = ['body']
+    MANDATORY_PARAMS = ['lat', 'long', 'altitude', 'assumedLat', 'assumedLong']
     
     def __init__(self, param_dict):
         pass
     
     @staticmethod
     def validate_parameter(param_dict=None):
+        validated = True
+        error = []
         
+        if not Operation.check_mandatory_param(param_dict, Correct.MANDATORY_PARAMS):
+            return "mandatory information is missing"
         
         pass
     
