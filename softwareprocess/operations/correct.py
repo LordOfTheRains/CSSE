@@ -66,9 +66,6 @@ class Correct(Operation):
                 if float(y) < 0.0 or not float(y) < 60:
                     validated = False
                     error.append('Longitude Minute Out of Range: 0 <= long < 60.0')
-                if int(x) == 0 and float(y) < 0.1:
-                    validated = False
-                    error.append('Observation value cannot be less than 0d0.1')
             else:
                 validated = False
                 error.append('Incorrect Longitude Format: xdyy.y')
