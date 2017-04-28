@@ -24,7 +24,7 @@ class Correct(Operation):
         longitude = param_dict['long']
         altitude = param_dict['altitude']
         assumedLat = param_dict['assumedLat']
-        assumedLong = param_dict['assumedLong']
+        assumed_long = param_dict['assumedLong']
         
         # validate lat
         if type(lat) is not str:
@@ -69,6 +69,28 @@ class Correct(Operation):
             else:
                 validated = False
                 error.append('Incorrect Longitude Format: xdyy.y')
+        
+        # validate assumedLong
+        if type(assumed_long) is not str:
+            validated = False
+            error.append('Assumed Longitude Must be A String Value')
+        else:
+            assumed_long = re.match('^[-]?[0-9]+d[0-9]{1,2}.\d$', assumed_long)
+            if assumedLong:
+                assumed_long = assumed_long.group()
+                x, y = assumed_long.split("d")
+                if int(x) < 0 or int(x) > 359:
+                    validated = False
+                    error.append('Assumed Longitude Out of Range: 0.0 <= assumedLong < 360.0')
+                    
+                # trim leading 0
+                y = y.lstrip("0")
+                if float(y) < 0.0 or not float(y) < 60:
+                    validated = False
+                    error.append('Assumed Longitude Minute Out of Range: 0 <= assumedLong < 60.0')
+            else:
+                validated = False
+                error.append('Incorrect Assumed Longitude Format: xdyy.y')
         
         if validated:
             return True
