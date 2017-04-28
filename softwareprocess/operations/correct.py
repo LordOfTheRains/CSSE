@@ -31,7 +31,7 @@ class Correct(Operation):
             validated = False
             error.append('Latitude Must be A String Value')
         else:
-            lat = re.match('^[-][0-9]+d[0-9]?[0-9].\d$', lat)
+            lat = re.match('^[-][0-9]+d[0-9]{1,2}.\d$', lat)
             if lat:
                 lat = lat.group()
                 x, y = lat.split("d")
