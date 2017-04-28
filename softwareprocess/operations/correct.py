@@ -21,7 +21,7 @@ class Correct(Operation):
             return "mandatory information is missing"
         
         lat = param_dict['lat']
-        long = param_dict['long']
+        longitude = param_dict['long']
         altitude = param_dict['altitude']
         assumedLat = param_dict['assumedLat']
         assumedLong = param_dict['assumedLong']
@@ -47,6 +47,31 @@ class Correct(Operation):
             else:
                 validated = False
                 error.append('Incorrect Latitude Format: xdyy.y')
+        
+        # validate long
+        if type(longitude) is not str:
+            validated = False
+            error.append('Longitude Must be A String Value')
+        else:
+            longitude = re.match('^[0-9]+d[0-9]+.\d$', longitude)
+            if longitude:
+                longitude = longitude.group()
+                x, y = longitude.split("d")
+                if int(x) < 0 or int(x) > 359:
+                    validated = False
+                    error.append('Longitude Out of Range: 0.0 <= long < 360.0')
+                    
+                # trim leading 0
+                y = y.lstrip("0")
+                if float(y) < 0.0 or not float(y) < 60:
+                    validated = False
+                    error.append('Longitude Minute Out of Range: 0 <= long < 60.0')
+                if int(x) == 0 and float(y) < 0.1:
+                    validated = False
+                    error.append('Observation value cannot be less than 0d0.1')
+            else:
+                validated = False
+                error.append('Incorrect Longitude Format: xdyy.y')
         
         if validated:
             return True
