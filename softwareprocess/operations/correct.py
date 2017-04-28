@@ -76,7 +76,7 @@ class Correct(Operation):
             error.append('Assumed Longitude Must be A String Value')
         else:
             assumed_long = re.match('^[-]?[0-9]+d[0-9]{1,2}.\d$', assumed_long)
-            if assumedLong:
+            if assumed_long:
                 assumed_long = assumed_long.group()
                 x, y = assumed_long.split("d")
                 if int(x) < 0 or int(x) > 359:
