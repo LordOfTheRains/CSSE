@@ -29,7 +29,7 @@ class Correct(Operation):
         # validate lat
         if type(lat) is not str:
             validated = False
-            error.append('Incorrect Latitude Format: xdyy.y')
+            error.append('Latitude Must be A String Value')
         else:
             lat = re.match('^[0-9]+d[0-9]+.\d$', lat)
             if lat:
