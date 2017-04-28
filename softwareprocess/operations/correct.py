@@ -53,7 +53,7 @@ class Correct(Operation):
             validated = False
             error.append('Longitude Must be A String Value')
         else:
-            longitude = re.match('^[0-9]+d[0-9]+.\d$', longitude)
+            longitude = re.match('^[-]?[0-9]+d[0-9]{1,2}.\d$', longitude)
             if longitude:
                 longitude = longitude.group()
                 x, y = longitude.split("d")
