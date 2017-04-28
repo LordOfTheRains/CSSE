@@ -65,13 +65,12 @@ class CorrectTest(unittest.TestCase):
                       'altitude': '03:15:99'}
         result = Correct.validate_parameter(input_dict)
         self.assertTrue(expected in result)
-
-     def test_validate_parameter_lat(self):
+    
+    def test_validate_parameter_lat(self):
         # lat: mandatory, unvalidated,
         # xdyy.y
         # x GT -90 and LT 90
         # yy.y GT 0 and LT 60.0
-        expected = "mandatory information is missing"
         
         # happy path
         # high boiund lat
