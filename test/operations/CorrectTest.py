@@ -104,7 +104,7 @@ class CorrectTest(unittest.TestCase):
         self.assertTrue("Latitude Must be A String Value" in result, result)
         
         # bad format
-        input_dict = {'op': 'correct', 'lat': "-89d000.9", 'long': "-89d59.9",
+        input_dict = {'op': 'correct', 'lat': "-89d001.9", 'long': "-89d59.9",
                       'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
                       'altitude': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
