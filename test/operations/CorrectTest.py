@@ -66,6 +66,85 @@ class CorrectTest(unittest.TestCase):
         result = Correct.validate_parameter(input_dict)
         self.assertTrue(expected in result)
     
+    def test_validate_parameter_long(self):
+        # long: mandatory, unvalidated,
+        # xdyy.y
+        # x GT -90 and LT 90
+        # yy.y GT 0 and LT 60.0
+        
+        # happy path
+        # high bound long
+        input_dict = {'op': 'correct', 'long': "89d59.9", 'lat': "89d59.9",
+                      'assumedLat': '89d59.9', 'assumedLong': '89d59.9',
+                      'altitude': '89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # low bound long
+        input_dict = {'op': 'correct', 'long': "-89d59.9", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # normal long
+        input_dict = {'op': 'correct', 'long': "0d0.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # sad path
+        # not string
+        
+        input_dict = {'op': 'correct', 'long': 123, 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Longitude Must be A String Value" in result, result)
+        
+        # bad format
+        input_dict = {'op': 'correct', 'long': "-89d001.9", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Incorrect Longitude Format: xdyy.y" in result, result)
+        
+        # bad format
+        input_dict = {'op': 'correct', 'long': "12ddd12.3", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Incorrect Longitude Format: xdyy.y" in result, result)
+        
+        # bad format
+        input_dict = {'op': 'correct', 'long': "12d12..3", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Incorrect Longitude Format: xdyy.y" in result, result)
+        
+        # out of high range
+        input_dict = {'op': 'correct', 'long': "90d00.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Longitude Out of Range: -90.0 < long < 90.0" in result, result)
+        
+        # out of low range
+        input_dict = {'op': 'correct', 'long': "-90d00.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Longitude Out of Range: -90.0 < long < 90.0" in result, result)
+        
+        # out of arc minute range
+        input_dict = {'op': 'correct', 'long': "30d70.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
+                      'altitude': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Longitude Minute Out of Range: 0 <= long < 60.0" in result, result)
+        
     def test_validate_parameter_lat(self):
         # lat: mandatory, unvalidated,
         # xdyy.y
@@ -125,7 +204,7 @@ class CorrectTest(unittest.TestCase):
         self.assertTrue("Incorrect Latitude Format: xdyy.y" in result, result)
         
         # out of high range
-        input_dict = {'op': 'correct', 'lat': "-89d59.9", 'long': "-89d59.9",
+        input_dict = {'op': 'correct', 'lat': "90d00.0", 'long': "-89d59.9",
                       'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
                       'altitude': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
