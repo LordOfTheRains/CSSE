@@ -3,7 +3,7 @@ from predict import Predict as predict
 from adjust import  Adjust as adjust
 
 import re
-from datetime import date
+
 
 class Correct(Operation):
     
@@ -31,7 +31,7 @@ class Correct(Operation):
             validated = False
             error.append('Latitude Must be A String Value')
         else:
-            lat = re.match('^[0-9]+d[0-9]+.\d$', lat)
+            lat = re.match('^[-][0-9]+d[0-9]+.\d$', lat)
             if lat:
                 lat = lat.group()
                 x, y = lat.split("d")
