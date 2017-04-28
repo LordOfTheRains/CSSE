@@ -55,7 +55,7 @@ class Correct(Operation):
         else:
             assumed_lat = re.match('^[-]?[0-9]+d[0-9]{1,2}.\d$', assumed_lat)
             if assumed_lat:
-                lat = assumed_lat.group()
+                assumed_lat = assumed_lat.group()
                 x, y = assumed_lat.split("d")
                 if int(x) < -89 or int(x) > 89:
                     validated = False
