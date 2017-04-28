@@ -29,29 +29,24 @@ class Correct(Operation):
         # validate lat
         if type(lat) is not str:
             validated = False
-            error.append('Invalid [lat] Value')
+            error.append('Incorrect Latitude Format: xdyy.y')
         else:
             lat = re.match('^[0-9]+d[0-9]+.\d$', lat)
-            
-        
             if lat:
-                observation = observation.group()
-                x, y = observation.split("d")
-                if int(x) < 0 or int(x) > 89:
+                lat = lat.group()
+                x, y = lat.split("d")
+                if int(x) < -89 or int(x) > 89:
                     validated = False
-                    error.append('Observation degree must be integer between 0 and 89. inclusive')
+                    error.append('Latitude Out of Range: -90.0 < lat < 90.0')
                     
                 # trim leading 0
                 y = y.lstrip("0")
                 if float(y) < 0.0 or not float(y) < 60:
                     validated = False
-                    error.append('Observation minute must be float between GE 0.0 and LT 60.0.')
-                if int(x) == 0 and float(y) < 0.1:
-                    validated = False
-                    error.append('Observation value cannot be less than 0d0.1')
+                    error.append('Latitude Minute Out of Range: 0 <= lat < 60.0')
             else:
                 validated = False
-                error.append('Invalid Observation Value in Dictionary')
+                error.append('Incorrect Latitude Format: xdyy.y')
         
         if validated:
             return True

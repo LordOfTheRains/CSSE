@@ -138,9 +138,9 @@ class CorrectTest(unittest.TestCase):
         result = Correct.validate_parameter(input_dict)
         self.assertTrue("Latitude Out of Range: -90.0 < lat < 90.0" in result)
         
-        # out of low range
-        input_dict = {'op': 'correct', 'lat': "-90d00.0", 'long': "-89d59.9",
+        # out of arc minute range
+        input_dict = {'op': 'correct', 'lat': "30d70.0", 'long': "-89d59.9",
                       'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
                       'altitude': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
-        self.assertTrue("Latitude Out of Range: -90.0 < lat < 90.0" in result)
+        self.assertTrue("Latitude Minute Out of Range: 0 <= lat < 60.0" in result)
