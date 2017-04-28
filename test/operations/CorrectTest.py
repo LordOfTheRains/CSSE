@@ -125,7 +125,7 @@ class CorrectTest(unittest.TestCase):
         self.assertTrue("Incorrect Latitude Format: xdyy.y" in result, result)
         
         # out of high range
-        input_dict = {'op': 'correct', 'lat': "12d12.3", 'long': "-89d59.9",
+        input_dict = {'op': 'correct', 'lat': "89d59.9", 'long': "-89d59.9",
                       'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
                       'altitude': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
