@@ -74,9 +74,9 @@ class CorrectTest(unittest.TestCase):
         
         # happy path
         # high boiund lat
-        input_dict = {'op': 'correct', 'lat': "89d59.9", 'long': "adsa",
-                      'assumedLat': 'unknown', 'assumedLong': '2016-01-17',
-                      'altitude': '03:15:99'}
+        input_dict = {'op': 'correct', 'lat': "89d59.9", 'long': "89d59.9",
+                      'assumedLat': '89d59.9', 'assumedLong': '89d59.9',
+                      'altitude': '89d59.9'}
         result = Correct.validate_parameter(input_dict)
         self.assertTrue(result)
         
