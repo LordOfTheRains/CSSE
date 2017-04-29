@@ -164,10 +164,12 @@ class Correct(Operation):
         lha = Angle.add(longitude, assumed_long)
         print('lha:' + lha.str)
         
-        sin_lat = math.sin(math.radians(lat.decimal*360))
-        cos_lat = math.cos(math.radians(lat.decimal*360))
+        sin_lat = round(math.sin(math.radians(lat.decimal*360)), 3)
+        cos_lat = round(math.cos(math.radians(lat.decimal*360)), 3)
         print(cos_lat)
-        sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal*360))
-        cos_assumed_lat = math.cos(math.radians(assumed_lat.decimal*360))
-        cos_lha = math.cos(math.radians(lha.decimal*360))
+        sin_assumed_lat = round(math.sin(math.radians(assumed_lat.decimal*360)), 3)
+        cos_assumed_lat = round(math.cos(math.radians(assumed_lat.decimal*360)), 3)
+        cos_lha = round(math.cos(math.radians(lha.decimal*360)), 3)
+        inter_distance = sin_lat*sin_assumed_lat +cos_lat*cos_assumed_lat*cos_lha
         print(cos_lha)
+        print(inter_distance)
