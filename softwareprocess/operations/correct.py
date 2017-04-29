@@ -2,7 +2,7 @@ from operation import Operation
 from softwareprocess.utility.angle import Angle
 
 import re
-
+import math
 
 class Correct(Operation):
     
@@ -160,3 +160,10 @@ class Correct(Operation):
         assumed_lat = Angle.from_string(self.assumed_lat)
         assumed_long = Angle.from_string(self.assumed_long)
         altitude = Angle.from_string(self.altitude)
+        
+        lha = Angle.add(long, assumed_long)
+        print('lha:' + lha.str)
+        
+        sin_lat = math.sin(math.radians(lat.decimal))
+        
+        sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal))
