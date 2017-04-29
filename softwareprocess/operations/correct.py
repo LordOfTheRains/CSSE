@@ -20,6 +20,9 @@ class Correct(Operation):
         if not Operation.check_mandatory_param(param_dict, Correct.MANDATORY_PARAMS):
             return "mandatory information is missing"
         
+        if 'correctedDistance' in param_dict or 'correctedAzimuth' in param_dict:
+            return "Input Dictionary Contains Forbidden Parameter: correctAzimuth/correctedDistance"
+        
         lat = param_dict['lat']
         longitude = param_dict['long']
         altitude = param_dict['altitude']

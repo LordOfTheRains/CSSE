@@ -479,14 +479,14 @@ class CorrectTest(unittest.TestCase):
                       'assumedLat': '89d59.9', 'long': '89d59.9',
                       'assumedLong': '89d59.9', 'correctedAzimuth': "asda"}
         result = Correct.validate_parameter(input_dict)
-        self.assertTrue("Input Dictionary Contains Forbidden Parameter: correctAzimuth" in result, result)
+        self.assertTrue("Input Dictionary Contains Forbidden Parameter: correctAzimuth/correctedDistance" in result, result)
         
-    def test_validate_parameter_no_correctedAzimuth(self):
-        # correctedAzimuth should nto be in input dictionary
+    def test_validate_parameter_no_correctedDistance(self):
+        # correctedDistance should nto be in input dictionary
         # yy.y GE 0 and LT 60.0
         
         # happy path
-        # no correctAzimuth
+        # no correctedDistance
         input_dict = {'op': 'correct', 'altitude': "89d59.9", 'lat': "89d59.9",
                       'assumedLat': '89d59.9', 'long': '89d59.9',
                       'assumedLong': '89d59.9'}
@@ -494,9 +494,9 @@ class CorrectTest(unittest.TestCase):
         self.assertTrue(result)
         
         # sad path
-        # correctAzimuth in dictionary
+        # correctedDistance in dictionary
         input_dict = {'op': 'correct', 'altitude': "89d59.9", 'lat': "89d59.9",
                       'assumedLat': '89d59.9', 'long': '89d59.9',
-                      'assumedLong': '89d59.9', 'correctedAzimuth': "asda"}
+                      'assumedLong': '89d59.9', 'correctedDistance': "asda"}
         result = Correct.validate_parameter(input_dict)
-        self.assertTrue("Input Dictionary Contains Forbidden Parameter: correctAzimuth" in result, result)
+        self.assertTrue("Input Dictionary Contains Forbidden Parameter: correctAzimuth/correctedDistance" in result, result)
