@@ -168,5 +168,5 @@ class Correct(Operation):
         cos_lat = math.cos(math.radians(lat.decimal*360))
         print(cos_lat)
         sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal*360))
-        cos_assumed_lat = math.sin(math.radians(assumed_lat.decimal*360))
+        cos_assumed_lat = math.cos(math.radians(assumed_lat.decimal*360))
         print(cos_assumed_lat)
