@@ -184,7 +184,7 @@ class Correct(Operation):
         denom = cos_assumed_lat * cos_arcsin_inter_dist
         # radians
         corrected_az = math.acos(numerator/denom)
-        corrected_az_degree = corrected_az/math.pi * 180
+        corrected_az_degree = math.degrees(corrected_az)
         corrected_azimuth = Angle.from_decimal(corrected_az_degree / 360)
         print (corrected_az)
         print (corrected_az_degree)

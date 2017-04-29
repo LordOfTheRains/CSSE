@@ -164,3 +164,9 @@ class DispatchTest(unittest.TestCase):
         
         result = dispatcher.dispatch(input_dict)
         self.assertTrue("error" in result, result)
+        
+        input_dict = {'op': 'correct', 'long': "95d41.6", 'lat': "16d32.3",
+                      'assumedLat': '-53d38.4', 'assumedLong': '74d35.3',
+                      'altitude': '13d42.3'}
+        result = dispatcher.dispatch(input_dict)
+        self.assertEqual(expected, result, result)
