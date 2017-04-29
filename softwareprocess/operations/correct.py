@@ -186,3 +186,5 @@ class Correct(Operation):
         corrected_az_degree = corrected_az/math.pi * 180.0
         corrected_azimuth = Angle.from_decimal(corrected_az_degree / 360.0)
         self.original['correctedAzimuth'] = corrected_azimuth.str
+        
+        return self.original
