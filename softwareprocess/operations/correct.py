@@ -156,7 +156,7 @@ class Correct(Operation):
     
     def perform(self):
         lat = Angle.from_string(self.lat)
-        long = Angle.from_string(self.longitude)
+        longitude = Angle.from_string(self.longitude)
         assumed_lat = Angle.from_string(self.assumed_lat)
         assumed_long = Angle.from_string(self.assumed_long)
         altitude = Angle.from_string(self.altitude)
@@ -169,4 +169,5 @@ class Correct(Operation):
         print(cos_lat)
         sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal*360))
         cos_assumed_lat = math.cos(math.radians(assumed_lat.decimal*360))
-        print(cos_assumed_lat)
+        cos_lha = math.cos(math.radians(lha.decimal*360))
+        print(cos_lha)
