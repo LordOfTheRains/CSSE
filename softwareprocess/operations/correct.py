@@ -164,7 +164,7 @@ class Correct(Operation):
         lha = Angle.add(long, assumed_long)
         print('lha:' + lha.str)
         
-        sin_lat = math.sin(math.radians(lat.decimal))
+        sin_lat = math.sin(math.radians(lat.decimal*360))
         print(lat.decimal)
-        sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal))
+        sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal*360))
         print(sin_assumed_lat)
