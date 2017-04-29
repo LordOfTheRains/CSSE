@@ -166,10 +166,10 @@ class Correct(Operation):
         
         sin_lat = math.sin(math.radians(lat.decimal*360))
         cos_lat = math.cos(math.radians(lat.decimal*360))
-        print(cos_lat)
         sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal*360))
         cos_assumed_lat = math.cos(math.radians(assumed_lat.decimal*360))
         cos_lha = math.cos(math.radians(lha.decimal*360))
         inter_distance = sin_lat*sin_assumed_lat + cos_lat *cos_assumed_lat*cos_lha
-        print(cos_lha)
-        print(inter_distance)
+        
+        corrected_altitude = math.asin(inter_distance)/math.pi*180
+        print(corrected_altitude)
