@@ -165,5 +165,6 @@ class Correct(Operation):
         print('lha:' + lha.str)
         
         sin_lat = math.sin(math.radians(lat.decimal))
-        
+        print(sin_lat)
         sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal))
+        print(sin_assumed_lat)
