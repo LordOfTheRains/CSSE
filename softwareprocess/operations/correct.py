@@ -178,5 +178,5 @@ class Correct(Operation):
         
         self.original['correctedDistance'] = int(corrected_distance.decimal*60*360)
         # corrected azimuth
-        cos_arcsin_inter_dist = math.cos(math.asin(inter_distance)/math.pi*180)
+        cos_arcsin_inter_dist = math.cos(corrected_altitude.decimal)
         print(cos_arcsin_inter_dist)
