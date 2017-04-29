@@ -176,5 +176,5 @@ class Correct(Operation):
         
         corrected_distance = Angle.add(altitude, corrected_altitude)
         
-        self.original['correctedDistance'] = round(corrected_distance.decimal*60*360)
+        self.original['correctedDistance'] = int(corrected_distance.decimal*60*360)
         print(self.original['correctedDistance'])
