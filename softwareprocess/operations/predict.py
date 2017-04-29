@@ -56,7 +56,7 @@ class Predict(Operation):
             
         if "date" in param_dict:
             input_date = param_dict['date']
-            if type(input_date) is not str:
+            if not isinstance(input_date, basestring):
                 validated = False
                 error.append('Invalid Date Value')
             else:
@@ -82,7 +82,7 @@ class Predict(Operation):
             
         if "time" in param_dict:
             input_time = param_dict['time']
-            if type(input_time) is not str:
+            if not isinstance(input_time, basestring):
                 validated = False
                 error.append('Invalid Time Value')
             else:
