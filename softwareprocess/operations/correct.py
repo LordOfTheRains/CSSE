@@ -179,4 +179,10 @@ class Correct(Operation):
         self.original['correctedDistance'] = int(corrected_distance.decimal*60*360)
         # corrected azimuth
         cos_arcsin_inter_dist = math.cos(math.radians(corrected_altitude.decimal*360))
-        print(cos_arcsin_inter_dist)
+        
+        numerator = (sin_lat - (sin_assumed_lat * inter_distance))
+        denom = cos_assumed_lat * cos_arcsin_inter_dist
+        corrected_az = math.acos(numerator/denom)
+        print(numerator)
+        print(denom)
+        print(corrected_az)
