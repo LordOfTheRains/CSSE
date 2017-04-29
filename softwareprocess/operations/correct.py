@@ -58,7 +58,7 @@ class Correct(Operation):
                 error.append('Incorrect Latitude Format: xdyy.y')
         
         # validate assumedLat
-        if type(assumed_lat) is not str:
+        if not isinstance(assumed_lat, basestring):
             validated = False
             error.append('Assumed Latitude Must be A String Value')
         else:
@@ -80,7 +80,7 @@ class Correct(Operation):
                 error.append('Incorrect Assumed Latitude Format: xdyy.y')
         
         # validate long
-        if type(longitude) is not str:
+        if not isinstance(longitude, basestring):
             validated = False
             error.append('Longitude Must be A String Value')
         else:
@@ -102,7 +102,7 @@ class Correct(Operation):
                 error.append('Incorrect Longitude Format: xdyy.y')
         
         # validate assumedLong
-        if type(assumed_long) is not str:
+        if not isinstance(assumed_long, basestring):
             validated = False
             error.append('Assumed Longitude Must be A String Value')
         else:
@@ -124,7 +124,7 @@ class Correct(Operation):
                 error.append('Incorrect Assumed Longitude Format: xdyy.y')
                 
         # validate altitude
-        if type(altitude) is not str:
+        if not isinstance(altitude, basestring):
             validated = False
             error.append('Altitude Must be A String Value')
         else:

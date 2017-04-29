@@ -45,7 +45,7 @@ class Predict(Operation):
             validated = False
             error.append('Missing Star Name in Dictionary')
         else:
-            if type(param_dict['body']) is not str:
+            if not isinstance(param_dict['body'], basestring):
                 validated = False
                 error.append('Invalid Star Name')
             else:
