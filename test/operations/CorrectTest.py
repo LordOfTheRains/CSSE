@@ -381,3 +381,82 @@ class CorrectTest(unittest.TestCase):
                       'altitude': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
         self.assertTrue("Assumed Latitude Minute Out of Range: 0 <= assumedLat < 60.0" in result, result)
+        
+    def test_validate_parameter_altitude(self):
+        # altitude: mandatory, unvalidated,
+        # xdyy.y
+        # x GT 0 and LT 90
+        # yy.y GE 0 and LT 60.0
+        
+        # happy path
+        # high bound assumedLong
+        input_dict = {'op': 'correct', 'altitude': "359d59.9", 'lat': "89d59.9",
+                      'assumedLat': '89d59.9', 'long': '89d59.9',
+                      'assumedLong': '89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # low bound assumedLong
+        input_dict = {'op': 'correct', 'altitude': "0d0.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # normal assumedLong
+        input_dict = {'op': 'correct', 'altitude': "21d12.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # sad path
+        # not string
+        
+        input_dict = {'op': 'correct', 'altitude': 123, 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Altitude Must be A String Value" in result, result)
+        
+        # bad format
+        input_dict = {'op': 'correct', 'altitude': "-89d001.9", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Incorrect Altitude Format: xdyy.y" in result, result)
+        
+        # bad format
+        input_dict = {'op': 'correct', 'altitude': "12ddd12.3", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Incorrect Altitude Format: xdyy.y" in result, result)
+        
+        # bad format
+        input_dict = {'op': 'correct', 'altitude': "12d12..3", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Incorrect Altitude Format: xdyy.y" in result, result)
+        
+        # out of high range
+        input_dict = {'op': 'correct', 'altitude': "360d00.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Altitude Out of Range: 0.0 < altitude < 90.0" in result, result)
+        
+        # out of low range
+        input_dict = {'op': 'correct', 'altitude': "-1d00.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Altitude Out of Range: 0.0 < altitude < 90.0" in result, result)
+        
+        # out of arc minute range
+        input_dict = {'op': 'correct', 'altitude': "30d70.0", 'lat': "-89d59.9",
+                      'assumedLat': '-89d59.9', 'long': '-89d59.9',
+                      'assumedLong': '-89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Altitude Minute Out of Range: 0 < altitude < 90.0" in result, result)
