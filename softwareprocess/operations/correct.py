@@ -161,7 +161,7 @@ class Correct(Operation):
         assumed_long = Angle.from_string(self.assumed_long)
         altitude = Angle.from_string(self.altitude)
         
-        lha = Angle.add(long, assumed_long)
+        lha = Angle.add(longitude, assumed_long)
         print('lha:' + lha.str)
         
         sin_lat = math.sin(math.radians(lat.decimal*360))
