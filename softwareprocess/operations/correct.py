@@ -184,12 +184,12 @@ class Correct(Operation):
         denom = cos_assumed_lat * cos_arcsin_inter_dist
         # radians
         corrected_az = math.acos(numerator/denom)
-        corrected_az_degree = corrected_az/math.pi * 180.0
-        corrected_azimuth = Angle.from_decimal(corrected_az_degree / 360.0)
+        corrected_az_degree = corrected_az/math.pi * 180
+        corrected_azimuth = Angle.from_decimal(corrected_az_degree / 360)
         print (corrected_az)
         print (corrected_az_degree)
-        print (corrected_az_degree /360.0)
-        print (corrected_azimuth)
+        print (corrected_az_degree / 360)
+        print (corrected_azimuth.decimal)
         self.original['correctedAzimuth'] = corrected_azimuth.str
         
         return self.original
