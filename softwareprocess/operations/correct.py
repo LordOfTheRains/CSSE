@@ -171,5 +171,8 @@ class Correct(Operation):
         cos_lha = math.cos(math.radians(lha.decimal*360))
         inter_distance = sin_lat*sin_assumed_lat + cos_lat *cos_assumed_lat*cos_lha
         
-        corrected_altitude = math.asin(inter_distance)/math.pi*180
-        print(corrected_altitude)
+        corrected_altitude = math.asin(inter_distance)/math.pi*180/360
+        corrected_altitude = Angle.from_decimal(corrected_altitude)
+        
+        corrected_distance = Angle.add(corrected_altitude, altitude)
+        print(corrected_distance)
