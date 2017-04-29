@@ -390,14 +390,14 @@ class CorrectTest(unittest.TestCase):
         
         # happy path
         # high bound assumedLong
-        input_dict = {'op': 'correct', 'altitude': "359d59.9", 'lat': "89d59.9",
+        input_dict = {'op': 'correct', 'altitude': "89d59.9", 'lat': "89d59.9",
                       'assumedLat': '89d59.9', 'long': '89d59.9',
                       'assumedLong': '89d59.9'}
         result = Correct.validate_parameter(input_dict)
         self.assertTrue(result)
         
         # low bound assumedLong
-        input_dict = {'op': 'correct', 'altitude': "0d0.0", 'lat': "-89d59.9",
+        input_dict = {'op': 'correct', 'altitude': "0d0.1", 'lat': "-89d59.9",
                       'assumedLat': '-89d59.9', 'long': '-89d59.9',
                       'assumedLong': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
@@ -441,22 +441,62 @@ class CorrectTest(unittest.TestCase):
         self.assertTrue("Incorrect Altitude Format: xdyy.y" in result, result)
         
         # out of high range
-        input_dict = {'op': 'correct', 'altitude': "360d00.0", 'lat': "-89d59.9",
+        input_dict = {'op': 'correct', 'altitude': "90d00.0", 'lat': "-89d59.9",
                       'assumedLat': '-89d59.9', 'long': '-89d59.9',
                       'assumedLong': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
         self.assertTrue("Altitude Out of Range: 0.0 < altitude < 90.0" in result, result)
         
         # out of low range
-        input_dict = {'op': 'correct', 'altitude': "-1d00.0", 'lat': "-89d59.9",
+        input_dict = {'op': 'correct', 'altitude': "0d00.0", 'lat': "-89d59.9",
                       'assumedLat': '-89d59.9', 'long': '-89d59.9',
                       'assumedLong': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
-        self.assertTrue("Altitude Out of Range: 0.0 < altitude < 90.0" in result, result)
+        self.assertTrue("Altitude value cannot be less than 0d0.1" in result, result)
         
         # out of arc minute range
-        input_dict = {'op': 'correct', 'altitude': "30d70.0", 'lat': "-89d59.9",
+        input_dict = {'op': 'correct', 'altitude': "0d70.0", 'lat': "-89d59.9",
                       'assumedLat': '-89d59.9', 'long': '-89d59.9',
                       'assumedLong': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)
-        self.assertTrue("Altitude Minute Out of Range: 0 < altitude < 90.0" in result, result)
+        self.assertTrue("Altitude Minute Out of Range: 0 <= altitude < 60.0" in result, result)
+        
+    def test_validate_parameter_no_correctedAzimuth(self):
+        # correctedAzimuth should nto be in input dictionary
+        # yy.y GE 0 and LT 60.0
+        
+        # happy path
+        # no correctAzimuth
+        input_dict = {'op': 'correct', 'altitude': "89d59.9", 'lat': "89d59.9",
+                      'assumedLat': '89d59.9', 'long': '89d59.9',
+                      'assumedLong': '89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # sad path
+        # correctAzimuth in dictionary
+        input_dict = {'op': 'correct', 'altitude': "89d59.9", 'lat': "89d59.9",
+                      'assumedLat': '89d59.9', 'long': '89d59.9',
+                      'assumedLong': '89d59.9', 'correctedAzimuth': "asda"}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Input Dictionary Contains Forbidden Parameter: correctAzimuth" in result, result)
+        
+    def test_validate_parameter_no_correctedAzimuth(self):
+        # correctedAzimuth should nto be in input dictionary
+        # yy.y GE 0 and LT 60.0
+        
+        # happy path
+        # no correctAzimuth
+        input_dict = {'op': 'correct', 'altitude': "89d59.9", 'lat': "89d59.9",
+                      'assumedLat': '89d59.9', 'long': '89d59.9',
+                      'assumedLong': '89d59.9'}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue(result)
+        
+        # sad path
+        # correctAzimuth in dictionary
+        input_dict = {'op': 'correct', 'altitude': "89d59.9", 'lat': "89d59.9",
+                      'assumedLat': '89d59.9', 'long': '89d59.9',
+                      'assumedLong': '89d59.9', 'correctedAzimuth': "asda"}
+        result = Correct.validate_parameter(input_dict)
+        self.assertTrue("Input Dictionary Contains Forbidden Parameter: correctAzimuth" in result, result)

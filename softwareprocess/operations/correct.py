@@ -113,6 +113,32 @@ class Correct(Operation):
             else:
                 validated = False
                 error.append('Incorrect Assumed Longitude Format: xdyy.y')
+                
+        # validate altitude
+        if type(altitude) is not str:
+            validated = False
+            error.append('Altitude Must be A String Value')
+        else:
+            altitude = re.match('^[-]?[0-9]+d[0-9]{1,2}.\d$', altitude)
+            if altitude:
+                altitude = altitude.group()
+                x, y = altitude.split("d")
+                if int(x) < 0 or int(x) > 89:
+                    validated = False
+                    error.append('Altitude Out of Range: 0.0 < altitude < 90.0')
+                    
+                # trim leading 0
+                y = y.lstrip("0")
+                if float(y) < 0.0 or not float(y) < 60:
+                    validated = False
+                    error.append('Altitude Minute Out of Range: 0 <= altitude < 60.0')
+                    
+                if int(x) == 0 and float(y) < 0.1:
+                    validated = False
+                    error.append('Altitude value cannot be less than 0d0.1')
+            else:
+                validated = False
+                error.append('Incorrect Altitude Format: xdyy.y')
         
         if validated:
             return True
