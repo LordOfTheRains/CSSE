@@ -137,6 +137,18 @@ class DispatchTest(unittest.TestCase):
         
     def test_dispatch_valid_correct(self):
         
+        
+        
+        input_dict = {'op': 'correct', 'long': "154d5.4", 'lat': "89d20.1",
+                      'assumedLat': '35d59.7', 'assumedLong': '74d35.3',
+                      'altitude': '37d17.4'}
+        expected = {'op': 'correct', 'long': "154d5.4", 'lat': "89d20.1",
+                    'assumedLat': '35d59.7', 'assumedLong': '74d35.3',
+                    'altitude': '37d17.4', 'correctedDistance': '104',
+                    'correctedAzimuth': '0d36.8'}
+        result = dispatcher.dispatch(input_dict)
+        self.assertEqual(expected, result, result)
+        
         input_dict = {'op': 'correct', 'long': "95d41.6", 'lat': "16d32.3",
                       'assumedLat': '-53d38.4', 'assumedLong': '74d35.3',
                       'altitude': '13d42.3'}
