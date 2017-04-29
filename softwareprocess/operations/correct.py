@@ -169,7 +169,7 @@ class Correct(Operation):
         sin_assumed_lat = math.sin(math.radians(assumed_lat.decimal*360))
         cos_assumed_lat = math.cos(math.radians(assumed_lat.decimal*360))
         cos_lha = math.cos(math.radians(lha.decimal*360))
-        inter_distance = sin_lat*sin_assumed_lat + cos_lat *cos_assumed_lat*cos_lha
+        inter_distance = sin_lat*sin_assumed_lat + cos_lat *cos_assumed_lat * cos_lha
         
         corrected_altitude = math.asin(inter_distance)/math.pi*180/360
         corrected_altitude = Angle.from_decimal(-corrected_altitude)
@@ -177,4 +177,6 @@ class Correct(Operation):
         corrected_distance = Angle.add(altitude, corrected_altitude)
         
         self.original['correctedDistance'] = int(corrected_distance.decimal*60*360)
-        print(self.original['correctedDistance'])
+        # corrected azimuth
+        cos_arcsin_inter_dist = math.cos(math.asin(inter_distance)/math.pi*180)
+        print(cos_arcsin_inter_dist)
