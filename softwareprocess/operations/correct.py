@@ -175,4 +175,4 @@ class Correct(Operation):
         corrected_altitude = Angle.from_decimal(-corrected_altitude)
         
         corrected_distance = Angle.add(altitude, corrected_altitude)
-        print(corrected_distance.str)
+        print(corrected_distance.decimal)
