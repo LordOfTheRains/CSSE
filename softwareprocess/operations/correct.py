@@ -174,5 +174,5 @@ class Correct(Operation):
         corrected_altitude = math.asin(inter_distance)/math.pi*180/360
         corrected_altitude = Angle.from_decimal(corrected_altitude)
         
-        corrected_distance = Angle.add(corrected_altitude, altitude)
-        print(corrected_distance)
+        corrected_distance = Angle.add(altitude, corrected_altitude)
+        print(corrected_distance.decimal)
