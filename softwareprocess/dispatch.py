@@ -1,6 +1,6 @@
 from operations.adjust import Adjust
 from operations.predict import Predict
-
+from operations.correct import Correct
 
 def dispatch(values=None):
     
@@ -35,7 +35,14 @@ def dispatch(values=None):
             values['error'] = validated
         return values    # This calculation is stubbed out
     elif values['op'] == 'correct':
+        validated = Correct.validate_parameter(values)
+        if validated is True:
+            correct = Correct(values)
+            return correct.perform()
+        else:
+            values['error'] = validated
         return values    # This calculation is stubbed out
+    
     elif values['op'] == 'locate':
         return values    # This calculation is stubbed out
     else:

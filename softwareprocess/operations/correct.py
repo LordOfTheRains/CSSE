@@ -1,6 +1,5 @@
 from operation import Operation
-from predict import Predict as predict
-from adjust import  Adjust as adjust
+from softwareprocess.utility.angle import Angle
 
 import re
 
@@ -10,7 +9,14 @@ class Correct(Operation):
     MANDATORY_PARAMS = ['lat', 'long', 'altitude', 'assumedLat', 'assumedLong']
     
     def __init__(self, param_dict):
-        pass
+        Operation.__init__(self)
+        self.original = param_dict
+        
+        self.lat = param_dict['lat']
+        self.longitude = param_dict['long']
+        self.altitude = param_dict['altitude']
+        self.assumed_lat = param_dict['assumedLat']
+        self.assumed_long = param_dict['assumedLong']
     
     @staticmethod
     def validate_parameter(param_dict=None):
@@ -149,4 +155,8 @@ class Correct(Operation):
             return error
     
     def perform(self):
-        pass
+        lat = Angle.from_string(self.lat)
+        long = Angle.from_string(self.longitude)
+        assumed_lat = Angle.from_string(self.assumed_lat)
+        assumed_long = Angle.from_string(self.assumed_long)
+        altitude = Angle.from_string(self.altitude)

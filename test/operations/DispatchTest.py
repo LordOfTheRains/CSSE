@@ -142,8 +142,8 @@ class DispatchTest(unittest.TestCase):
                       'altitude': '13d42.3'}
         expected = {'op': 'correct', 'long': "95d41.6", 'lat': "16d32.3",
                     'assumedLat': '-53d38.4', 'assumedLong': '74d35.3',
-                    'altitude': '13d42.3', 'correctedDistance':'-3950',
-                    'correctedAzimuth' :''}
+                    'altitude': '13d42.3', 'correctedDistance': '-3950',
+                    'correctedAzimuth': '164d43.1'}
         result = dispatcher.dispatch(input_dict)
         self.assertEqual(expected, result, result)
         
@@ -151,4 +151,4 @@ class DispatchTest(unittest.TestCase):
         input_dict = {'op': 'correct'}
         
         result = dispatcher.dispatch(input_dict)
-        self.assertTrue("error" in result)
+        self.assertTrue("error" in result, result)
