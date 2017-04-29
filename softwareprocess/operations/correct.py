@@ -185,4 +185,4 @@ class Correct(Operation):
         corrected_az = math.acos(numerator/denom) # radians
         corrected_az_degree = corrected_az/math.pi * 180
         corrected_azimuth = Angle.from_decimal(corrected_az_degree / 360)
-        print(corrected_azimuth)
+        print(corrected_az_degree / 360)
