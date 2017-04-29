@@ -88,7 +88,7 @@ class CorrectTest(unittest.TestCase):
         self.assertTrue(result)
         
         # normal long
-        input_dict = {'op': 'correct', 'long': "21d12.0", 'lat': "-89d59.9",
+        input_dict = {'op': 'correct', 'long': '21d12.0', 'lat': "-89d59.9",
                       'assumedLat': '-89d59.9', 'assumedLong': '-89d59.9',
                       'altitude': '-89d59.9'}
         result = Correct.validate_parameter(input_dict)

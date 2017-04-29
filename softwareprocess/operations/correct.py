@@ -36,7 +36,7 @@ class Correct(Operation):
         assumed_long = param_dict['assumedLong']
         
         # validate lat
-        if type(lat) is not str:
+        if not isinstance(lat, basestring):
             validated = False
             error.append('Latitude Must be A String Value')
         else:
